@@ -1,10 +1,10 @@
-.container_signin {
+.container_signup {
     width: 550px;
     max-width: 100%;
-    margin: 30px auto 0;
+    margin: 30px auto;
 }
 
-.container_signin h1 {
+.container_signup h1 {
     color: var(--primary-p);
     text-align: center;
 }
