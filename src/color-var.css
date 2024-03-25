@@ -1,0 +1,16 @@
+:root {
+    --primary: #299AD1;
+    --primary-p: #0976AB;
+    --primary-m: #57C3F7;
+
+    --secundary: #2B2D42;
+    --secundary-p: #0E0F1C;
+    --secundary-m: #545569;
+
+    --white: #F9FBF2;
+    --white-p: #D3D4CF;
+    --white-m: #FEFFFA;
+
+    --failure: #FF8989;
+    --success: #61E16E;
+}

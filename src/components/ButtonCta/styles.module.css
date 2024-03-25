@@ -1,0 +1,13 @@
+@import url(../../color-var.css);
+
+.button_cta {
+    background-color: var(--primary);
+    color: var(--white);
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
+    transition: .3s all;
+}
+
+.button_cta:hover {
+    background-color: var(--primary-p);
+}

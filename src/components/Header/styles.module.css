@@ -1,0 +1,57 @@
+@import url(../../color-var.css);
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.7em;
+    background-color: var(--secundary);
+}
+
+.search_bar {
+    display: flex;
+    align-items: center;
+    background-color: var(--white);
+    border-radius: 1rem;
+    width: 350px;
+    justify-content: space-between;
+    padding-left: 0.3em;
+}
+
+.search_bar input {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+    width: 100%;
+    color: var(--secundary-p);
+}
+
+.search_bar button {
+    background-color: var(--primary);
+    padding: 0.5rem;
+    border-radius: 1rem;
+    color: var(--white);
+    transition: .3s all;
+}
+
+.search_bar button:hover {
+    background-color: var(--primary-p);
+}
+
+.navbar ul {
+    display: flex;
+    align-items: center;
+    gap: 1.1rem;
+}
+
+nav ul li:first-child a {
+    color: var(--white);
+    transition: .3s all;
+}
+
+nav ul li:first-child a:hover {
+    color: var(--white-p);
+}
+
+

@@ -1,0 +1,8 @@
+@import url(../../color-var.css);
+
+.footer {
+    background-color: var(--secundary-m);
+    padding: 2rem;
+    text-align: center;
+    color: var(--white-p);
+}
