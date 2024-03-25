@@ -1,7 +1,7 @@
 export default function SignUp(){
     return(
-        <div>
+        <section>
             <h1>TESTE</h1>
-        </div>
+        </section>
     )
 }

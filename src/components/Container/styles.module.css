@@ -1,6 +1,6 @@
 .container {
     min-height: 90vh;
     max-width: 90%;
-    width: 950px;
-    margin: 0 auto;
+    width: 850px;
+    margin: 60px auto 0;
 }
