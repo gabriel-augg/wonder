@@ -1,0 +1,32 @@
+@import url(../../color-var.css);
+
+.form_control button {
+    padding: 0.5em;
+    border-radius: 1em;
+    width: 100%;
+    background-color: var(--primary);
+    color: var(--white);
+    font-weight: 700;
+    font-size: 1em;
+    transition: .3s all;
+    margin-top: .5em;
+}
+
+.form_control button:hover {
+    background-color: var(--primary-p);
+}
+
+.form_control span {
+    display: block;
+    text-align: center;
+    margin-top: .8em;
+}
+
+.form_control span a {
+    color: var(--primary);
+    transition: .3s all;
+}
+
+.form_control span a:hover {
+    color: var(--primary-p);
+}

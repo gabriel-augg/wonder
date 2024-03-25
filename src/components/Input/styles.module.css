@@ -1,0 +1,19 @@
+@import url(../../color-var.css);
+
+.input_control {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.6em;
+}
+
+.input_control label {
+    color: var(--secundary);
+
+}
+
+.input_control input {
+    padding: 0.6em;
+    border-radius: 1em;
+    border: 1px solid var(--secundary);
+    color: var(--secundary);
+}
