@@ -8,6 +8,7 @@
 .title h1 {
     color: var(--primary-p);
     font-weight: 600;
+    font-size: 1.5em;
 }
 
 .title_children {
@@ -21,4 +22,5 @@
 .title_children h1 {
     color: var(--primary-p);
     font-weight: 600;
+    font-size: 1.5em;
 }

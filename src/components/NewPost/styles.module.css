@@ -1,0 +1,62 @@
+@import url(../../color-var.css);
+
+.newpost_container div {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.newpost_container div span:not(:last-child) {
+    font-size: 1.2em;
+    color: var(--secundary);
+}
+
+.newpost_container div span:last-child {
+    color: var(--primary);
+    font-size: 1.1em;
+    padding: .2em;
+}
+
+.newpost_container div span:last-child::before {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 1px;
+    background-color: black;
+    margin-right: 10px;
+    vertical-align: middle;
+    transform: rotate(-90deg);
+    transform-origin: center;
+}
+
+.newpost_container form {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--white-m);
+    border-radius: 1em;
+    margin: 1em;
+    border: 1px solid var(--secundary);
+}
+
+.newpost_container form textarea {
+    resize: none;
+    padding: 1em 1em 0 1em;
+    color: var(--secundary);
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.newpost_container form button {
+    align-self: flex-end;
+    margin: 0 .7em .7em .7em;
+    padding: .5em 0.9em;
+    border-radius: 1.3em;
+    background-color: var(--primary);
+    color: var(--white);
+    transition: .3s all;
+}
+
+.newpost_container form button:hover {
+    background-color: var(--primary-p);
+}

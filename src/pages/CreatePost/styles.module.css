@@ -1,0 +1,7 @@
+.createpost_area {
+    padding: 1em;
+    border: 1px solid var(--secundary);
+    border-radius: 1em;
+    margin: 2em 0;
+}
+

@@ -9,7 +9,7 @@ export default function Home(){
     return (
         <div>
             <Title title="Perguntas do momento">
-                <ButtonCta title="+ Nova pergunta" path="/perguntar"/>
+                <ButtonCta title="+ Nova postagem" path="/novapostagem"/>
             </Title>
         </div>
     )
