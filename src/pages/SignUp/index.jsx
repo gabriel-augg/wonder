@@ -1,11 +1,14 @@
-import { useRef } from "react"
+
+import { useRef, useState, useContext } from "react"
 
 import styles from "./styles.module.css"
 
 import Form from "../../components/Form"
 import Input from "../../components/Input"
 
-export default function SignIn(){
+import { Context } from "../../contexts/UserContext"
+
+export default function SignUp(){
 
     const nameRef = useRef(null)
     const usernameRef = useRef(null)
@@ -13,14 +16,18 @@ export default function SignIn(){
     const passwordRef = useRef(null)
     const confirmpasswordRef = useRef(null)
 
+    const [user, setUser] = useState({})
+
+    const { signUp } = useContext(Context)
+
     function handleSubmit(e){
         e.preventDefault();
-        console.log({
+        signUp({
             name: nameRef.current.value,
             username: usernameRef.current.value,
             email: emailRef.current.value,
             password: passwordRef.current.value,
-            confirmpasswordRef: confirmpasswordRef.current.value
+            confirmpassword: confirmpasswordRef.current.value
         })
     }
 
@@ -29,7 +36,7 @@ export default function SignIn(){
             <div>
                 <h1>Criar uma nova conta</h1>
             </div>
-            <Form handleOnSubmit={handleSubmit} btnTxt="Entrar" bottomTxt="Já possui uma conta?" linkTxt="Entrar" path="/entrar">
+            <Form handleOnSubmit={handleSubmit} btnTxt="Cadastrar" bottomTxt="Já possui uma conta?" linkTxt="Entrar" path="/entrar">
                 <>
                     <Input
                         text="Nome"
