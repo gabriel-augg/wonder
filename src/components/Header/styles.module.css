@@ -57,4 +57,31 @@ nav ul li:first-child a:hover {
     color: var(--white-p);
 }
 
+.user_icon {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user_icon div {
+    display: flex;
+    flex-direction: column;
+}
+
+.user_icon div span {
+    color: var(--white);
+    font-weight: 500;
+}
+
+.user_icon div a {
+    color: var(--white);
+    font-size: 0.9em;
+    font-weight: 400;
+    transition: 0.3s all;
+}
+
+.user_icon div a:hover {
+    color: var(--primary-m);
+}
+
 

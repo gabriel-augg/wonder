@@ -5,14 +5,19 @@ import { useNavigate } from "react-router-dom"
 
 export default function useAuth(){
     const [authenticated, setAuthenticated] = useState(false)
+    const [user, setUser] = useState({})
 
     const navigate = useNavigate()
 
     useEffect(()=> {
+
         const token = localStorage.getItem("token")
         if(token){
             api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`
             setAuthenticated(true)
+            api.get("/users/checkuser").then((res)=>{
+                setUser(res.data.user)
+            })
         }
     },[])
 
@@ -46,5 +51,5 @@ export default function useAuth(){
         }
     }
 
-    return {authenticated, signIn, signUp}
+    return {authenticated, user, signIn, signUp}
 }

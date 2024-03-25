@@ -1,12 +1,20 @@
+import { useContext } from "react"
+
 import { Link } from "react-router-dom"
 import ButtonCta from "../ButtonCta"
 
 import styles from "./styles.module.css"
 import logo from "../../assets/img/logo.svg"
 import { FiSearch } from "react-icons/fi";
+import icon from "../../assets/img/user.svg"
+
+import { Context } from "../../contexts/UserContext"
 
 
 export default function Header(){
+
+    const { authenticated, user } = useContext(Context)
+
     return (
         <header className={styles.header}>
             <div>
@@ -24,9 +32,20 @@ export default function Header(){
                     <li>
                         <Link to="/">Perguntas do momento</Link>
                     </li>
-                    <li>
-                        <ButtonCta title="Entrar" path="/entrar" />
-                    </li>
+                    {authenticated ? (
+                        <li className={styles.user_icon}>
+                            <img src={icon}/>
+                            <div>
+                                <span>{user.username}</span>
+                                <Link>Minha conta</Link>
+                            </div>
+                        </li>
+                    ) : (
+                        <li>
+                            <ButtonCta title="Entrar" path="/entrar" />
+                        </li>
+                    )}
+
                 </ul>
             </nav>
         </header>
