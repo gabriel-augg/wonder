@@ -1,0 +1,25 @@
+@import url(../../color-var.css);
+
+.title {
+    border-bottom: 1px solid var(--secundary-m);
+    padding: 1rem 0;
+}
+
+.title h1 {
+    color: var(--primary-p);
+    font-weight: 600;
+}
+
+.title_children {
+    border-bottom: 1px solid var(--secundary-m);
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 70px;
+}
+
+.title_children h1 {
+    color: var(--primary-p);
+    font-weight: 600;
+}
