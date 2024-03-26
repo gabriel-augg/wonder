@@ -1,0 +1,19 @@
+@import url(../../color-var.css);
+
+.notfound_container, .notfound_container div {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+}
+
+.notfound_container div {
+    margin-top: 3em;
+}
+
+.notfound_container p {
+    font-size: 1.2em;
+    text-align: center;
+}
