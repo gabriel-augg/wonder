@@ -42,7 +42,7 @@ export default function ViewPost(){
                     <NewPost username="gabriel" onRef={descriptionRef} handleOnSubmit={handleAnswer}  placeholder="Digite qualquer coisa" btnTxt="Responder" />
                     {post.Answers?.length ? (post.Answers.map((answer) => {
                         return(
-                            <Post id={answer.id} username="gabriel" time={answer.timeAgo} likesQty={answer.liked} txt={answer.description} isAnswer={true} />
+                            <Post id={answer.id} username={answer.User?.username} time={answer.timeAgo} likesQty={answer.liked} txt={answer.description} isAnswer={true} />
                         )
                     })) : (
                         <div className={styles.no_answer}>

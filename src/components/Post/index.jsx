@@ -24,23 +24,25 @@ export default function Post({id, username, time, likesQty, txt, answerQty, isAn
                     <span>{username}</span>
                     <span>{time}</span>
                 </div>
-                <div onSubmit={handleLike}>
-                    <span>{likesQty}</span>
-                    <button onClick={()=>handleLike(id)}>
-                        <CiHeart size={20}/>
-                    </button>
+                <div className={styles.icons_area}>
+                    { !isAnswer && (
+                        <div>
+                            <span>{answerQty}</span>
+                            <span><BsChatQuote color="#299AD1" size={18}/></span>
+                        </div>
+                    )}
+                    <div>
+                        <span>{likesQty}</span>
+                        <button onClick={()=>handleLike(id)}>
+                            <CiHeart size={22}/>
+                        </button>
+                    </div>
                 </div>
+                
             </div>
             <p>{txt}</p>
-            {isAnswer ? (
-                <></>
-            ) : (
+            {!isAnswer && (
                 <div className={styles.post_footer}>
-                    <div>
-                        <span>{answerQty}</span>
-                        <span><BsChatQuote size={20}/></span>
-                    </div>
-
                     <div>
                         <Link to={`/posts/${id}`}>Ver respostas</Link>
                         <Link to={`/posts/${id}`}>Responder</Link>

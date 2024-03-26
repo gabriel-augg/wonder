@@ -5,17 +5,17 @@
     width: 100%;
 }
 
-.post_container div {
+.post_container > div:first-child {
     display: flex;
     justify-content: space-between;
 }
 
-.post_container div div, .post_container div form {
+.post_container div div {
     display: flex;
     align-items: center ;
 }
 
-.post_header div:not(:last-child) span:not(:last-child) {
+.post_header > div:first-child > span:not(:last-child) {
     color: var(--secundary);
     font-size: 1.2em;
     margin: 0 1em 0 0.4em;
@@ -24,6 +24,14 @@
 .post_header div span:last-child {
     color: var(--secundary-m);
     font-size: 1em;
+}
+
+.icons_area div:first-child {
+    margin-right: 0.5em;
+}
+
+.icons_area div:first-child span {
+    margin-left: 0.12em;
 }
 
 .post_container div div:last-child span {
@@ -48,21 +56,19 @@
     color: var(--secundary);
 }
 
-.post_footer div:not(:last-child) span:not(:last-child) {
-    color: var(--secundary-m);
+.post_footer {
+    display: flex;
+    justify-content: flex-end;
 }
 
-.post_footer div:not(:last-child) span:last-child {
-    color: var(--primary);
-    margin-left: 0.2em;
-}
 
-.post_footer div:last-child a:not(:last-child) {
+
+.post_footer div:last-child a:first-child {
     color: var(--primary);
     transition: .3s all;
 }
 
-.post_footer div:last-child a:not(:last-child):hover {
+.post_footer div:last-child a:first-child:hover {
     color: var(--primary-p);
 }
 
