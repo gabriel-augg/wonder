@@ -37,12 +37,12 @@ export default function ViewPost(){
             <Title title="Postagem" />
             {post ? (
                 <div className={styles.viewpost_container}>
-                    <Post id={post.id} username={post.User?.username} time="12 horas" likesQty={post.liked} txt={post.description} isAnswer={true}/>
+                    <Post id={post.id} username={post.User?.username} time={post.timeAgo} likesQty={post.liked} txt={post.description} isAnswer={true}/>
                     <div className={styles.answer_line}><span>RESPOSTAS</span></div>
                     <NewPost username="gabriel" onRef={descriptionRef} handleOnSubmit={handleAnswer}  placeholder="Digite qualquer coisa" btnTxt="Responder" />
                     {post.Answers?.length ? (post.Answers.map((answer) => {
                         return(
-                            <Post id={answer.id} username="gabriel" time="12 horas" likesQty={answer.liked} txt={answer.description} isAnswer={true} />
+                            <Post id={answer.id} username="gabriel" time={answer.timeAgo} likesQty={answer.liked} txt={answer.description} isAnswer={true} />
                         )
                     })) : (
                         <div className={styles.no_answer}>
