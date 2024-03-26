@@ -1,10 +1,19 @@
+import { useState } from "react";
 import { CiHeart } from "react-icons/ci";
 import user_image from "../../assets/img/user.svg"
 import { Link } from "react-router-dom";
 
 import styles from "./styles.module.css"
+import api from "../../utils/api";
 
-export default function Post({username, time, likesQty, txt, answerQty, id}){
+export default function Post({id, username, time, likesQty, txt, answerQty}){
+
+    function handleLike(id){
+       api.patch(`/like/post/${id}`).then(()=> {
+        alert("sucesso")
+       })
+    }
+
     return(
         <div className={styles.post_container} key={id}>
             <div className={styles.post_header}>
@@ -13,13 +22,12 @@ export default function Post({username, time, likesQty, txt, answerQty, id}){
                     <span>{username}</span>
                     <span>{time}</span>
                 </div>
-                <form>
+                <div onSubmit={handleLike}>
                     <span>{likesQty}</span>
-                    <input type="hidden" value={id} />
-                    <button>
+                    <button onClick={()=>handleLike(id)}>
                         <CiHeart size={20}/>
                     </button>
-                </form>
+                </div>
             </div>
             <p>{txt}</p>
             <div className={styles.post_footer}>

@@ -15,7 +15,7 @@
     align-items: center ;
 }
 
-.post_header div span:not(:last-child) {
+.post_header div:not(:last-child) span:not(:last-child) {
     color: var(--secundary);
     font-size: 1.2em;
     margin: 0 1em 0 0.4em;
@@ -26,19 +26,20 @@
     font-size: 1em;
 }
 
-.post_container div form span {
+.post_container div div:last-child span {
     color: var(--secundary-m);
     font-weight: 400;
+
 }
 
-.post_container div form button {
+.post_container div div:last-child button {
     background-color: transparent;
     display: flex;
     align-items: center;
     color: rgb(207, 61, 61);
 }
 
-.post_container div form button:hover {
+.post_container div div:last-child button:hover {
     color: var(--danger);
 }
 

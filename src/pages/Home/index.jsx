@@ -14,12 +14,10 @@ export default function Home(){
     const [posts, setPosts] = useState([])
 
     useEffect(()=>{
-        api.get("/posts").then((res) => {
+        api.get("/posts?limit=5").then((res) => {
             setPosts([...posts, ...res.data.posts])
         })
     },[])
-
-    console.log(posts)
 
     return (
         <section>
@@ -27,7 +25,6 @@ export default function Home(){
                 <ButtonCta title="+ Nova postagem" path="/novapostagem"/>
             </Title>
             <div className={styles.post_area}>
-                {/* <Post username="Gabrie" time="Há uma hora" likesQty="12" txt="    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam dolores harum dolore aperiam iusto fuga iste ab repellendus, ut nesciunt veritatis. Quia omnis beatae qui iusto porro soluta libero assumenda!" answerQty="12" id="2131321312" /> */}
                 {posts.length ? (
                     posts.map(post => {
                         return (
