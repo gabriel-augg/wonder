@@ -36,7 +36,7 @@ export default function CreatePost(){
         <section className={styles.createpost_container}>
             <Title title="Publicar postagem"/>
             <div className={styles.createpost_area}>
-                <NewPost username={user.username} handleOnSubmit={handleSumit} onRef={descriptionRef}  placeholder="Digite qualquer coisa" btnTxt="Publicar"/>
+                <NewPost username={user?.username} handleOnSubmit={handleSumit} onRef={descriptionRef}  placeholder="Digite qualquer coisa" btnTxt="Publicar"/>
             </div>
             <Title title="O que estão publicando"/>
             <div className={styles.post_area}>

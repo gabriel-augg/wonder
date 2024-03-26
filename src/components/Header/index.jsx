@@ -13,7 +13,7 @@ import { Context } from "../../contexts/UserContext"
 
 export default function Header(){
 
-    const { authenticated, user } = useContext(Context)
+    const { authenticated, user } = useContext(Context)    
 
     return (
         <header className={styles.header}>
@@ -39,7 +39,7 @@ export default function Header(){
                         <li className={styles.user_icon}>
                             <img src={icon}/>
                             <div>
-                                <span>{user.username}</span>
+                                <span>{user?.username}</span>
                                 <Link>Minha conta</Link>
                             </div>
                         </li>

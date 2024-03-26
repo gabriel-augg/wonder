@@ -19,8 +19,6 @@ export default function Home(){
         })
     },[])
 
-    console.log(posts)
-
     return (
         <section>
             <Title title="Publicações">
