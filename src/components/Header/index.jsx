@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useState } from "react"
 
 import { Link } from "react-router-dom"
 import ButtonCta from "../ButtonCta"
@@ -13,7 +13,7 @@ import { Context } from "../../contexts/UserContext"
 
 export default function Header(){
 
-    const { authenticated, loading, user } = useContext(Context)
+    const { authenticated, user } = useContext(Context)
 
     return (
         <header className={styles.header}>
@@ -32,7 +32,10 @@ export default function Header(){
                     <li>
                         <Link to="/">Perguntas do momento</Link>
                     </li>
-                    {authenticated && user.username != "" ? (
+                    <li>
+                        <span>{}</span>
+                    </li>
+                    {authenticated ? (
                         <li className={styles.user_icon}>
                             <img src={icon}/>
                             <div>

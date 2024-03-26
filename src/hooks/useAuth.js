@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom"
 export default function useAuth(){
     const [authenticated, setAuthenticated] = useState(false)
     const [loading, setLoading] = useState(true)
-    const [user, setUser] = useState({})
+    const [user, setUser] = useState(null)
 
     const navigate = useNavigate()
 
@@ -15,18 +15,17 @@ export default function useAuth(){
         const token = localStorage.getItem("token")
         if(token){
             api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`
-            setAuthenticated(true)
             api.get("/users/checkuser").then((res)=>{
                 setUser(res.data.user)
+                setAuthenticated(true)
             })
         }
-        setLoading(false)
     },[])
 
     async function authUser(data){
         setAuthenticated(true)
         localStorage.setItem("token", JSON.stringify(data.token))
-        navigate("/")
+        navigate("/", {replace: true})
     }
 
     async function signUp(user){

@@ -3,6 +3,8 @@ import { CiHeart } from "react-icons/ci";
 import user_image from "../../assets/img/user.svg"
 import { Link } from "react-router-dom";
 
+import { BsChatQuote } from "react-icons/bs";
+
 import styles from "./styles.module.css"
 import api from "../../utils/api";
 
@@ -35,8 +37,8 @@ export default function Post({id, username, time, likesQty, txt, answerQty, isAn
             ) : (
                 <div className={styles.post_footer}>
                     <div>
-                        <span>Respostas:</span>
                         <span>{answerQty}</span>
+                        <span><BsChatQuote size={20}/></span>
                     </div>
 
                     <div>

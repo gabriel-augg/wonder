@@ -54,7 +54,7 @@
 
 .post_footer div:not(:last-child) span:last-child {
     color: var(--primary);
-    margin-left: 0.4em;
+    margin-left: 0.2em;
 }
 
 .post_footer div:last-child a:not(:last-child) {
