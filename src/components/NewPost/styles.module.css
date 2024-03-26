@@ -1,5 +1,9 @@
 @import url(../../color-var.css);
 
+.newpost_container {
+    padding: 1em;
+}
+
 .newpost_container div {
     display: flex;
     align-items: center;

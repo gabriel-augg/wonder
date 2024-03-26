@@ -6,6 +6,7 @@ import Home from "../pages/Home"
 import CreatePost from "../pages/CreatePost"
 
 import Private from "./Private"
+import ViewPost from "../pages/ViewPost"
 
 export default function AppRoutes(){
     return(
@@ -13,6 +14,7 @@ export default function AppRoutes(){
             <Route path="/entrar" element={ <SignIn/> } />
             <Route path="/cadastrar" element={ <SignUp/> } />
             <Route path="/novapostagem" element={ <Private><CreatePost/></Private> } />
+            <Route path="/posts/:id" element={<Private><ViewPost/></Private>} />
             <Route path="/" element={ <Home /> } />
         </Routes>
     )

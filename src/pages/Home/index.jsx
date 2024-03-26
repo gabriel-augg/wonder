@@ -19,6 +19,8 @@ export default function Home(){
         })
     },[])
 
+    console.log(posts)
+
     return (
         <section>
             <Title title="Publicações">
@@ -28,7 +30,7 @@ export default function Home(){
                 {posts.length ? (
                     posts.map(post => {
                         return (
-                            <Post id={post.id} username="gabriel" time="Há duas horas" likesQty={post.liked} txt={post.description
+                            <Post id={post.id} username={post["User.username"]} time="Há duas horas" likesQty={post.liked} txt={post.description
                             } answerQty={post.answer_qty} />
                         )
                     })

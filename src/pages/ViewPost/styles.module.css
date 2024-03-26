@@ -1,0 +1,32 @@
+@import url(../../color-var.css);
+
+.viewpost_container {
+    border: 1px solid var(--secundary);
+    border-radius: 1.4em;
+    margin-top: 1.4em;
+}
+
+.viewpost_container > div:not(:last-child){
+    border-bottom: 1px solid var(--secundary);
+}
+
+.answer_line {
+    background-color: var(--secundary-m);
+    color: var(--white);
+    padding: 0.2em 0.4em;
+    font-size: 0.8em;
+}
+
+.no_answer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+    gap: 1em;
+}
+
+.no_answer span {
+    font-size: 1.2em;
+    font-weight: 500;
+    color: var(--secundary-m);
+}

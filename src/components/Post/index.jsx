@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import styles from "./styles.module.css"
 import api from "../../utils/api";
 
-export default function Post({id, username, time, likesQty, txt, answerQty}){
+export default function Post({id, username, time, likesQty, txt, answerQty, isAnswer}){
 
     function handleLike(id){
        api.patch(`/like/post/${id}`).then(()=> {
@@ -30,17 +30,22 @@ export default function Post({id, username, time, likesQty, txt, answerQty}){
                 </div>
             </div>
             <p>{txt}</p>
-            <div className={styles.post_footer}>
-                <div>
-                    <span>Respostas:</span>
-                    <span>{answerQty}</span>
-                </div>
+            {isAnswer ? (
+                <></>
+            ) : (
+                <div className={styles.post_footer}>
+                    <div>
+                        <span>Respostas:</span>
+                        <span>{answerQty}</span>
+                    </div>
 
-                <div>
-                    <Link to={`/posts/${id}`}>Ver respostas</Link>
-                    <Link to={`/posts/${id}`}>Responder</Link>
+                    <div>
+                        <Link to={`/posts/${id}`}>Ver respostas</Link>
+                        <Link to={`/posts/${id}`}>Responder</Link>
+                    </div>
                 </div>
-            </div>
+            )}
+
         </div>
     )
 }
