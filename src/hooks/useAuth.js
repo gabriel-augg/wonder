@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom"
 
 export default function useAuth(){
     const [authenticated, setAuthenticated] = useState(false)
+    const [loading, setLoading] = useState(true)
     const [user, setUser] = useState({})
 
     const navigate = useNavigate()
@@ -19,6 +20,7 @@ export default function useAuth(){
                 setUser(res.data.user)
             })
         }
+        setLoading(false)
     },[])
 
     async function authUser(data){
@@ -51,5 +53,5 @@ export default function useAuth(){
         }
     }
 
-    return {authenticated, user, signIn, signUp}
+    return {authenticated, loading, user, signIn, signUp}
 }

@@ -1,0 +1,11 @@
+@import url(../../color-var.css);
+
+.post_area {
+    border: 1px solid var(--secundary);
+    border-radius: 1.4em;
+    margin-top: 1.4em;
+}
+
+.post_area > div:not(:last-child){
+    border-bottom: 1px solid var(--secundary);
+}

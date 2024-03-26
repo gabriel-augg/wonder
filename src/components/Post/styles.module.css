@@ -1,0 +1,80 @@
+@import url(../../color-var.css);
+
+.post_container {
+    padding: 1.5em;
+    width: 100%;
+}
+
+.post_container div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.post_container div div, .post_container div form {
+    display: flex;
+    align-items: center ;
+}
+
+.post_header div span:not(:last-child) {
+    color: var(--secundary);
+    font-size: 1.2em;
+    margin: 0 1em 0 0.4em;
+}
+
+.post_header div span:last-child {
+    color: var(--secundary-m);
+    font-size: 1em;
+}
+
+.post_container div form span {
+    color: var(--secundary-m);
+    font-weight: 400;
+}
+
+.post_container div form button {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    color: rgb(207, 61, 61);
+}
+
+.post_container div form button:hover {
+    color: var(--danger);
+}
+
+.post_container p {
+    padding: 1.2em;
+    color: var(--secundary);
+}
+
+.post_footer div:not(:last-child) span:not(:last-child) {
+    color: var(--secundary-m);
+}
+
+.post_footer div:not(:last-child) span:last-child {
+    color: var(--primary);
+    margin-left: 0.4em;
+}
+
+.post_footer div:last-child a:not(:last-child) {
+    color: var(--primary);
+    transition: .3s all;
+}
+
+.post_footer div:last-child a:not(:last-child):hover {
+    color: var(--primary-p);
+}
+
+.post_footer div:last-child a:last-child {
+    color: var(--primary);
+    margin-left: 1em;
+    padding: .4em 1em;
+    border-radius: 1.8em;
+    border: 1.4px solid var(--primary);
+    transition: .3s all;
+}
+
+.post_footer div:last-child a:last-child:hover {
+    color: var(--white);
+    background-color: var(--primary-m);
+}

@@ -13,7 +13,7 @@ import { Context } from "../../contexts/UserContext"
 
 export default function Header(){
 
-    const { authenticated, user } = useContext(Context)
+    const { authenticated, loading, user } = useContext(Context)
 
     return (
         <header className={styles.header}>
@@ -32,7 +32,7 @@ export default function Header(){
                     <li>
                         <Link to="/">Perguntas do momento</Link>
                     </li>
-                    {authenticated ? (
+                    {authenticated && user.username != "" ? (
                         <li className={styles.user_icon}>
                             <img src={icon}/>
                             <div>
