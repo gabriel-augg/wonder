@@ -13,7 +13,8 @@
     margin-top: 3em;
 }
 
-.notfound_container p {
+.notfound_container h1 {
     font-size: 1.2em;
+    color: var(--secundary-m);
     text-align: center;
 }

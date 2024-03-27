@@ -54,7 +54,7 @@ nav ul li:first-child a {
 }
 
 nav ul li:first-child a:hover {
-    color: var(--white-p);
+    color: var(--primary);
 }
 
 .user_icon {

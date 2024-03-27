@@ -8,7 +8,7 @@ export default function NotFound(){
         <section className={styles.notfound_container}>
             <div>
                 <img src={image} alt="ilustration" />
-                <p>Parece que você está tentando acessar uma página que não existe</p>
+                <h1>Parece que você está tentando acessar uma página que não existe</h1>
                 <ButtonCta title="Voltar" path="/" />
             </div>
         </section>
