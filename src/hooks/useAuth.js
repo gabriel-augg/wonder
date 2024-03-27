@@ -24,9 +24,16 @@ export default function useAuth(){
     },[])
 
     async function authUser(data){
-        setAuthenticated(true)
         localStorage.setItem("token", JSON.stringify(data.token))
-        navigate("/", {replace: true})
+        api.defaults.headers.Authorization = `Bearer ${data.token}`
+        api.get("/users/checkuser").then((res)=>{
+            setUser(res.data.user)
+            setAuthenticated(true)
+            navigate("/")
+        })
+        .catch(()=>{
+            alert("ERRO!")
+        })
     }
 
     async function signUp(user){

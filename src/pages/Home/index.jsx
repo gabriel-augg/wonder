@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import api from "../../utils/api.js";
 
-import { Context } from "../../contexts/UserContext.jsx";
+import { SearchContext } from "../../contexts/SearchContext.jsx";
 
 import Title from "../../components/Title";
 import ButtonCta from "../../components/ButtonCta"
@@ -12,12 +12,18 @@ import styles from "./styles.module.css"
 
 export default function Home(){
     const [posts, setPosts] = useState([])
+    const {search} = useContext(SearchContext)
 
     useEffect(()=>{
-        api.get("/posts?limit=5").then((res) => {
-            setPosts([...posts, ...res.data.posts])
-        })
-    },[])
+        const findPosts = () => {
+            api.get(`/posts?search=${search}&limit=5`).then((res) => {
+                setPosts(res.data.posts)
+            })
+        }
+
+        findPosts()
+
+    },[search, true])
 
     return (
         <section>
@@ -25,15 +31,13 @@ export default function Home(){
                 <ButtonCta title="+ Nova postagem" path="/novapostagem"/>
             </Title>
             <div className={styles.post_area}>
-                {posts.length ? (
+                {posts.length !== 0 && (
                     posts.map(post => {
                         return (
                             <Post id={post.id} username={post["User.username"]} time={post.timeAgo} likesQty={post.liked} txt={post.description
                             } answerQty={post.answer_qty} />
                         )
                     })
-                ) : (
-                    <div></div>
                 )}
             </div>
         </section>
