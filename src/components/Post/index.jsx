@@ -1,7 +1,10 @@
-import { useState } from "react";
-import { CiHeart } from "react-icons/ci";
+import { useEffect, useState, useContext } from "react";
+import { IoIosHeartEmpty } from "react-icons/io";
+import { IoIosHeart } from "react-icons/io";
 import user_image from "../../assets/img/user.svg"
 import { Link } from "react-router-dom";
+
+import {Context} from "../../contexts/UserContext"
 
 import { BsChatQuote } from "react-icons/bs";
 
@@ -10,11 +13,38 @@ import api from "../../utils/api";
 
 export default function Post({id, username, time, likesQty, txt, answerQty, isAnswer}){
 
-    function handleLike(id){
-       api.patch(`/like/post/${id}`).then(()=> {
-        alert("sucesso")
-       })
+    const [isLiked, setIsLiked] = useState(false);
+    const [likesCount, setLikesCount] = useState(likesQty);
+    const {authenticated} = useContext(Context)
+  
+
+    function handleLike(){
+        setIsLiked(!isLiked);
+        setLikesCount(isLiked ? likesCount - 1 : likesCount + 1);
+        if(!isLiked){
+            api.patch(`/like-dislike/posts/like/${id}`).then(()=>{
+                console.log("deu certo")
+            })
+        } else {
+            api.patch(`/like-dislike/posts/dislike/${id}`).then(()=>{
+                console.log("deu certo")
+            })
+        }
     }
+
+    useEffect(()=>{
+        if(authenticated){
+            api.get(`/like-dislike/posts/${id}`).then((res) => {
+                if(res.data.status){
+                    setIsLiked(true)
+                } else {
+                    setIsLiked(false)
+                }
+            }).catch(()=> {
+                alert("error")
+            })
+        }
+    },[authenticated])
 
     return(
         <div className={styles.post_container} key={id}>
@@ -32,10 +62,16 @@ export default function Post({id, username, time, likesQty, txt, answerQty, isAn
                         </div>
                     )}
                     <div>
-                        <span>{likesQty}</span>
-                        <button onClick={()=>handleLike(id)}>
-                            <CiHeart size={22}/>
-                        </button>
+                        <span>{likesCount}</span>
+                        {isLiked ? (
+                            <button onClick={()=>handleLike(id)}>
+                                <IoIosHeart size={20}/>
+                            </button>
+                        ) : (
+                            <button onClick={()=>handleLike(id)}>
+                                <IoIosHeartEmpty size={20}/>
+                            </button>
+                        )}
                     </div>
                 </div>
                 
