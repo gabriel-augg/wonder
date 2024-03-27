@@ -10,23 +10,25 @@ import { BsChatQuote } from "react-icons/bs";
 
 import styles from "./styles.module.css"
 import api from "../../utils/api";
+import timeAgo from "../../utils/date";
 
-export default function Post({id, username, time, likesQty, txt, answerQty, isAnswer}){
+export default function Post({id, username, likesQty, txt, answerQty, createdAt, isAnswer, type}){
 
     const [isLiked, setIsLiked] = useState(false);
     const [likesCount, setLikesCount] = useState(likesQty);
     const {authenticated} = useContext(Context)
+    const [date, setDate] = useState(timeAgo(createdAt))
   
 
     function handleLike(){
         setIsLiked(!isLiked);
         setLikesCount(isLiked ? likesCount - 1 : likesCount + 1);
         if(!isLiked){
-            api.patch(`/like-dislike/posts/like/${id}`).then(()=>{
+            api.patch(`/like-dislike/${type}/like/${id}`).then(()=>{
                 console.log("deu certo")
             })
         } else {
-            api.patch(`/like-dislike/posts/dislike/${id}`).then(()=>{
+            api.patch(`/like-dislike/${type}/dislike/${id}`).then(()=>{
                 console.log("deu certo")
             })
         }
@@ -34,7 +36,7 @@ export default function Post({id, username, time, likesQty, txt, answerQty, isAn
 
     useEffect(()=>{
         if(authenticated){
-            api.get(`/like-dislike/posts/${id}`).then((res) => {
+            api.get(`/like-dislike/${type}/${id}`).then((res) => {
                 if(res.data.status){
                     setIsLiked(true)
                 } else {
@@ -44,7 +46,16 @@ export default function Post({id, username, time, likesQty, txt, answerQty, isAn
                 alert("error")
             })
         }
-    },[authenticated])
+
+        const interval = setInterval(() => {
+            const newDate = timeAgo(createdAt);
+            setDate(newDate);
+          }, 60000);
+        
+          return () => {
+            clearInterval(interval);
+          }
+    },[authenticated, createdAt])
 
     return(
         <div className={styles.post_container} key={id}>
@@ -52,7 +63,7 @@ export default function Post({id, username, time, likesQty, txt, answerQty, isAn
                 <div>
                     <img src={user_image} />
                     <span>{username}</span>
-                    <span>{time}</span>
+                    <span>{date}</span>
                 </div>
                 <div className={styles.icons_area}>
                     { !isAnswer && (

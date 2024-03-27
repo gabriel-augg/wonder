@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import { Context } from "../contexts/UserContext.jsx";
 
@@ -14,6 +14,7 @@ export default function Private({children}){
     if(!authenticated){
         return <Navigate to="/entrar" />
     }
+
 
     return children
 }

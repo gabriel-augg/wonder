@@ -9,3 +9,12 @@
 .post_area > div:not(:last-child){
     border-bottom: 1px solid var(--secundary);
 }
+
+.no_post_container {
+    text-align: center;
+}
+
+.no_post_container h1 {
+    color: var(--secundary-m);
+    padding-top: 1em;
+}

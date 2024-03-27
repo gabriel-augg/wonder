@@ -40,15 +40,13 @@ export default function CreatePost(){
             </div>
             <Title title="O que estão publicando"/>
             <div className={styles.post_area}>
-                {posts.length ? (
+                {posts.length && (
                     posts.map((post) => {
                         return(
-                            <Post id={post.id} username={post["User.username"]} time={post.timeAgo} likesQty={post.liked} txt={post.description
+                            <Post id={post.id} username={post["User.username"]} createdAt={post.createdAt} likesQty={post.liked} txt={post.description
                             } answerQty={post.answer_qty} />                    
                         )
                     })
-                ) : (
-                    <></>
                 )}
             </div>
         </section>

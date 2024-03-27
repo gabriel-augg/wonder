@@ -12,7 +12,8 @@ import { BsChatQuote } from "react-icons/bs";
 
 export default function ViewPost(){
     const {id} = useParams()
-    const [post, setPost] = useState({})
+    const [post, setPost] = useState(null)
+    const [answers, setAnswers] = useState(null)
     const descriptionRef = useRef(null)
 
     useEffect(()=>{
@@ -29,6 +30,7 @@ export default function ViewPost(){
             postId: post.id
         }).then((res) => {
             descriptionRef.current.value = ""
+            setAnswers([...answers, res.data.answer])
         })
     }
 
@@ -37,12 +39,14 @@ export default function ViewPost(){
             <Title title="Postagem" />
             {post ? (
                 <div className={styles.viewpost_container}>
-                    <Post id={post.id} username={post.User?.username} time={post.timeAgo} likesQty={post.liked} txt={post.description} isAnswer={true}/>
+
+                    <Post id={post.id} username={post.User?.username} createdAt={post.createdAt} likesQty={post?.liked} txt={post.description} isAnswer={true} type="posts"/>
+
                     <div className={styles.answer_line}><span>RESPOSTAS</span></div>
                     <NewPost username="gabriel" onRef={descriptionRef} handleOnSubmit={handleAnswer}  placeholder="Digite qualquer coisa" btnTxt="Responder" />
-                    {post.Answers?.length ? (post.Answers.map((answer) => {
+                    {answers.length ? (answers.map((answer) => {
                         return(
-                            <Post id={answer.id} username={answer.User?.username} time={answer.timeAgo} likesQty={answer.liked} txt={answer.description} isAnswer={true} />
+                            <Post id={answer.id} username={answer.username} createdAt={answer.createdAt} likesQty={answer.liked} txt={answer.description} isAnswer={true} type="answers" />
                         )
                     })) : (
                         <div className={styles.no_answer}>

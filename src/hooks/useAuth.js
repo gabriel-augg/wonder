@@ -18,9 +18,11 @@ export default function useAuth(){
             api.get("/users/checkuser").then((res)=>{
                 setUser(res.data.user)
                 setAuthenticated(true)
+                setLoading(false)
             })
         }
         setLoading(false)
+
     },[])
 
     async function authUser(data){
