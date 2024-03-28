@@ -44,7 +44,7 @@ export default function CreatePost(){
                     posts.map((post) => {
                         return(
                             <Post id={post.id} username={post["User.username"]} createdAt={post.createdAt} likesQty={post.liked} txt={post.description
-                            } answerQty={post.answer_qty} />                    
+                            } answerQty={post.answer_qty} type="posts" />                    
                         )
                     })
                 )}

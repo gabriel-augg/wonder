@@ -15,7 +15,7 @@ export default function SignUp(){
     const passwordRef = useRef(null)
     const confirmpasswordRef = useRef(null)
 
-    const { signUp } = useContext(Context)
+    const { signUp, loadingAuth } = useContext(Context)
 
     function handleSubmit(e){
         e.preventDefault();
@@ -32,7 +32,7 @@ export default function SignUp(){
             <div>
                 <h1>Criar uma nova conta</h1>
             </div>
-            <Form handleOnSubmit={handleSubmit} btnTxt="Cadastrar" bottomTxt="Já possui uma conta?" linkTxt="Entrar" path="/entrar">
+            <Form handleOnSubmit={handleSubmit} btnTxt="Cadastrar" bottomTxt="Já possui uma conta?" linkTxt="Entrar" path="/entrar" isLoading={loadingAuth}>
                 <>
                     <Input
                         text="Usuário"

@@ -1,5 +1,14 @@
 @import url(../../color-var.css);
 
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 .form_control button {
     padding: 0.5em;
     border-radius: 1em;
@@ -29,4 +38,9 @@
 
 .form_control span a:hover {
     color: var(--primary-p);
+}
+
+.form_control button svg {
+    stroke-width: 20px; /* Define a grossura da linha do ícone */
+    animation: rotate .8s linear infinite;
 }
