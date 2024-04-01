@@ -85,3 +85,19 @@
     color: var(--white);
     background-color: var(--primary-m);
 }
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading_heart svg {
+    margin-left: 0.2em;
+    stroke-width: 20px;
+    animation: rotate .8s linear infinite;
+    color: var(--danger);
+}

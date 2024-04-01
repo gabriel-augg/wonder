@@ -48,6 +48,9 @@ export default function useAuth(){
             const data = await api.post("/auth/signup", user).then((res) => {
                 return res.data
             })
+            .catch(()=> {
+                console.log("Deu erro aqui")
+            })
 
             await authUser(data)
         } catch (error) {
@@ -60,6 +63,9 @@ export default function useAuth(){
         try {
             const data = await api.post("/auth/signin", user).then((res) => {
                 return res.data
+            })
+            .catch(()=> {
+                console.log("Deu erro aqui")
             })
 
             await authUser(data)

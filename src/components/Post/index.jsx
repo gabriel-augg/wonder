@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import {Context} from "../../contexts/UserContext"
 
 import { BsChatQuote } from "react-icons/bs";
+import { AiOutlineLoading } from "react-icons/ai";
 
 import styles from "./styles.module.css"
 import api from "../../utils/api";
@@ -18,6 +19,7 @@ export default function Post({id, username, likesQty, txt, answerQty, createdAt,
     const [likesCount, setLikesCount] = useState(likesQty);
     const {authenticated} = useContext(Context)
     const [date, setDate] = useState(timeAgo(createdAt))
+    const [isLoading, setIsLoading] = useState(true)
   
 
     function handleLike(){
@@ -42,10 +44,17 @@ export default function Post({id, username, likesQty, txt, answerQty, createdAt,
                 } else {
                     setIsLiked(false)
                 }
+                setIsLoading(false)
             }).catch(()=> {
                 alert("error")
+                setIsLoading(false)
             })
         }
+
+        if(!authenticated){
+            setIsLoading(false)
+        }
+
 
         const interval = setInterval(() => {
             const newDate = timeAgo(createdAt);
@@ -74,15 +83,29 @@ export default function Post({id, username, likesQty, txt, answerQty, createdAt,
                     )}
                     <div>
                         <span>{likesCount}</span>
-                        {isLiked ? (
-                            <button onClick={()=>handleLike(id)}>
-                                <IoIosHeart size={20}/>
-                            </button>
-                        ) : (
-                            <button onClick={()=>handleLike(id)}>
-                                <IoIosHeartEmpty size={20}/>
-                            </button>
-                        )}
+                        {
+                            isLoading ? (
+                            <>
+                                <span className={styles.loading_heart}>
+                                    <AiOutlineLoading size={18} />
+                                </span>
+                            </>
+                            ) : (
+                            <>
+                                {isLiked ? (
+                                    <button onClick={()=>handleLike(id)}>
+                                        <IoIosHeart size={20}/>
+                                    </button>
+                                ) : (
+                                    <button onClick={()=>handleLike(id)}>
+                                        <IoIosHeartEmpty size={20}/>
+                                    </button>
+                                )}
+                            </>
+                            )
+                        }
+
+                        {}
                     </div>
                 </div>
                 
