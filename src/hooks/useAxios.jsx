@@ -6,12 +6,9 @@ const useAxios = () => {
     const [loadingSubmit, setLoadingSubmit] = useState(false)
 
     const get = async (url, options = {}) => {
+        setLoading(true)
         try {
-            const data = await api.request({
-                url,
-                ...options
-            })
-
+            const { data } = await api.get(url, options)
             return data
         } catch (error) {
             console.log(error)
@@ -20,14 +17,10 @@ const useAxios = () => {
         }
     }
 
-    const create = async (url, data, options = {}) => {
+    const create = async (url, obj) => {
         setLoadingSubmit(true)
         try {
-            const data = await api.request({
-                url, 
-                data, 
-                ...options
-            })
+            const { data } = await api.post(url, obj)
             return data
         } catch (error) {
             console.log(error)
