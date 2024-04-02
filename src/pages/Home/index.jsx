@@ -11,9 +11,10 @@ import styles from "./styles.module.css"
 
 import image_no_posts from "../../assets/img/ilustration_no_posts.svg"
 
-import { AiOutlineLoading } from "react-icons/ai";
 import useAxios from "../../hooks/useAxios.jsx";
 import Loading from "../../components/Loading";
+
+import { FaArrowUp } from "react-icons/fa";
 
 
 export default function Home(){
@@ -72,6 +73,17 @@ export default function Home(){
             <Title title="Publicações">
                 <ButtonCta title="+ Nova postagem" path="/novapostagem"/>
             </Title>
+            {/* <div className={styles.order_row}>
+                <span>Ordenar por: </span> 
+                <select>
+                    <option>Mais recente</option>
+                    <option>Mais antigo</option>
+                </select>
+                <select>
+                    <option>Mais curtido</option>
+                    <option>Menos curtido</option>
+                </select>
+            </div> */}
             <div>
                 {posts.length > 0 ? (
                     <>
@@ -91,7 +103,7 @@ export default function Home(){
                                 )
                             })}
                         </div>
-                        { !isPostsEmpty && (
+                        { (posts.length >= 5 && !isPostsEmpty) && (
                         <div className={styles.loading_more}>
                             <Button 
                                 btnTxt="Buscar mais"

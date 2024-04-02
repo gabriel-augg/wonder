@@ -30,3 +30,9 @@
     font-weight: 500;
     color: var(--secundary-m);
 }
+
+.loading_more {
+    display: flex;
+    justify-content: center;
+    margin: 1em 0;
+}
