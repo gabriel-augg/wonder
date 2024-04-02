@@ -11,7 +11,7 @@ import { BsChatQuote } from "react-icons/bs";
 import useAxios from "../../hooks/useAxios"
 
 export default function ViewPost(){
-    const { get, create } = useAxios()
+    const { get, create, loadingSubmit } = useAxios()
     const {id} = useParams()
     const [post, setPost] = useState(null)
     const [answers, setAnswers] = useState(null)
@@ -19,9 +19,9 @@ export default function ViewPost(){
 
     useEffect(()=>{
         get(`/posts/id/${id}`)
-        .then(({data}) => {
-            setPost(data.post)
-            setAnswers(data.post.Answers)
+        .then(({post}) => {
+            setPost(post)
+            setAnswers(post.Answers)
         })
     },[id])
 
@@ -66,6 +66,7 @@ export default function ViewPost(){
                         handleOnSubmit={handleAnswer}  
                         placeholder="Digite qualquer coisa" 
                         btnTxt="Responder" 
+                        isLoading={loadingSubmit}
                     />
                     {answers.length ? (answers.map((answer) => {
                         return(

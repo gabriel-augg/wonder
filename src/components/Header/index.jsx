@@ -27,7 +27,12 @@ export default function Header(){
             </div>
             <div className={styles.search_bar}>
                 <FiSearch size={27} color="#299AD1"/>
-                <input type="text" onChange={(e)=>setSearch(e.target.value)} id="search" name="search" placeholder="Estou pesquisando por..." />
+                <input 
+                    type="text" 
+                    onChange={(e)=> setSearch(e.target.value)} 
+                    id="search" name="search" 
+                    placeholder="Estou pesquisando por..." 
+                />
                 <button type="button" onClick={() => navigate("/")}>Pesquisar</button>
             </div>
             <nav className={styles.navbar}>
@@ -46,7 +51,7 @@ export default function Header(){
                         <li className={styles.user_icon}>
                             <img src={icon}/>
                             <div>
-                                <span>{user?.username}</span>
+                                <span>{user.username}</span>
                                 <Link>Minha conta</Link>
                             </div>
                         </li>

@@ -1,4 +1,4 @@
-import { useRef, useContext } from "react"
+import { useRef, useContext, useEffect } from "react"
 
 import { Context } from "../../contexts/UserContext"
 
@@ -11,14 +11,21 @@ export default function SignIn(){
     const usernameRef = useRef(null)
     const passwordRef = useRef(null)
 
-    const { signIn, loading } = useContext(Context)
+    const { signIn, loadingAuth } = useContext(Context)
+
+    useEffect(()=>{
+        console.log("Caiu aqui")
+    },[])
 
     function handleSubmit(e){
         e.preventDefault();
-        signIn({
-            username: usernameRef.current.value,
-            password: passwordRef.current.value
-        })
+        if(!loadingAuth){
+            signIn({
+                username: usernameRef.current.value,
+                password: passwordRef.current.value
+            })
+            return
+        }
     }
 
 
@@ -27,7 +34,7 @@ export default function SignIn(){
             <div>
                 <h1>Seja bem-vindo novamente!</h1>
             </div>
-            <Form handleOnSubmit={handleSubmit} btnTxt="Entrar" bottomTxt="Não possui uma conta?" linkTxt="Cadastrar" path="/cadastrar" isLoading={loading}>
+            <Form handleOnSubmit={handleSubmit} btnTxt="Entrar" bottomTxt="Não possui uma conta?" linkTxt="Cadastrar" path="/cadastrar" isLoading={loadingAuth}>
                 <>
                     <Input
                         text="Usuário"

@@ -15,16 +15,19 @@ export default function SignUp(){
     const passwordRef = useRef(null)
     const confirmpasswordRef = useRef(null)
 
-    const { signUp, loading } = useContext(Context)
+    const { signUp, loadingAuth } = useContext(Context)
 
     function handleSubmit(e){
         e.preventDefault();
-        signUp({
-            username: usernameRef.current.value,
-            email: emailRef.current.value,
-            password: passwordRef.current.value,
-            confirmpassword: confirmpasswordRef.current.value
-        })
+        if(!loadingAuth){
+            signUp({
+                username: usernameRef.current.value,
+                email: emailRef.current.value,
+                password: passwordRef.current.value,
+                confirmpassword: confirmpasswordRef.current.value
+            })
+            return
+        }
     }
 
     return(
@@ -32,7 +35,13 @@ export default function SignUp(){
             <div>
                 <h1>Criar uma nova conta</h1>
             </div>
-            <Form handleOnSubmit={handleSubmit} btnTxt="Cadastrar" bottomTxt="Já possui uma conta?" linkTxt="Entrar" path="/entrar" isLoading={loading}>
+            <Form 
+                handleOnSubmit={handleSubmit} 
+                btnTxt="Cadastrar" 
+                bottomTxt="Já possui uma conta?" 
+                linkTxt="Entrar" path="/entrar" 
+                isLoading={loadingAuth}
+                >
                 <>
                     <Input
                         text="Usuário"

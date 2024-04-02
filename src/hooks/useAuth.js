@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom"
 export default function useAuth(){
     const { get, create, loading } = useAxios()
     const [authenticated, setAuthenticated] = useState(false)
+    const [loadingAuth, setLoadingAuth] = useState(false)
     const [user, setUser] = useState(null)
 
     const navigate = useNavigate()
@@ -30,6 +31,7 @@ export default function useAuth(){
         .then(({user})=>{
             setUser(user)
             setAuthenticated(true)
+            setLoadingAuth(false)
             navigate("/")
         })
         .catch((error)=>{
@@ -53,5 +55,5 @@ export default function useAuth(){
         })
     }
 
-    return {authenticated, loading, user, signIn, signUp}
+    return {authenticated, loading, loadingAuth, user, signIn, signUp}
 }
