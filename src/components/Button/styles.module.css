@@ -1,0 +1,33 @@
+@import url(../../color-var.css);
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary);
+    color: var(--white);
+    border-radius: 1em;
+    padding: 0.5em;
+    transition: .3s all;
+    min-width: 100px;
+}
+
+.button:hover {
+    background-color: var(--primary-p);
+}
+
+
+.button svg {
+    stroke-width: 100px;
+    animation: rotate .5s linear infinite;
+}

@@ -19,27 +19,13 @@
     padding-top: 1em;
 }
 
-.find_more {
-    padding: 1em;
+.loading_more {
     display: flex;
     justify-content: center;
+    margin: 1em 0;
 }
 
-.find_more button {
-    background-color: var(--primary);
-    color: var(--white);
-    border-radius: 1rem;
-    padding: 0.5rem 1rem;
-    transition: .3s all;
-    min-width: 120px;
-    height: 35px;
-    padding: 8px;
-    position: relative;
-}
 
-.find_more button:hover {
-    background-color: var(--primary-p);
-}
 
 
 

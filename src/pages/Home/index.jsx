@@ -1,10 +1,10 @@
 import { useEffect, useState, useContext } from "react";
-import api from "../../utils/api.js";
 
 import { SearchContext } from "../../contexts/SearchContext.jsx";
 
 import Title from "../../components/Title";
 import ButtonCta from "../../components/ButtonCta"
+import Button from "../../components/Button";
 import Post from "../../components/Post";
 
 import styles from "./styles.module.css"
@@ -92,11 +92,14 @@ export default function Home(){
                             })}
                         </div>
                         { !isPostsEmpty && (
-                            <div className={styles.find_more}>
-                                <button onClick={handleBtnMore}>
-                                    { loadingMore ? <AiOutlineLoading size={20}/> : "Buscar mais"}
-                                </button>
-                            </div>
+                        <div className={styles.loading_more}>
+                            <Button 
+                                btnTxt="Buscar mais"
+                                handleClick={handleBtnMore}
+                                isLoading={loadingMore}
+                            />
+                        </div>
+
                         )}
                     </>
                 ) : (
