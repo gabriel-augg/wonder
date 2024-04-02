@@ -13,7 +13,7 @@ import styles from "./styles.module.css"
 import api from "../../utils/api";
 import timeAgo from "../../utils/date";
 
-export default function Post({id, username, likesQty, txt, answerQty, createdAt, isAnswer, type}){
+export default function Post({id, username, likesQty, txt, answerQty, createdAt, isAnswer, type, isAuthor}){
 
     const [isLiked, setIsLiked] = useState(false);
     const [likesCount, setLikesCount] = useState(likesQty);
@@ -71,8 +71,12 @@ export default function Post({id, username, likesQty, txt, answerQty, createdAt,
             <div className={styles.post_header}>
                 <div>
                     <img src={user_image} />
-                    <span>{username}</span>
-                    <span>{date}</span>
+                    <span className={styles.tag_username} >{username}</span>
+                    <span className={styles.tag_date}>{date}</span>
+                    { (isAnswer && isAuthor) && (
+                        <span className={styles.tag_author}>Autor</span>
+                    ) }
+
                 </div>
                 <div className={styles.icons_area}>
                     { !isAnswer && (
@@ -104,8 +108,6 @@ export default function Post({id, username, likesQty, txt, answerQty, createdAt,
                             </>
                             )
                         }
-
-                        {}
                     </div>
                 </div>
                 

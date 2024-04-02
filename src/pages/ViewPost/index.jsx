@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react" 
+import { useEffect, useState, useRef, useContext } from "react" 
 
 import Title from "../../components/Title"
 import NewPost from "../../components/NewPost"
@@ -10,9 +10,11 @@ import { useParams } from "react-router-dom"
 import { BsChatQuote } from "react-icons/bs";
 import useAxios from "../../hooks/useAxios"
 import Loading from "../../components/Loading"
+import { Context } from "../../contexts/UserContext"
 
 export default function ViewPost(){
     const { get, create, loading, loadingSubmit } = useAxios()
+    const {user} = useContext(Context)
     const {id} = useParams()
     const [post, setPost] = useState(null)
     const [answers, setAnswers] = useState(null)
@@ -23,6 +25,7 @@ export default function ViewPost(){
         .then(({post}) => {
             setPost(post)
             setAnswers(post.Answers)
+            console.log(post.Answers)
         })
     },[id])
 
@@ -58,9 +61,9 @@ export default function ViewPost(){
 
                     <Post 
                         id={post.id} 
-                        username={post.User?.username} 
+                        username={post.User.username} 
                         createdAt={post.createdAt} 
-                        likesQty={post?.liked} 
+                        likesQty={post.liked} 
                         txt={post.description} 
                         isAnswer={true} 
                         type="posts"
@@ -71,7 +74,7 @@ export default function ViewPost(){
                     </div>
 
                     <NewPost 
-                        username="gabriel" 
+                        username={user.username}
                         onRef={descriptionRef} 
                         handleOnSubmit={handleAnswer}  
                         placeholder="Digite qualquer coisa" 
@@ -88,6 +91,7 @@ export default function ViewPost(){
                                 likesQty={answer.liked} 
                                 txt={answer.description} 
                                 isAnswer={true} 
+                                isAuthor={(answer.username === post.User.username)}
                                 type="answers" 
                             />
                         )

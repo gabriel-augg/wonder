@@ -15,13 +15,22 @@
     align-items: center ;
 }
 
-.post_header > div:first-child > span:not(:last-child) {
+.tag_username {
     color: var(--secundary);
     font-size: 1.2em;
     margin: 0 1em 0 0.4em;
 }
 
-.post_header div span:last-child {
+.tag_author {
+    background-color: var(--primary-p);
+    border-radius: 1em;
+    font-size: 0.8em;
+    padding: 0.2em 0.4em;
+    color: var(--white);
+    margin-left: 1em;
+}
+
+.tag_date {
     color: var(--secundary-m);
     font-size: 1em;
 }
