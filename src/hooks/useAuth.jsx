@@ -34,7 +34,6 @@ export default function useAuth(){
             setAuthenticated(true)
             setLoadingAuth(false)
             navigate("/")
-
         })
         .catch(()=>{
             setLoadingAuth(false)

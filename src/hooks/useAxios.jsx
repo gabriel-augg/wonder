@@ -1,30 +1,25 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import api from '../utils/api';
 
-const useAxios = (url, method, options = {}) => {
-  const [data, setData] = useState(null);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
+const useAxios = (url) => {
+    const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await api.request({
-            url,
-            ...options,
-        });
-        setData(response.data);
-      } catch (error) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
-    };
+    const getPosts = async (options = {}) => {
+        try {
+            const data = await api.request({
+                url,
+                ...options
+            })
 
-    fetchData();
-  }, [url, method, ...Object.values(options)]);
+            return data
+        } catch (error) {
+            console.log(error)
+        } finally {
+            setLoading(false)
+        }
+    }
 
-  return { data, error, loading };
+    return { getPosts, loading };
 };
 
 export default useAxios;
