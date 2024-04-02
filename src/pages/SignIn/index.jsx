@@ -11,7 +11,7 @@ export default function SignIn(){
     const usernameRef = useRef(null)
     const passwordRef = useRef(null)
 
-    const { signIn, loadingAuth } = useContext(Context)
+    const { signIn, loading } = useContext(Context)
 
     function handleSubmit(e){
         e.preventDefault();
@@ -27,7 +27,7 @@ export default function SignIn(){
             <div>
                 <h1>Seja bem-vindo novamente!</h1>
             </div>
-            <Form handleOnSubmit={handleSubmit} btnTxt="Entrar" bottomTxt="Não possui uma conta?" linkTxt="Cadastrar" path="/cadastrar" isLoading={loadingAuth}>
+            <Form handleOnSubmit={handleSubmit} btnTxt="Entrar" bottomTxt="Não possui uma conta?" linkTxt="Cadastrar" path="/cadastrar" isLoading={loading}>
                 <>
                     <Input
                         text="Usuário"

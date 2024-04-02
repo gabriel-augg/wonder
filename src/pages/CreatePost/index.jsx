@@ -1,5 +1,3 @@
-import api from "../../utils/api.js";
-
 import { useRef, useEffect,useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -10,36 +8,43 @@ import NewPost from "../../components/NewPost";
 import Post from "../../components/Post/index.jsx";
 
 import styles from "./styles.module.css"
+import useAxios from "../../hooks/useAxios.jsx";
 
 export default function CreatePost(){
+    const { create, get, loading, loadingSubmit } = useAxios()
     const { user } = useContext(Context)
+
+    const [limit] = useState(2)
     const [posts, setPosts] = useState([])
-    const [loading, setLoading] = useState(false)
-    const [loadingPosts, setLoadingPosts] = useState(true)
     const descriptionRef = useRef(null)
 
     const navigate = useNavigate()
 
     useEffect(()=>{
-        api.get("/posts?limit=2").then((res)=> {
-            setPosts(res.data.posts)
-            setLoadingPosts(false)
+        get("/posts", {
+            method: "get",
+            params: {
+                limit
+            }
         })
-        .catch(()=> {
-            setLoadingPosts(false)
+        .then(({posts}) => {
+            setPosts(posts)
         })
     },[])
 
     function handleSumit(e){
-        setLoading(true)
         e.preventDefault();
-        const post = { description: descriptionRef.current.value }
-        api.post("/posts/create", post).then((res) => {
-            setLoading(false)
+
+        const post = { 
+            description: descriptionRef.current.value 
+        }
+
+        create("/posts/create", post)
+        .then(() => {
             navigate("/")
         })
-        .catch(()=> {
-            setLoading(false)
+        .catch((error) => {
+            console.log(error)
         })
     }
 
@@ -47,10 +52,17 @@ export default function CreatePost(){
         <section className={styles.createpost_container}>
             <Title title="Publicar postagem"/>
             <div className={styles.createpost_area}>
-                <NewPost username={user?.username} handleOnSubmit={handleSumit} onRef={descriptionRef}  placeholder="Digite qualquer coisa" btnTxt="Publicar" isLoading={loading}/>
+                <NewPost 
+                    username={user?.username} 
+                    handleOnSubmit={handleSumit} 
+                    onRef={descriptionRef}  
+                    placeholder="Digite qualquer coisa" 
+                    btnTxt="Publicar" 
+                    isLoading={loadingSubmit}
+                />
             </div>
             <Title title="O que estão publicando"/>
-            {loadingPosts && (
+            {loading && (
                 <div className={styles.loading_posts}>
                 </div>
             )}
@@ -59,8 +71,16 @@ export default function CreatePost(){
                 {posts.length !== 0 && (
                     posts.map((post) => {
                         return(
-                            <Post id={post.id} username={post["User.username"]} createdAt={post.createdAt} likesQty={post.liked} txt={post.description
-                            } answerQty={post.answer_qty} type="posts" />                    
+                            <Post 
+                                id={post.id} 
+                                key={post.id}
+                                username={post["User.username"]} 
+                                createdAt={post.createdAt} 
+                                likesQty={post.liked} 
+                                txt={post.description} 
+                                answerQty={post.answer_qty} 
+                                type="posts" 
+                            />                    
                         )
                     })
                 )}

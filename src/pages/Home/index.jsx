@@ -16,7 +16,7 @@ import useAxios from "../../hooks/useAxios.jsx";
 
 
 export default function Home(){
-    const { getPosts, loading } = useAxios("/posts")
+    const { get, loading } = useAxios("/posts")
 
     const [posts, setPosts] = useState([])
     const {search} = useContext(SearchContext)
@@ -25,23 +25,21 @@ export default function Home(){
     const [isPostsEmpty, setIsPostsEmpty] = useState(false)
 
     useEffect(()=>{
-            const options = {
-                method: "get",
+
+            get("/posts", {
                 params: {
                     offset,
                     ...(search && {search})
                 }
-            }
-
-            getPosts(options)
-            .then(({data}) => {
+            })
+            .then(({posts}) => {
                 if (offset === 0) {
-                    setPosts(data.posts)
+                    setPosts(posts)
                 } else {
-                    setPosts(prevPosts => [...prevPosts, ...data.posts])
+                    setPosts(prevPosts => [...prevPosts, ...posts])
                     setLoadingMore(false)
                 }
-                if(data.posts.length === 0){
+                if(posts.length === 0){
                     setIsPostsEmpty(true)
                 }
             })
@@ -53,7 +51,7 @@ export default function Home(){
 
     function handleBtnMore(){
         setOffSet(prevOffSet => prevOffSet + 5)
-        loadingMore(true)
+        setLoadingMore(true)
     }
 
 
