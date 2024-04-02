@@ -9,9 +9,10 @@ import { useParams } from "react-router-dom"
 
 import { BsChatQuote } from "react-icons/bs";
 import useAxios from "../../hooks/useAxios"
+import Loading from "../../components/Loading"
 
 export default function ViewPost(){
-    const { get, create, loadingSubmit } = useAxios()
+    const { get, create, loading, loadingSubmit } = useAxios()
     const {id} = useParams()
     const [post, setPost] = useState(null)
     const [answers, setAnswers] = useState(null)
@@ -38,6 +39,15 @@ export default function ViewPost(){
             descriptionRef.current.value = ""
             setAnswers([...answers, answer])
         })
+    }
+
+    if(loading){
+        return(
+            <section>
+                <Title title="Postagem" />
+                <Loading />
+            </section>
+        )
     }
 
     return(

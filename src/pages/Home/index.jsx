@@ -13,6 +13,7 @@ import image_no_posts from "../../assets/img/ilustration_no_posts.svg"
 
 import { AiOutlineLoading } from "react-icons/ai";
 import useAxios from "../../hooks/useAxios.jsx";
+import Loading from "../../components/Loading";
 
 
 export default function Home(){
@@ -61,11 +62,7 @@ export default function Home(){
                 <Title title="Publicações">
                     <ButtonCta title="+ Nova postagem" path="/novapostagem"/>
                 </Title>
-                <div className={styles.loading_posts}>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
+                <Loading />
             </section>
         )
     }

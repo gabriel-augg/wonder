@@ -41,40 +41,7 @@
     background-color: var(--primary-p);
 }
 
-@keyframes change {
-    0%, 100% {
-      border-color: transparent;
-    }
-    50% {
-      border-color: rgb(218, 215, 215);
-    }
-  }
 
-.loading_posts {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    height: 90vh;
-    margin-top: 1.2em;
-}
-
-.loading_posts div {
-    flex: 1;
-    border: 1.5px solid transparent;
-    animation: change 0.8s infinite;
-}
-
-.loading_posts div:first-child {
-    border-bottom: 0;
-    border-top-left-radius: 1em;
-    border-top-right-radius: 1em;
-}
-
-.loading_posts div:last-child {
-    border-top: 0;
-    border-bottom-left-radius: 1em;
-    border-bottom-right-radius: 1em;
-}
 
 
 
