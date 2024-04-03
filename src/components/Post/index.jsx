@@ -8,7 +8,7 @@ import Time from "../Time";
 import User from "../User";
 import Author from "../Author";
 
-export default function Post({id, username, likesQty, txt, answerQty, createdAt, show, type, isAuthor}){
+export default function Post({id, username, likesCount, description, commentCount, createdAt, show, type, isAuthor}){
 
 
     return(
@@ -25,28 +25,28 @@ export default function Post({id, username, likesQty, txt, answerQty, createdAt,
                     />
 
                     <Author 
-                        show={(show && isAuthor)} 
+                        show={(isAuthor)} 
                     />
 
                 </div>
                 <div>
 
                     <Comment 
-                        show={!show} 
-                        count={answerQty} 
+                        show={show} 
+                        count={commentCount} 
                     />
 
                     <Like 
                         id={id} 
                         type={type} 
-                        likesQty={likesQty} 
+                        likesQty={likesCount} 
                     />
 
                 </div>
                 
             </div>
-            <p>{txt}</p>
-            {!show && (
+            <p>{description}</p>
+            {show && (
                 <div className={styles.post_footer}>
                     <div>
                         <Link to={`/posts/${id}`}>Ver respostas</Link>

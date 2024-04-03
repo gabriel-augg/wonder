@@ -43,9 +43,6 @@ export default function CreatePost(){
         .then(() => {
             navigate("/")
         })
-        .catch((error) => {
-            console.log(error)
-        })
     }
 
     return(
@@ -76,10 +73,11 @@ export default function CreatePost(){
                                 key={post.id}
                                 username={post["User.username"]} 
                                 createdAt={post.createdAt} 
-                                likesQty={post.liked} 
-                                txt={post.description} 
-                                answerQty={post.answer_qty} 
+                                likesCount={post.liked} 
+                                description={post.description} 
+                                commentCount={post.answer_qty} 
                                 type="posts" 
+                                show={true}
                             />                    
                         )
                     })

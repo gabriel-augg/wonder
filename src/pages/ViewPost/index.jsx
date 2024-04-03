@@ -74,9 +74,8 @@ export default function ViewPost() {
                             id={post.id}
                             username={post.User.username}
                             createdAt={post.createdAt}
-                            likesQty={post.liked}
-                            txt={post.description}
-                            isAnswer={true}
+                            likesCount={post.liked}
+                            description={post.description}
                             type="posts"
                         />
 
@@ -99,9 +98,8 @@ export default function ViewPost() {
                                     id={answer.id}
                                     username={answer.username}
                                     createdAt={answer.createdAt}
-                                    likesQty={answer.liked}
-                                    txt={answer.description}
-                                    show={true}
+                                    likesCount={answer.liked}
+                                    description={answer.description}
                                     isAuthor={(answer.username === post.User.username)}
                                     type="answers"
                                 />
