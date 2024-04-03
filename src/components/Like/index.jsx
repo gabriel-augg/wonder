@@ -28,7 +28,7 @@ export default function Like({id, type, likesQty}){
 
     const handleLike = async () => {
         setIsLiked(!isLiked);
-        setLikesCount(isLiked ? count - 1 : count + 1)
+        setCount(isLiked ? count - 1 : count + 1)
         await update(`/like-dislike/${type}/${ isLiked ? "dislike" : "like" }/${id}`)
     }
 

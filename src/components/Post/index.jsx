@@ -10,7 +10,6 @@ import Like from "../Like";
 import Comment from "../Comment";
 
 export default function Post({id, username, likesQty, txt, answerQty, createdAt, isAnswer, type, isAuthor}){
-    const {authenticated} = useContext(Context)
     const [date, setDate] = useState(timeAgo(createdAt))
   
 
@@ -24,7 +23,7 @@ export default function Post({id, username, likesQty, txt, answerQty, createdAt,
           return () => {
             clearInterval(interval);
           }
-    },[authenticated, createdAt])
+    },[createdAt])
 
     return(
         <div className={styles.post_container} key={id}>
@@ -50,7 +49,7 @@ export default function Post({id, username, likesQty, txt, answerQty, createdAt,
                         type={type} 
                         likesQty={likesQty} 
                     />
-                    
+
                 </div>
                 
             </div>
