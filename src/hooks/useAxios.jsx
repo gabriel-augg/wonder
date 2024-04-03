@@ -29,7 +29,16 @@ const useAxios = () => {
         }
     }
 
-    return { get, create, loading, loadingSubmit };
+    const update = async (url) => {
+        try {
+            const { data } = await api.patch(url)
+            return data
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    return { get, create, update, loading, loadingSubmit };
 };
 
 export default useAxios;
