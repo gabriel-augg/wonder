@@ -12,7 +12,7 @@ export default function Like({id, type, likesQty}){
     const { get, update, loading } = useAxios()
     const {authenticated} = useContext(Context)
     const [isLiked, setIsLiked] = useState(false)
-    const [likesCount, setLikesCount] = useState(likesQty)
+    const [count, setCount] = useState(likesQty)
 
 
     useEffect(()=>{
@@ -28,13 +28,13 @@ export default function Like({id, type, likesQty}){
 
     const handleLike = async () => {
         setIsLiked(!isLiked);
-        setLikesCount(isLiked ? likesCount - 1 : likesCount + 1)
+        setLikesCount(isLiked ? count - 1 : count + 1)
         await update(`/like-dislike/${type}/${ isLiked ? "dislike" : "like" }/${id}`)
     }
 
     return(
         <div className={styles.like}>
-            <span>{likesCount}</span>
+            <span>{count}</span>
             { loading ? (
                 <span className={styles.like_loading}>
                     <AiOutlineLoading size={18}/>

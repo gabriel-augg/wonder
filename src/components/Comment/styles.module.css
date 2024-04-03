@@ -1,0 +1,8 @@
+@import url(../../color-var.css);
+
+.comment span:first-child {
+    color: var(--secundary-m);
+    margin-right: 0.1em;
+    font-size: 1em;
+    font-weight: 400;
+}

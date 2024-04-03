@@ -4,11 +4,10 @@ import { Link } from "react-router-dom";
 
 import {Context} from "../../contexts/UserContext"
 
-import { BsChatQuote } from "react-icons/bs";
-
 import styles from "./styles.module.css"
 import timeAgo from "../../utils/date";
 import Like from "../Like";
+import Comment from "../Comment";
 
 export default function Post({id, username, likesQty, txt, answerQty, createdAt, isAnswer, type, isAuthor}){
     const {authenticated} = useContext(Context)
@@ -40,13 +39,18 @@ export default function Post({id, username, likesQty, txt, answerQty, createdAt,
 
                 </div>
                 <div>
-                    { !isAnswer && (
-                        <div>
-                            <span>{answerQty}</span>
-                            <span><BsChatQuote color="#299AD1" size={18}/></span>
-                        </div>
-                    )}
-                    <Like id={id} type={type} likesQty={likesQty} />
+
+                    <Comment 
+                        show={!isAnswer} 
+                        count={answerQty} 
+                    />
+
+                    <Like 
+                        id={id} 
+                        type={type} 
+                        likesQty={likesQty} 
+                    />
+                    
                 </div>
                 
             </div>
