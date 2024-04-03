@@ -5,56 +5,35 @@ import user_image from "../../assets/img/user.svg"
 import { Link } from "react-router-dom";
 
 import {Context} from "../../contexts/UserContext"
+import useAxios from "../../hooks/useAxios";
 
 import { BsChatQuote } from "react-icons/bs";
 import { AiOutlineLoading } from "react-icons/ai";
 
 import styles from "./styles.module.css"
-import api from "../../utils/api";
 import timeAgo from "../../utils/date";
 
 export default function Post({id, username, likesQty, txt, answerQty, createdAt, isAnswer, type, isAuthor}){
-
     const [isLiked, setIsLiked] = useState(false);
     const [likesCount, setLikesCount] = useState(likesQty);
     const {authenticated} = useContext(Context)
     const [date, setDate] = useState(timeAgo(createdAt))
-    const [isLoading, setIsLoading] = useState(true)
+    const { get, update, loading } = useAxios()
   
 
-    function handleLike(){
+    const handleLike = async () => {
         setIsLiked(!isLiked);
         setLikesCount(isLiked ? likesCount - 1 : likesCount + 1);
-        if(!isLiked){
-            api.patch(`/like-dislike/${type}/like/${id}`).then(()=>{
-                console.log("deu certo")
-            })
-        } else {
-            api.patch(`/like-dislike/${type}/dislike/${id}`).then(()=>{
-                console.log("deu certo")
-            })
-        }
+        await update(`/like-dislike/${type}/${ isLiked ? "dislike" : "like" }/${id}`)
     }
 
     useEffect(()=>{
         if(authenticated){
-            api.get(`/like-dislike/${type}/${id}`).then((res) => {
-                if(res.data.status){
-                    setIsLiked(true)
-                } else {
-                    setIsLiked(false)
-                }
-                setIsLoading(false)
-            }).catch(()=> {
-                alert("error")
-                setIsLoading(false)
+            get(`/like-dislike/${type}/${id}`)
+            .then(({status}) => {
+                setIsLiked(status)
             })
         }
-
-        if(!authenticated){
-            setIsLoading(false)
-        }
-
 
         const interval = setInterval(() => {
             const newDate = timeAgo(createdAt);
@@ -88,7 +67,7 @@ export default function Post({id, username, likesQty, txt, answerQty, createdAt,
                     <div>
                         <span>{likesCount}</span>
                         {
-                            isLoading ? (
+                            loading ? (
                             <>
                                 <span className={styles.loading_heart}>
                                     <AiOutlineLoading size={18} />

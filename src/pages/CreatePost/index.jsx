@@ -24,7 +24,7 @@ export default function CreatePost(){
         get("/posts", {
             method: "get",
             params: {
-                limit
+                limit,
             }
         })
         .then(({posts}) => {
