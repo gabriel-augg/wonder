@@ -1,39 +1,21 @@
 import { useEffect, useState, useContext } from "react";
-import { IoIosHeartEmpty } from "react-icons/io";
-import { IoIosHeart } from "react-icons/io";
 import user_image from "../../assets/img/user.svg"
 import { Link } from "react-router-dom";
 
 import {Context} from "../../contexts/UserContext"
-import useAxios from "../../hooks/useAxios";
 
 import { BsChatQuote } from "react-icons/bs";
-import { AiOutlineLoading } from "react-icons/ai";
 
 import styles from "./styles.module.css"
 import timeAgo from "../../utils/date";
+import Like from "../Like";
 
 export default function Post({id, username, likesQty, txt, answerQty, createdAt, isAnswer, type, isAuthor}){
-    const [isLiked, setIsLiked] = useState(false);
-    const [likesCount, setLikesCount] = useState(likesQty);
     const {authenticated} = useContext(Context)
     const [date, setDate] = useState(timeAgo(createdAt))
-    const { get, update, loading } = useAxios()
   
 
-    const handleLike = async () => {
-        setIsLiked(!isLiked);
-        setLikesCount(isLiked ? likesCount - 1 : likesCount + 1);
-        await update(`/like-dislike/${type}/${ isLiked ? "dislike" : "like" }/${id}`)
-    }
-
     useEffect(()=>{
-        if(authenticated){
-            get(`/like-dislike/${type}/${id}`)
-            .then(({status}) => {
-                setIsLiked(status)
-            })
-        }
 
         const interval = setInterval(() => {
             const newDate = timeAgo(createdAt);
@@ -47,7 +29,7 @@ export default function Post({id, username, likesQty, txt, answerQty, createdAt,
 
     return(
         <div className={styles.post_container} key={id}>
-            <div className={styles.post_header}>
+            <div>
                 <div>
                     <img src={user_image} />
                     <span className={styles.tag_username} >{username}</span>
@@ -57,37 +39,14 @@ export default function Post({id, username, likesQty, txt, answerQty, createdAt,
                     ) }
 
                 </div>
-                <div className={styles.icons_area}>
+                <div>
                     { !isAnswer && (
                         <div>
                             <span>{answerQty}</span>
                             <span><BsChatQuote color="#299AD1" size={18}/></span>
                         </div>
                     )}
-                    <div>
-                        <span>{likesCount}</span>
-                        {
-                            loading ? (
-                            <>
-                                <span className={styles.loading_heart}>
-                                    <AiOutlineLoading size={18} />
-                                </span>
-                            </>
-                            ) : (
-                            <>
-                                {isLiked ? (
-                                    <button onClick={()=>handleLike(id)}>
-                                        <IoIosHeart size={20}/>
-                                    </button>
-                                ) : (
-                                    <button onClick={()=>handleLike(id)}>
-                                        <IoIosHeartEmpty size={20}/>
-                                    </button>
-                                )}
-                            </>
-                            )
-                        }
-                    </div>
+                    <Like id={id} type={type} likesQty={likesQty} />
                 </div>
                 
             </div>

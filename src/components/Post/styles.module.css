@@ -35,30 +35,6 @@
     font-size: 1em;
 }
 
-.icons_area div:first-child {
-    margin-right: 0.5em;
-}
-
-.icons_area div:first-child span {
-    margin-left: 0.12em;
-}
-
-.post_container div div:last-child span {
-    color: var(--secundary-m);
-    font-weight: 400;
-
-}
-
-.post_container div div:last-child button {
-    background-color: transparent;
-    display: flex;
-    align-items: center;
-    color: rgb(207, 61, 61);
-}
-
-.post_container div div:last-child button:hover {
-    color: var(--danger);
-}
 
 .post_container p {
     padding: 1.2em;
@@ -93,20 +69,4 @@
 .post_footer div:last-child a:last-child:hover {
     color: var(--white);
     background-color: var(--primary-m);
-}
-
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-.loading_heart svg {
-    margin-left: 0.2em;
-    stroke-width: 20px;
-    animation: rotate .8s linear infinite;
-    color: var(--danger);
 }
