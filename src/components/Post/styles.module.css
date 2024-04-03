@@ -14,12 +14,7 @@
     display: flex;
     align-items: center ;
 }
-
-.tag_username {
-    color: var(--secundary);
-    font-size: 1.2em;
-    margin: 0 1em 0 0.4em;
-}
+    
 
 .tag_author {
     background-color: var(--primary-p);

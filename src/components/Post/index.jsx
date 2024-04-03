@@ -1,10 +1,11 @@
-import user_image from "../../assets/img/user.svg"
+
 import { Link } from "react-router-dom";
 
 import styles from "./styles.module.css"
 import Like from "../Like";
 import Comment from "../Comment";
 import Time from "../Time";
+import User from "../User";
 
 export default function Post({id, username, likesQty, txt, answerQty, createdAt, isAnswer, type, isAuthor}){
 
@@ -13,9 +14,14 @@ export default function Post({id, username, likesQty, txt, answerQty, createdAt,
         <div className={styles.post_container} key={id}>
             <div>
                 <div>
-                    <img src={user_image} />
-                    <span className={styles.tag_username} >{username}</span>
-                    <Time date={createdAt} />
+                    <User 
+                        url={null} 
+                        username={username} 
+                    />
+
+                    <Time 
+                        date={createdAt} 
+                    />
                     { (isAnswer && isAuthor) && (
                         <span className={styles.tag_author}>Autor</span>
                     ) }

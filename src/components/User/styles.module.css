@@ -1,0 +1,12 @@
+@import url(../../color-var.css);
+
+.user {
+    display: inline-block;
+    margin-right: 1em;
+    gap: 0.5em;
+}
+
+.user span {
+    font-size: 1.1em;
+    color: var(--secundary);
+}
