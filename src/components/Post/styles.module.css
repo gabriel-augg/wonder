@@ -14,16 +14,8 @@
     display: flex;
     align-items: center ;
 }
-    
 
-.tag_author {
-    background-color: var(--primary-p);
-    border-radius: 1em;
-    font-size: 0.8em;
-    padding: 0.2em 0.4em;
-    color: var(--white);
-    margin-left: 1em;
-}
+
 
 .tag_date {
     color: var(--secundary-m);

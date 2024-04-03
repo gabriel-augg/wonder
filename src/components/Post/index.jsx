@@ -6,12 +6,13 @@ import Like from "../Like";
 import Comment from "../Comment";
 import Time from "../Time";
 import User from "../User";
+import Author from "../Author";
 
-export default function Post({id, username, likesQty, txt, answerQty, createdAt, isAnswer, type, isAuthor}){
+export default function Post({id, username, likesQty, txt, answerQty, createdAt, show, type, isAuthor}){
 
 
     return(
-        <div className={styles.post_container} key={id}>
+        <div className={styles.post_container}>
             <div>
                 <div>
                     <User 
@@ -22,15 +23,16 @@ export default function Post({id, username, likesQty, txt, answerQty, createdAt,
                     <Time 
                         date={createdAt} 
                     />
-                    { (isAnswer && isAuthor) && (
-                        <span className={styles.tag_author}>Autor</span>
-                    ) }
+
+                    <Author 
+                        show={(show && isAuthor)} 
+                    />
 
                 </div>
                 <div>
 
                     <Comment 
-                        show={!isAnswer} 
+                        show={!show} 
                         count={answerQty} 
                     />
 
@@ -44,7 +46,7 @@ export default function Post({id, username, likesQty, txt, answerQty, createdAt,
                 
             </div>
             <p>{txt}</p>
-            {!isAnswer && (
+            {!show && (
                 <div className={styles.post_footer}>
                     <div>
                         <Link to={`/posts/${id}`}>Ver respostas</Link>

@@ -1,0 +1,8 @@
+.autor {
+    background-color: var(--primary-p);
+    border-radius: 1em;
+    font-size: 0.8em;
+    padding: 0.2em 0.4em;
+    color: var(--white);
+    margin-left: 1em;
+}

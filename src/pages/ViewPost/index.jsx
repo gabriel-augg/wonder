@@ -101,7 +101,7 @@ export default function ViewPost() {
                                     createdAt={answer.createdAt}
                                     likesQty={answer.liked}
                                     txt={answer.description}
-                                    isAnswer={true}
+                                    show={true}
                                     isAuthor={(answer.username === post.User.username)}
                                     type="answers"
                                 />
