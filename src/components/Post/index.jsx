@@ -1,29 +1,13 @@
-import { useEffect, useState, useContext } from "react";
 import user_image from "../../assets/img/user.svg"
 import { Link } from "react-router-dom";
 
-import {Context} from "../../contexts/UserContext"
-
 import styles from "./styles.module.css"
-import timeAgo from "../../utils/date";
 import Like from "../Like";
 import Comment from "../Comment";
+import Time from "../Time";
 
 export default function Post({id, username, likesQty, txt, answerQty, createdAt, isAnswer, type, isAuthor}){
-    const [date, setDate] = useState(timeAgo(createdAt))
-  
 
-    useEffect(()=>{
-
-        const interval = setInterval(() => {
-            const newDate = timeAgo(createdAt);
-            setDate(newDate);
-          }, 60000);
-        
-          return () => {
-            clearInterval(interval);
-          }
-    },[createdAt])
 
     return(
         <div className={styles.post_container} key={id}>
@@ -31,7 +15,7 @@ export default function Post({id, username, likesQty, txt, answerQty, createdAt,
                 <div>
                     <img src={user_image} />
                     <span className={styles.tag_username} >{username}</span>
-                    <span className={styles.tag_date}>{date}</span>
+                    <Time date={createdAt} />
                     { (isAnswer && isAuthor) && (
                         <span className={styles.tag_author}>Autor</span>
                     ) }

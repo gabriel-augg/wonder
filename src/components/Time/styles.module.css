@@ -1,0 +1,6 @@
+@import url(../../color-var.css);
+
+.time {
+    color: var(--secundary-m);
+    font-size: 1em;
+}
