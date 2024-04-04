@@ -30,15 +30,11 @@ export default function CreatePost(){
         })
     },[])
 
-    function handleSumit(description){
-
-        const post = {
-            description
-        }
-
+    function handleSumit(post, reset){
         create("/posts/create", post)
         .then(() => {
             navigate("/")
+            reset()
         })
     }
 
@@ -47,7 +43,7 @@ export default function CreatePost(){
             <Title title="Publicar postagem"/>
             <div className={styles.createpost_area}>
                 <NewPost 
-                    username={user?.username} 
+                    username={user.username} 
                     handleOnSubmit={handleSumit} 
                     placeholder="Digite qualquer coisa" 
                     btnTxt="Publicar" 

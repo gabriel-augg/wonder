@@ -1,16 +1,14 @@
-import { useRef } from "react";
+import { useForm } from "react-hook-form"
 import Button from "../Button";
 import User from "../User";
 
 import styles from "./styles.module.css"
 
 export default function NewPost({username, handleOnSubmit, placeholder, btnTxt, isLoading}){
-    const descriptionRef = useRef(null)
+    const {register, handleSubmit, reset} = useForm()
 
-    function handleSubmit(e){
-        e.preventDefault()
-        handleOnSubmit(descriptionRef.current.value)
-        descriptionRef.current.value = ""
+    function handleDescription(description){
+        handleOnSubmit(description, reset)
     }
 
 
@@ -22,8 +20,8 @@ export default function NewPost({username, handleOnSubmit, placeholder, btnTxt, 
                 username={username} 
             />
    
-            <form onSubmit={handleSubmit}>
-                <textarea name="description" ref={descriptionRef} placeholder={placeholder}/>
+            <form onSubmit={handleSubmit(handleDescription)}>
+                <textarea name="description" {...register("description", {required: true})} placeholder={placeholder}/>
                 <Button 
                     type="submit" 
                     btnTxt={btnTxt} 

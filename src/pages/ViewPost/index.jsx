@@ -36,15 +36,16 @@ export default function ViewPost() {
         
     }, [id, offset])
 
-    function handleComment(comment) {
+    function handleComment({description}, reset) {
         const answer = {
-            description: comment,
+            description,
             postId: post.id
         }
 
         create("/answers/create", answer)
             .then(({ answer }) => {
                 setAnswers([...answers, answer])
+                reset()
             })
     }
 
