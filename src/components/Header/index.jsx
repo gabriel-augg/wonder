@@ -1,22 +1,18 @@
 import { useContext} from "react"
 
-import { Link, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import ButtonCta from "../ButtonCta"
 
 import styles from "./styles.module.css"
 import logo from "../../assets/img/logo.svg"
-import { FiSearch } from "react-icons/fi";
 import icon from "../../assets/img/user.svg"
 
-import { SearchContext } from "../../contexts/SearchContext"
 import { Context } from "../../contexts/UserContext"
-
-
+import Search from "../Search"
 
 export default function Header(){
     const {authenticated, user} = useContext(Context)
-    const { setSearch } = useContext(SearchContext)
-    const navigate = useNavigate()
+
 
     return (
         <header className={styles.header}>
@@ -25,23 +21,11 @@ export default function Header(){
                     <img src={logo} width={130} alt="logo" />
                 </Link>
             </div>
-            <div className={styles.search_bar}>
-                <FiSearch size={27} color="#299AD1"/>
-                <input 
-                    type="text" 
-                    onChange={(e)=> setSearch(e.target.value)} 
-                    id="search" name="search" 
-                    placeholder="Estou pesquisando por..." 
-                />
-                <button type="button" onClick={() => navigate("/")}>Pesquisar</button>
-            </div>
+            <Search />
             <nav className={styles.navbar}>
                 <ul>
                     <li>
                         <Link to="/">Publicações do momento</Link>
-                    </li>
-                    <li>
-                        <span>{}</span>
                     </li>
                     {!authenticated ? (
                         <li>
