@@ -31,9 +31,7 @@ export default function ViewPost() {
         .then(({ post }) => {
             setPost(post)
             setAnswers([...answers, ...post.Answers])
-            if(post.Answers.length === 0){
-                setIsAnswersEmpty(true)
-            }
+            setIsAnswersEmpty(post.Answers.length === 0)
         })
         
     }, [id, offset])
@@ -86,7 +84,7 @@ export default function ViewPost() {
                             btnTxt="Responder"
                             isLoading={loadingSubmit}
                         />
-                        {answers.length ? (answers.map((answer) => {
+                        {answers.length > 0 ? (answers.map((answer) => {
                             return (
                                 <Post
                                     key={answer.id}
@@ -110,8 +108,7 @@ export default function ViewPost() {
                         <div className={styles.loading_more}>
                             <Button 
                                 btnTxt="Buscar mais" 
-                                handleClick={() => 
-                                setOffset(prevOffSet => prevOffSet + 5)} 
+                                handleClick={() => setOffset(prevOffSet => prevOffSet + 5)} 
                             />
                         </div>
                     )}
