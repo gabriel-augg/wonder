@@ -1,6 +1,6 @@
 import { useContext} from "react"
 import { Link } from "react-router-dom"
-import { Context } from "../../contexts/UserContext"
+import { UserContext } from "../../contexts/UserContext"
 
 import ButtonCta from "../ButtonCta"
 import Search from "../Search"
@@ -11,7 +11,7 @@ import User from "../User"
 
 
 export default function Header(){
-    const {authenticated, user} = useContext(Context)
+    const {authenticated, user} = useContext(UserContext)
 
 
     return (

@@ -1,3 +1,5 @@
+@import url(../../utils/color-var.css);
+
 .container_signin {
     width: 550px;
     max-width: 100%;

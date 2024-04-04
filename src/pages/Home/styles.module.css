@@ -1,4 +1,4 @@
-@import url(../../color-var.css);
+@import url(../../utils/color-var.css);
 
 .post_area {
     border: 1px solid var(--secundary);

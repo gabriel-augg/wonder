@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
  
-import { Context } from "../../contexts/UserContext"
+import { UserContext } from "../../contexts/UserContext"
 
 import {signInSchema} from "../../utils/schema"
 
@@ -14,7 +14,7 @@ import Input from "../../components/Input"
 
 
 export default function SignIn(){
-    const { signIn, loadingAuth } = useContext(Context)
+    const { signIn, loadingAuth } = useContext(UserContext)
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: zodResolver(signInSchema)
     })
@@ -35,7 +35,7 @@ export default function SignIn(){
                 handleOnSubmit={handleSubmit(handleSignIn)} 
                 btnTxt="Entrar" 
                 bottomTxt="Não possui uma conta?" 
-                linkTxt="Cadastrar" 
+                linkTxt="Cadastre-se" 
                 path="/cadastrar" 
                 isLoading={loadingAuth}
                 >

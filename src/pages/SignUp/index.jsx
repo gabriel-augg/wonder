@@ -9,10 +9,10 @@ import styles from "./styles.module.css"
 import Form from "../../components/Form"
 import Input from "../../components/Input"
 
-import { Context } from "../../contexts/UserContext"
+import { UserContext } from "../../contexts/UserContext"
 
 export default function SignUp(){
-    const { signUp, loadingAuth } = useContext(Context)
+    const { signUp, loadingAuth } = useContext(UserContext)
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: zodResolver(signUpSchema)
     })

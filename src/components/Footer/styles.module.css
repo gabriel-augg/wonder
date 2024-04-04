@@ -1,4 +1,4 @@
-@import url(../../color-var.css);
+@import url(../../utils/color-var.css);
 
 .footer {
     background-color: var(--secundary-m);

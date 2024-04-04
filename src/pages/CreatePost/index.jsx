@@ -1,7 +1,7 @@
-import { useRef, useEffect,useContext, useState } from "react";
+import { useEffect,useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { Context } from "../../contexts/UserContext.jsx"
+import { UserContext } from "../../contexts/UserContext.jsx"
 
 import Title from "../../components/Title";
 import NewPost from "../../components/NewPost";
@@ -12,7 +12,7 @@ import useAxios from "../../hooks/useAxios.jsx";
 
 export default function CreatePost(){
     const { create, get, loading, loadingSubmit } = useAxios()
-    const { user } = useContext(Context)
+    const { user } = useContext(UserContext)
 
     const [limit] = useState(2)
     const [posts, setPosts] = useState([])
@@ -40,7 +40,7 @@ export default function CreatePost(){
 
     return(
         <section className={styles.createpost_container}>
-            <Title title="Publicar postagem"/>
+            <Title title="Publicar"/>
             <div className={styles.createpost_area}>
                 <NewPost 
                     username={user.username} 

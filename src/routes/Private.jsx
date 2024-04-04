@@ -1,10 +1,10 @@
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Context } from "../contexts/UserContext.jsx";
+import { UserContext } from "../contexts/UserContext.jsx";
 
 export default function Private({children}){
 
-    const { authenticated, loading } = useContext(Context)
+    const { authenticated, loading } = useContext(UserContext)
     const navigate = useNavigate()
 
 

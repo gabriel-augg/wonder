@@ -1,4 +1,4 @@
-@import url(../../color-var.css);
+@import url(../../utils/color-var.css);
 
 .title {
     border-bottom: 1px solid var(--secundary-m);

@@ -1,4 +1,4 @@
-@import url(../../color-var.css);
+@import url(../../utils/color-var.css);
 
 @keyframes rotate {
     from {
@@ -15,6 +15,7 @@
     align-items: center;
     justify-content: center;
     background-color: var(--primary);
+    font-size: 1em;
     color: var(--white);
     border-radius: 1em;
     padding: 0.5em;

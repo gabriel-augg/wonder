@@ -1,4 +1,4 @@
-@import url(../../color-var.css);
+@import url(../../utils/color-var.css);
 
 .user {
     display: inline-block;
@@ -24,7 +24,7 @@
 
 .user_header div span {
     color: var(--white);
-    font-weight: 500;
+    font-weight: bold;
 }
 
 .user_header div a {

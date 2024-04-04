@@ -1,3 +1,14 @@
+@import url(../../utils/color-var.css);
+
+@keyframes change {
+  0%, 100% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: rgb(218, 215, 215);
+  }
+}
+
 .createpost_area {
     border: 1px solid var(--secundary);
     border-radius: 1em;
@@ -14,14 +25,7 @@
     border-bottom: 1px solid var(--secundary);
 }
 
-@keyframes change {
-    0%, 100% {
-      border-color: transparent;
-    }
-    50% {
-      border-color: rgb(218, 215, 215);
-    }
-  }
+
 
 
 .loading_posts {

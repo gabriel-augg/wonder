@@ -8,7 +8,7 @@ export default function Button({ btnTxt, handleClick, type, isLoading}){
             className={styles.button} 
             onClick={handleClick ? handleClick : undefined}
         >
-            {isLoading ? <AiOutlineLoading size={20}/> : btnTxt  }
+            {isLoading ? <AiOutlineLoading size={19}/> : btnTxt  }
         </button>
     )
 }

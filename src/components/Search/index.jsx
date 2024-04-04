@@ -13,12 +13,12 @@ export default function Search(){
     const navigate = useNavigate()
     return(
         <div className={styles.search}>
-            <FiSearch size={27} color="#299AD1"/>
+            <FiSearch size={25} color="#299AD1"/>
             <input 
                 type="text" 
                 onChange={(e)=> setSearch(e.target.value)} 
                 id="search" name="search" 
-                placeholder="Estou pesquisando por..." 
+                placeholder="Buscar no Wonder" 
             />
             <button type="button" onClick={() => navigate("/")}>Pesquisar</button>
     </div>

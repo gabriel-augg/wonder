@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { Context } from "../../contexts/UserContext";
+import { UserContext } from "../../contexts/UserContext";
 
 import { IoIosHeartEmpty } from "react-icons/io";
 import { IoIosHeart } from "react-icons/io";
@@ -11,7 +11,7 @@ import styles from "./styles.module.css"
 
 export default function Like({id, type, likesQty}){
     const { get, update, loading, setLoading } = useAxios()
-    const {authenticated} = useContext(Context)
+    const {authenticated} = useContext(UserContext)
     const [isLiked, setIsLiked] = useState(false)
     const [count, setCount] = useState(likesQty)
     const navigate = useNavigate()

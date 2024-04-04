@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useContext } from "react"
+import { useEffect, useState, useContext } from "react"
 
 import Title from "../../components/Title"
 import NewPost from "../../components/NewPost"
@@ -10,12 +10,12 @@ import { useParams } from "react-router-dom"
 import { BsChatQuote } from "react-icons/bs";
 import useAxios from "../../hooks/useAxios"
 import Loading from "../../components/Loading"
-import { Context } from "../../contexts/UserContext"
+import { UserContext } from "../../contexts/UserContext"
 import Button from "../../components/Button"
 
 export default function ViewPost() {
     const { get, create, loading, loadingSubmit } = useAxios()
-    const { user } = useContext(Context)
+    const { user } = useContext(UserContext)
     const { id } = useParams()
     const [offset, setOffset] = useState(0)
     const [post, setPost] = useState(null)
@@ -52,7 +52,7 @@ export default function ViewPost() {
     if (loading) {
         return (
             <section>
-                <Title title="Postagem" />
+                <Title title="Publicação" />
                 <Loading />
             </section>
         )
@@ -60,7 +60,7 @@ export default function ViewPost() {
 
     return (
         <section>
-            <Title title="Postagem" />
+            <Title title="Publicação" />
             {post && (
                 <>
                     <div className={styles.viewpost_container}>

@@ -14,8 +14,6 @@ import image_no_posts from "../../assets/img/ilustration_no_posts.svg"
 import useAxios from "../../hooks/useAxios.jsx";
 import Loading from "../../components/Loading";
 
-import { FaArrowUp } from "react-icons/fa";
-
 
 export default function Home(){
     const { get, loading } = useAxios("/posts")
@@ -71,7 +69,7 @@ export default function Home(){
     return (
         <section>
             <Title title="Publicações">
-                <ButtonCta title="+ Nova postagem" path="/novapostagem"/>
+                <ButtonCta title="+ Nova publicação" path="/novapostagem"/>
             </Title>
             {/* <div className={styles.order_row}>
                 <span>Ordenar por: </span> 
@@ -117,7 +115,7 @@ export default function Home(){
                     </>
                 ) : (
                     <div className={styles.no_post_container}>
-                        <h1>Não encontramos nenhum post no momento</h1>
+                        <h1>Nenhuma publicação foi encontrada.</h1>
                         <img src={image_no_posts} alt="ilustration" />
                     </div>
                 )}
