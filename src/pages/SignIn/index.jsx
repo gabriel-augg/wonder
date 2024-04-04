@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
  
@@ -18,6 +18,10 @@ export default function SignIn(){
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: zodResolver(signInSchema)
     })
+
+    useEffect(()=>{
+        document.title = "Entrar"
+    },[])
 
     function handleSignIn(userData){
         if(!loadingAuth){

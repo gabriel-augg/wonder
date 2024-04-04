@@ -23,6 +23,7 @@ export default function ViewPost() {
     const [answers, setAnswers] = useState([])
 
     useEffect(() => {
+
         get(`/posts/id/${id}`, {
             params: {
                 offset
@@ -30,6 +31,7 @@ export default function ViewPost() {
         })
         .then(({ post }) => {
             setPost(post)
+            document.title = `Publicação de ${post.User.username}`
             setAnswers([...answers, ...post.Answers])
             setIsAnswersEmpty(post.Answers.length === 0)
         })
@@ -37,6 +39,8 @@ export default function ViewPost() {
     }, [id, offset])
 
     function handleComment({description}, reset) {
+        
+
         const answer = {
             description,
             postId: post.id

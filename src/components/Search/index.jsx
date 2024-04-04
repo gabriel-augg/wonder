@@ -20,7 +20,7 @@ export default function Search(){
                 id="search" name="search" 
                 placeholder="Buscar no Wonder" 
             />
-            <button type="button" onClick={() => navigate("/")}>Pesquisar</button>
+            <button type="button" onClick={() => navigate("/")}>Buscar</button>
     </div>
     )
 }

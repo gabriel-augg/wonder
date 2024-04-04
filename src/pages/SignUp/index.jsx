@@ -1,5 +1,5 @@
 
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { signUpSchema } from "../../utils/schema"
@@ -16,6 +16,10 @@ export default function SignUp(){
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: zodResolver(signUpSchema)
     })
+
+    useEffect(()=>{
+        document.title = "Cadastrar-se"
+    },[])
 
     function handleSignUp(userData){
         if(!loadingAuth){

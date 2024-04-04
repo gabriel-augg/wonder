@@ -20,6 +20,7 @@ export default function CreatePost(){
     const navigate = useNavigate()
 
     useEffect(()=>{
+        document.title = `Nova publicação`
         get("/posts", {
             params: {
                 limit,

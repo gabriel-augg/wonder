@@ -9,7 +9,7 @@ export default function Input({text, name, type, placeholder, value, register, e
                 id={name} 
                 value={value} 
                 placeholder={placeholder}
-                autoComplete="off"
+                autoComplete="autocomplete_off_randString"
                 {...register(name)}
             />
             {error && (<span>{error.message}</span>)}

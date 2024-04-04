@@ -26,6 +26,8 @@ export default function Home(){
 
     useEffect(()=>{
 
+            document.title = "Wonder"
+
             get("/posts", {
                 params: {
                     offset,
@@ -59,7 +61,7 @@ export default function Home(){
         return(
             <section>
                 <Title title="Publicações">
-                    <ButtonCta title="+ Nova postagem" path="/novapostagem"/>
+                    <ButtonCta title="Nova postagem" path="/novapostagem"/>
                 </Title>
                 <Loading />
             </section>
@@ -69,7 +71,7 @@ export default function Home(){
     return (
         <section>
             <Title title="Publicações">
-                <ButtonCta title="+ Nova publicação" path="/novapostagem"/>
+                <ButtonCta title="Nova publicação" path="/novapostagem"/>
             </Title>
             {/* <div className={styles.order_row}>
                 <span>Ordenar por: </span> 
