@@ -1,16 +1,23 @@
-import { useContext, useEffect } from "react"
+import { useContext, useEffect} from "react"
 import { useForm } from "react-hook-form"
-
+import { zodResolver } from "@hookform/resolvers/zod"
+ 
 import { Context } from "../../contexts/UserContext"
+
+import schema from "../../utils/schema"
 
 import styles from "./styles.module.css"
 
 import Form from "../../components/Form"
 import Input from "../../components/Input"
 
+
+
 export default function SignIn(){
     const { signIn, loadingAuth } = useContext(Context)
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: zodResolver(schema)
+    })
 
     function handleSignIn(userData){
         console.log(userData)
@@ -19,7 +26,6 @@ export default function SignIn(){
         //     return
         // }
     }
-
 
     return(
         <section className={styles.container_signin} >
@@ -42,9 +48,7 @@ export default function SignIn(){
                         name="username"
                         placeholder="Digite seu usuário"
                         register={register}
-                        options={{
-                            required: true
-                        }}
+                        error={errors.username}
                     />
 
                     <Input
@@ -53,9 +57,7 @@ export default function SignIn(){
                         name="password"
                         placeholder="Digite sua senha"
                         register={register}
-                        options={{
-                            required: true
-                        }}
+                        error={errors.password}
                     />
                 </>
             </Form>

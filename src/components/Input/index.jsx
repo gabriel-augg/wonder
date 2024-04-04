@@ -1,6 +1,6 @@
 import styles from "./styles.module.css"
 
-export default function Input({text, name, type, placeholder, value, register, options}){
+export default function Input({text, name, type, placeholder, value, register, error}){
     return(
         <div className={styles.input_control}>
             <label htmlFor={name}>{text}</label>
@@ -9,8 +9,9 @@ export default function Input({text, name, type, placeholder, value, register, o
                 id={name} 
                 value={value} 
                 placeholder={placeholder}
-                {...register(name, options)}
+                {...register(name)}
             />
+            {error && (<span>{error.message}</span>)}
         </div>
     )
 }
