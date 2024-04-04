@@ -1,4 +1,5 @@
 import { useRef, useContext, useEffect } from "react"
+import { register, handleSubmit } from "react-hook-form"
 
 import { Context } from "../../contexts/UserContext"
 
