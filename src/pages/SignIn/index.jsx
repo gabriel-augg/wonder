@@ -30,7 +30,7 @@ export default function SignIn(){
     return(
         <section className={styles.container_signin} >
             <div>
-                <h1>Seja bem-vindo novamente!</h1>
+                <h1>Iniciar sessão</h1>
             </div>
             <Form 
                 handleOnSubmit={handleSubmit(handleSignIn)} 

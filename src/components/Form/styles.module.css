@@ -1,34 +1,14 @@
 @import url(../../color-var.css);
 
-@keyframes rotate {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
 .form_control button {
-    padding: 0.5em;
-    border-radius: 1em;
     width: 100%;
-    background-color: var(--primary);
-    color: var(--white);
-    font-weight: 700;
-    font-size: 1em;
-    transition: .3s all;
-    margin-top: .5em;
-}
-
-.form_control button:hover {
-    background-color: var(--primary-p);
+    font-weight: bold;
 }
 
 .form_control span {
     display: block;
     text-align: center;
-    margin-top: .8em;
+    margin-top: .4em;
 }
 
 .form_control span a {
@@ -38,9 +18,5 @@
 
 .form_control span a:hover {
     color: var(--primary-p);
-}
-
-.form_control button svg {
-    stroke-width: 20px;
-    animation: rotate .8s linear infinite;
+    text-decoration: underline;
 }

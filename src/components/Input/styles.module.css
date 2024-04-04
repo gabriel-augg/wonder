@@ -11,14 +11,14 @@
 }
 
 .input_control input {
-    padding: 0.6em;
+    padding: 0.5em;
     border-radius: 1em;
     border: 1px solid var(--secundary);
     color: var(--secundary);
 }
 
 .input_control span {
-    align-self: flex-start;
+    align-self: flex;
     font-size: 0.8em;
     margin: 0;
     color: var(--danger);
