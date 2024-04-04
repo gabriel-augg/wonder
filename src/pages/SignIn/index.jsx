@@ -34,7 +34,15 @@ export default function SignIn(){
             <div>
                 <h1>Seja bem-vindo novamente!</h1>
             </div>
-            <Form handleOnSubmit={handleSubmit} btnTxt="Entrar" bottomTxt="Não possui uma conta?" linkTxt="Cadastrar" path="/cadastrar" isLoading={loadingAuth}>
+            <Form 
+                handleOnSubmit={handleSubmit} 
+                btnTxt="Entrar" 
+                bottomTxt="Não possui uma conta?" 
+                linkTxt="Cadastrar" 
+                path="/cadastrar" 
+                isLoading={loadingAuth}
+                >
+                    
                 <>
                     <Input
                         text="Usuário"
