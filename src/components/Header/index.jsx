@@ -1,14 +1,14 @@
 import { useContext} from "react"
-
 import { Link } from "react-router-dom"
+import { Context } from "../../contexts/UserContext"
+
 import ButtonCta from "../ButtonCta"
+import Search from "../Search"
+import Logo from "../Logo"
 
 import styles from "./styles.module.css"
-import logo from "../../assets/img/logo.svg"
 import icon from "../../assets/img/user.svg"
 
-import { Context } from "../../contexts/UserContext"
-import Search from "../Search"
 
 export default function Header(){
     const {authenticated, user} = useContext(Context)
@@ -16,11 +16,7 @@ export default function Header(){
 
     return (
         <header className={styles.header}>
-            <div>
-                <Link to="/">
-                    <img src={logo} width={130} alt="logo" />
-                </Link>
-            </div>
+            <Logo />
             <Search />
             <nav className={styles.navbar}>
                 <ul>
@@ -29,7 +25,7 @@ export default function Header(){
                     </li>
                     {!authenticated ? (
                         <li>
-                        <ButtonCta title="Entrar" path="/entrar" />
+                            <ButtonCta title="Entrar" path="/entrar" />
                         </li>
                     ) : (
                         <li className={styles.user_icon}>
