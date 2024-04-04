@@ -20,7 +20,6 @@ export default function SignIn(){
     })
 
     function handleSignIn(userData){
-        console.log(userData)
         if(!loadingAuth){
             signIn(userData)
             return

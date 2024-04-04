@@ -1,0 +1,19 @@
+@import url(../../color-var.css);
+
+.modal {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1em;
+    padding: 0.5em;
+    top: 12%;
+    right: 1%;
+    gap: 0.5em;
+    background-color: var(--secundary-m);
+    z-index: 999;
+}
+
+.modal svg, .modal span {
+    color: var(--danger);
+}

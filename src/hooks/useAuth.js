@@ -3,6 +3,7 @@ import useAxios from "./useAxios.jsx"
 
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import useFlashMessage from "./useFlashMessage.jsx"
 
 export default function useAuth(){
     const { get, create, loading, setLoading } = useAxios()
@@ -44,16 +45,24 @@ export default function useAuth(){
     async function signUp(user){
         setLoadingAuth(true)
         create("/auth/signup", user)
-        .then(({token}) => {
-            authUser(token)
+        .then( async (res) => {
+            if(res){
+                await authUser(res.token)
+            } else {
+                setLoadingAuth(false)
+            }
         })
     }
 
     async function signIn(user){
         setLoadingAuth(true)
         create("/auth/signin", user)
-        .then(({token}) => {
-            authUser(token)
+        .then( async (res) => {
+            if(res){
+                await authUser(res.token)
+            } else {
+                setLoadingAuth(false)
+            }
         })
     }
 

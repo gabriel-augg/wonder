@@ -9,6 +9,7 @@ export default function Input({text, name, type, placeholder, value, register, e
                 id={name} 
                 value={value} 
                 placeholder={placeholder}
+                autoComplete="off"
                 {...register(name)}
             />
             {error && (<span>{error.message}</span>)}
