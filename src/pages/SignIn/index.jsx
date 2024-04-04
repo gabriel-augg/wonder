@@ -1,5 +1,5 @@
-import { useRef, useContext, useEffect } from "react"
-import { register, handleSubmit } from "react-hook-form"
+import { useContext, useEffect } from "react"
+import { useForm } from "react-hook-form"
 
 import { Context } from "../../contexts/UserContext"
 
@@ -9,24 +9,15 @@ import Form from "../../components/Form"
 import Input from "../../components/Input"
 
 export default function SignIn(){
-    const usernameRef = useRef(null)
-    const passwordRef = useRef(null)
-
     const { signIn, loadingAuth } = useContext(Context)
+    const { register, handleSubmit } = useForm()
 
-    useEffect(()=>{
-        console.log("Caiu aqui")
-    },[])
-
-    function handleSubmit(e){
-        e.preventDefault();
-        if(!loadingAuth){
-            signIn({
-                username: usernameRef.current.value,
-                password: passwordRef.current.value
-            })
-            return
-        }
+    function handleSignIn(userData){
+        console.log(userData)
+        // if(!loadingAuth){
+        //     signIn(userData)
+        //     return
+        // }
     }
 
 
@@ -36,7 +27,7 @@ export default function SignIn(){
                 <h1>Seja bem-vindo novamente!</h1>
             </div>
             <Form 
-                handleOnSubmit={handleSubmit} 
+                handleOnSubmit={handleSubmit(handleSignIn)} 
                 btnTxt="Entrar" 
                 bottomTxt="Não possui uma conta?" 
                 linkTxt="Cadastrar" 
@@ -50,7 +41,10 @@ export default function SignIn(){
                         type="text"
                         name="username"
                         placeholder="Digite seu usuário"
-                        onRef={usernameRef}
+                        register={register}
+                        options={{
+                            required: true
+                        }}
                     />
 
                     <Input
@@ -58,7 +52,10 @@ export default function SignIn(){
                         type="password"
                         name="password"
                         placeholder="Digite sua senha"
-                        onRef={passwordRef}
+                        register={register}
+                        options={{
+                            required: true
+                        }}
                     />
                 </>
             </Form>
