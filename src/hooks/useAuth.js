@@ -5,7 +5,7 @@ import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
 export default function useAuth(){
-    const { get, create, loading } = useAxios()
+    const { get, create, loading, setLoading } = useAxios()
     const [authenticated, setAuthenticated] = useState(false)
     const [loadingAuth, setLoadingAuth] = useState(false)
     const [user, setUser] = useState(null)
@@ -21,6 +21,8 @@ export default function useAuth(){
                 setUser(user)
                 setAuthenticated(true)
             })
+        } else {
+            setLoading(false)
         }
     },[])
 

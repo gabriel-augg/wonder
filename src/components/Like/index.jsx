@@ -9,8 +9,6 @@ import useAxios from "../../hooks/useAxios";
 
 import styles from "./styles.module.css"
 
-
-
 export default function Like({id, type, likesQty}){
     const { get, update, loading, setLoading } = useAxios()
     const {authenticated} = useContext(Context)
@@ -39,7 +37,7 @@ export default function Like({id, type, likesQty}){
 
         setIsLiked(!isLiked);
         setCount(isLiked ? count - 1 : count + 1)
-        await update(`/like-dislike/${type}/${ isLiked ? "dislike" : "like" }/${id}`)
+        update(`/like-dislike/${type}/${ isLiked ? "dislike" : "like" }/${id}`)
     }
 
     return(
