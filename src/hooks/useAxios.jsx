@@ -38,7 +38,7 @@ const useAxios = () => {
         }
     }
 
-    return { get, create, update, loading, loadingSubmit };
+    return { get, create, update, loading, setLoading, loadingSubmit };
 };
 
 export default useAxios;

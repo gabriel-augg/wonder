@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { Context } from "../../contexts/UserContext";
 
 import { IoIosHeartEmpty } from "react-icons/io";
@@ -8,12 +9,14 @@ import useAxios from "../../hooks/useAxios";
 
 import styles from "./styles.module.css"
 
+
+
 export default function Like({id, type, likesQty}){
-    const { get, update, loading } = useAxios()
+    const { get, update, loading, setLoading } = useAxios()
     const {authenticated} = useContext(Context)
     const [isLiked, setIsLiked] = useState(false)
     const [count, setCount] = useState(likesQty)
-
+    const navigate = useNavigate()
 
     useEffect(()=>{
         if(authenticated){
@@ -21,12 +24,19 @@ export default function Like({id, type, likesQty}){
             .then(({status}) => {
                 setIsLiked(status)
             })
+        } else {
+            setLoading(false)
         }
 
     },[authenticated, type, id])
 
 
     const handleLike = async () => {
+        if(!authenticated){
+            navigate("/entrar")
+            return
+        }
+
         setIsLiked(!isLiked);
         setCount(isLiked ? count - 1 : count + 1)
         await update(`/like-dislike/${type}/${ isLiked ? "dislike" : "like" }/${id}`)
