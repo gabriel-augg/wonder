@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import user_image from "../../assets/img/user.svg"
 import styles from "./styles.module.css"
 
+
 export default function User({url, username, header}){
 
     if(header){
