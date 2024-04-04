@@ -7,7 +7,7 @@ import Search from "../Search"
 import Logo from "../Logo"
 
 import styles from "./styles.module.css"
-import icon from "../../assets/img/user.svg"
+import User from "../User"
 
 
 export default function Header(){
@@ -23,17 +23,13 @@ export default function Header(){
                     <li>
                         <Link to="/">Publicações do momento</Link>
                     </li>
-                    {!authenticated ? (
+                    {authenticated ? (
                         <li>
-                            <ButtonCta title="Entrar" path="/entrar" />
+                            <User username={user.username} header={true} />
                         </li>
                     ) : (
-                        <li className={styles.user_icon}>
-                            <img src={icon}/>
-                            <div>
-                                <span>{user.username}</span>
-                                <Link>Minha conta</Link>
-                            </div>
+                        <li>
+                            <ButtonCta title="Entrar" path="/entrar" />
                         </li>
                     )}
 
