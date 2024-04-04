@@ -1,5 +1,8 @@
 
-import { useRef, useContext } from "react"
+import { useContext } from "react"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { signUpSchema } from "../../utils/schema"
 
 import styles from "./styles.module.css"
 
@@ -9,23 +12,14 @@ import Input from "../../components/Input"
 import { Context } from "../../contexts/UserContext"
 
 export default function SignUp(){
-
-    const usernameRef = useRef(null)
-    const emailRef = useRef(null)
-    const passwordRef = useRef(null)
-    const confirmpasswordRef = useRef(null)
-
     const { signUp, loadingAuth } = useContext(Context)
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: zodResolver(signUpSchema)
+    })
 
-    function handleSubmit(e){
-        e.preventDefault();
+    function handleSignUp(userData){
         if(!loadingAuth){
-            signUp({
-                username: usernameRef.current.value,
-                email: emailRef.current.value,
-                password: passwordRef.current.value,
-                confirmpassword: confirmpasswordRef.current.value
-            })
+            signUp(userData)
             return
         }
     }
@@ -36,7 +30,7 @@ export default function SignUp(){
                 <h1>Criar uma nova conta</h1>
             </div>
             <Form 
-                handleOnSubmit={handleSubmit} 
+                handleOnSubmit={handleSubmit(handleSignUp)} 
                 btnTxt="Cadastrar" 
                 bottomTxt="Já possui uma conta?" 
                 linkTxt="Entrar" path="/entrar" 
@@ -47,16 +41,18 @@ export default function SignUp(){
                         text="Usuário"
                         type="text"
                         name="username"
-                        placeholder="Digite seu usuário"
-                        onRef={usernameRef}
+                        placeholder="Digite um nome de usuário"
+                        register={register}
+                        error={errors.username}
                     />
 
                     <Input
                         text="Email"
-                        type="email"
+                        type="text"
                         name="email"
                         placeholder="Digite seu email"
-                        onRef={emailRef}
+                        register={register}
+                        error={errors.email}
                     />
 
                     <Input
@@ -64,15 +60,17 @@ export default function SignUp(){
                         type="password"
                         name="password"
                         placeholder="Digite sua senha"
-                        onRef={passwordRef}
+                        register={register}
+                        error={errors.password}
                     />
 
                     <Input
-                        text="Confirmar senha"
+                        text="Senha"
                         type="password"
                         name="confirmpassword"
                         placeholder="Confirme sua senha"
-                        onRef={confirmpasswordRef}
+                        register={register}
+                        error={errors.confirmpassword}
                     />
                 </>
             </Form>

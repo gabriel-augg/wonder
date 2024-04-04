@@ -1,10 +1,10 @@
-import { useContext, useEffect} from "react"
+import { useContext } from "react"
 import { useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
  
 import { Context } from "../../contexts/UserContext"
 
-import schema from "../../utils/schema"
+import {signInSchema} from "../../utils/schema"
 
 import styles from "./styles.module.css"
 
@@ -16,15 +16,15 @@ import Input from "../../components/Input"
 export default function SignIn(){
     const { signIn, loadingAuth } = useContext(Context)
     const { register, handleSubmit, formState: { errors } } = useForm({
-        resolver: zodResolver(schema)
+        resolver: zodResolver(signInSchema)
     })
 
     function handleSignIn(userData){
         console.log(userData)
-        // if(!loadingAuth){
-        //     signIn(userData)
-        //     return
-        // }
+        if(!loadingAuth){
+            signIn(userData)
+            return
+        }
     }
 
     return(

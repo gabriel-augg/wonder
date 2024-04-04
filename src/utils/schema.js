@@ -1,6 +1,6 @@
 import { z } from "zod"
 
-const schema = z.object({
+const signUpSchema = z.object({
     username: 
         z.string()
         .nonempty("O nome de usuário é obrigatório.")
@@ -22,4 +22,14 @@ const schema = z.object({
         .nonempty("A confirmação de senha é obrigatória.")
 })
 
-export default schema;
+const signInSchema = z.object({
+    username: 
+        z.string()
+        .nonempty("O nome de usuário é obrigatório."),
+
+    password: 
+        z.string()
+        .nonempty("O senha é obrigatória.")
+})
+
+export {signUpSchema, signInSchema};
