@@ -4,34 +4,12 @@
     padding: 1em;
 }
 
-.newpost_container div {
+
+.newpost_container > div {
     display: flex;
     align-items: center;
-    gap: 0.5em;
 }
 
-.newpost_container div span:not(:last-child) {
-    font-size: 1.2em;
-    color: var(--secundary);
-}
-
-.newpost_container div span:last-child {
-    color: var(--primary);
-    font-size: 1.1em;
-    padding: .2em;
-}
-
-.newpost_container div span:last-child::before {
-    content: "";
-    display: inline-block;
-    width: 15px;
-    height: 1px;
-    background-color: black;
-    margin-right: 10px;
-    vertical-align: middle;
-    transform: rotate(-90deg);
-    transform-origin: center;
-}
 
 .newpost_container form {
     display: flex;
@@ -56,7 +34,4 @@
     margin: 0 .7em .7em .7em;
 }
 
-.newpost_container form button:hover {
-    background-color: var(--primary-p);
-}
 

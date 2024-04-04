@@ -16,13 +16,11 @@ export default function CreatePost(){
 
     const [limit] = useState(2)
     const [posts, setPosts] = useState([])
-    const descriptionRef = useRef(null)
 
     const navigate = useNavigate()
 
     useEffect(()=>{
         get("/posts", {
-            method: "get",
             params: {
                 limit,
             }
@@ -32,11 +30,10 @@ export default function CreatePost(){
         })
     },[])
 
-    function handleSumit(e){
-        e.preventDefault();
+    function handleSumit(description){
 
-        const post = { 
-            description: descriptionRef.current.value 
+        const post = {
+            description
         }
 
         create("/posts/create", post)
@@ -52,7 +49,6 @@ export default function CreatePost(){
                 <NewPost 
                     username={user?.username} 
                     handleOnSubmit={handleSumit} 
-                    onRef={descriptionRef}  
                     placeholder="Digite qualquer coisa" 
                     btnTxt="Publicar" 
                     isLoading={loadingSubmit}

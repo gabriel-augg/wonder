@@ -21,7 +21,6 @@ export default function ViewPost() {
     const [post, setPost] = useState(null)
     const [isAnswersEmpty, setIsAnswersEmpty] = useState(false)
     const [answers, setAnswers] = useState([])
-    const descriptionRef = useRef(null)
 
     useEffect(() => {
         get(`/posts/id/${id}`, {
@@ -39,17 +38,14 @@ export default function ViewPost() {
         
     }, [id, offset])
 
-    function handleAnswer(e) {
-        e.preventDefault()
-
+    function handleComment(comment) {
         const answer = {
-            description: descriptionRef.current.value,
+            description: comment,
             postId: post.id
         }
 
         create("/answers/create", answer)
             .then(({ answer }) => {
-                descriptionRef.current.value = ""
                 setAnswers([...answers, answer])
             })
     }
@@ -85,8 +81,7 @@ export default function ViewPost() {
 
                         <NewPost
                             username={user.username}
-                            onRef={descriptionRef}
-                            handleOnSubmit={handleAnswer}
+                            handleOnSubmit={handleComment}
                             placeholder="Digite qualquer coisa"
                             btnTxt="Responder"
                             isLoading={loadingSubmit}
