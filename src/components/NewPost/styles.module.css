@@ -22,16 +22,22 @@
 
 .newpost_container form textarea {
     resize: none;
-    padding: 1em 1em 0 1em;
+    margin: 1em;
+    padding: 0.5em 0;
+    overflow: hidden;
     color: var(--secundary);
     border: none;
     outline: none;
     background-color: transparent;
 }
 
-.newpost_container form button {
-    align-self: flex-end;
+.newpost_footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1em;
     margin: 0 .7em .7em .7em;
 }
+
 
 

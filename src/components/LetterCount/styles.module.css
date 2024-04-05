@@ -1,0 +1,10 @@
+@import url(../../utils/color-var.css);
+
+.letter_count {
+    font-size: 0.8em;
+    color: var(--secundary-m);
+}
+
+.error {
+    color: var(--danger);
+}

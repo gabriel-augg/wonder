@@ -38,7 +38,7 @@ export default function ViewPost() {
         
     }, [id, offset])
 
-    function handleComment({description}, reset) {
+    function handleComment({description}, reset, set) {
         
 
         const answer = {
@@ -50,6 +50,7 @@ export default function ViewPost() {
             .then(({ answer }) => {
                 setAnswers([...answers, answer])
                 reset()
+                set(0)
             })
     }
 
