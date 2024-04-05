@@ -61,7 +61,7 @@ export default function Home(){
         return(
             <section>
                 <Title title="Publicações">
-                    <ButtonCta title="Nova postagem" path="/novapostagem"/>
+                    <ButtonCta title="Nova publicação" path="/novapostagem" home={true} />
                 </Title>
                 <Loading />
             </section>
@@ -71,7 +71,7 @@ export default function Home(){
     return (
         <section>
             <Title title="Publicações">
-                <ButtonCta title="Nova publicação" path="/novapostagem"/>
+                <ButtonCta title="Nova publicação" path="/novapostagem" home={true} />
             </Title>
             {/* <div className={styles.order_row}>
                 <span>Ordenar por: </span> 

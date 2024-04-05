@@ -12,7 +12,7 @@ export default function errorHandling(error) {
     } else if(error.includes("username-unavailable")){
         message = "Nome de usuário indisponível!"
     } else if(error.includes("email-unavailable")){
-        message = "Email indisponível!"
+        message = "O email já está em uso!"
     } else if(error.includes("password-conflict")){
         message = "As senhas não conhecidem!"
     }
