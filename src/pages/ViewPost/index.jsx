@@ -39,8 +39,6 @@ export default function ViewPost() {
     }, [id, offset])
 
     function handleComment({description}, reset, set) {
-        
-
         const answer = {
             description,
             postId: post.id
