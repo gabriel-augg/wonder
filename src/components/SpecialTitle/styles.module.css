@@ -1,0 +1,19 @@
+@import url(../../utils/color-var.css);
+
+.special_title {
+    border-bottom: 1px solid var(--secundary-m);
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.2em;
+}
+
+.special_title h1 {
+    color: var(--secundary-m);
+    font-weight: 600;
+    font-size: 1.5em;
+}
+.special_title svg {
+    color: var(--secundary-m);
+}

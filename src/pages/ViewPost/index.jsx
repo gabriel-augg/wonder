@@ -104,7 +104,7 @@ export default function ViewPost() {
                         }
                         )) : (
                             <div className={styles.no_answer}>
-                                <span>Seja o primeiro a comentar!</span><BsChatQuote size={30} color="#299AD1" />
+                                <span>Seja o primeiro a responder!</span><BsChatQuote size={30} color="#299AD1" />
                             </div>
                         )}
                     </div>
