@@ -26,6 +26,8 @@
 .post_container p {
     padding: 1.2em;
     color: var(--secundary);
+    width: 100%;
+    word-wrap: break-word;
 }
 
 .post_footer {
