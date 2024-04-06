@@ -6,6 +6,7 @@ import { UserContext } from "../../contexts/UserContext.jsx"
 import Title from "../../components/Title";
 import NewPost from "../../components/NewPost";
 import Post from "../../components/Post/index.jsx";
+import LoadingPost from "../../components/LoadingPost/index.jsx";
 
 import styles from "./styles.module.css"
 import useAxios from "../../hooks/useAxios.jsx";
@@ -14,7 +15,7 @@ export default function CreatePost(){
     const { create, get, loading, loadingSubmit } = useAxios()
     const { user } = useContext(UserContext)
 
-    const [limit] = useState(2)
+    const [limit] = useState(3)
     const [posts, setPosts] = useState([])
 
     const navigate = useNavigate()
@@ -52,10 +53,10 @@ export default function CreatePost(){
                 />
             </div>
             <Title title="O que estão publicando"/>
-            {loading && <div className={styles.loading_posts}></div>}
+            {loading && <LoadingPost/>}
 
             <div className={styles.post_area}>
-                {posts.length !== 0 && (
+                {posts.length > 0 && (
                     posts.map((post) => {
                         return(
                             <Post 
