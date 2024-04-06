@@ -75,11 +75,12 @@ export default function ViewPost() {
                             createdAt={post.createdAt}
                             likesCount={post.liked}
                             description={post.description}
+                            commentCount={post.answer_qty} 
                             type="posts"
                         />
 
                         <div className={styles.answer_line}>
-                            <span>RESPOSTAS</span>
+                            <span>COMENTÁRIOS</span>
                         </div>
 
                         <NewPost

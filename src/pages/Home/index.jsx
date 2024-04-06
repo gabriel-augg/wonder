@@ -102,8 +102,8 @@ export default function Home(){
                                         createdAt={post.createdAt} 
                                         likesCount={post.liked} 
                                         description={post.description} 
-                                        commentCount={post.answer_qty} 
-                                        type="posts" 
+                                        commentCount={post.answer_qty}
+                                        btnTxt="Responder"
                                         show={true}
                                     />
                                 )

@@ -1,37 +1,25 @@
 @import url(../../utils/color-var.css);
 
-.post_container {
+.post {
     padding: 1.5em;
     width: 100%;
 }
 
-.post_container > div:first-child {
+.post_header {
     display: flex;
     justify-content: space-between;
 }
 
-.post_container div div {
+.post_header > div, .post_footer {
     display: flex;
-    align-items: center ;
+    align-items: center;
 }
 
-.tag_date {
-    color: var(--secundary-m);
-    font-size: 1em;
-}
-
-
-.post_container p {
-    padding: 1.2em;
-    color: var(--secundary);
-    width: 100%;
-    word-wrap: break-word;
+.post_header > div:first-child, .post_footer {
+    gap: 1em;
 }
 
 .post_footer {
-    display: flex;
     justify-content: flex-end;
-    align-items: center;
-    gap: 1em;
 }
 

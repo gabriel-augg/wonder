@@ -3,18 +3,14 @@ import Like from "../Like";
 import CommentCounter from "../CommentCounter";
 import Time from "../Time";
 import User from "../User";
-import Author from "../Author";
-import Button from "../Button";
+import Description from "../Description";
 import ButtonLink from "../ButtonLink";
 
-export default function Post({id, username, likesCount, description, commentCount, createdAt, show, type, isAuthor, userPost, handleClick}){
-
-
-
+export default function Post({id, username, likesCount, description, commentCount, createdAt, show, children, btnTxt, path}){
 
     return(
-        <div className={styles.post_container}>
-            <div>
+        <div className={styles.post}>
+            <div className={styles.post_header}>
                 <div>
                     <User 
                         url={null} 
@@ -24,42 +20,27 @@ export default function Post({id, username, likesCount, description, commentCoun
                     <Time 
                         date={createdAt} 
                     />
-
-                    <Author 
-                        show={(isAuthor)} 
-                    />
-
                 </div>
                 <div>
 
                     <CommentCounter 
-                        show={show} 
                         count={commentCount} 
                     />
 
                     <Like 
                         id={id} 
-                        type={type} 
+                        type="posts"
                         likesQty={likesCount} 
                     />
-
                 </div>
                 
             </div>
-            <p>{description}</p>
+            <Description description={description} />
             {show && (
                 <div className={styles.post_footer}>
+                    {children}
                     <ButtonLink path={`/posts/${id}`} btnTxt="Ver respostas" classN="simple" />
-                    <ButtonLink path={`/posts/${id}`} btnTxt="Responder" classN="btn" />
-                </div>
-            )}
-            {userPost && (
-                <div className={styles.post_footer}>
-                    <Button btnTxt="Excluir" classN="delete" options={{
-                        onClick: () => handleClick(id)
-                    }}  />
-                    <ButtonLink path={`/posts/editar/${id}`} btnTxt="Ver respostas" classN="simple" />
-                    <ButtonLink path={`/posts/${id}`} btnTxt="Editar" classN="btn" />
+                    <ButtonLink path={ path ? path : `/posts/${id}`} btnTxt={btnTxt} classN="btn" />
                 </div>
             )}
 

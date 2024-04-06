@@ -8,6 +8,7 @@ import useAxios from "../../hooks/useAxios";
 import styles from "./styles.module.css"
 
 import Post from "../../components/Post";
+import Button from "../../components/Button";
 
 export default function ShowUserPosts(){
     const [posts, setPosts] = useState([])
@@ -52,10 +53,15 @@ export default function ShowUserPosts(){
                                     likesCount={post.liked}
                                     description={post.description}
                                     commentCount={post.answer_qty}
-                                    type="posts" 
-                                    userPost={true}
-                                    handleClick={handleDelete}
-                                />
+                                    btnTxt="Editar"
+                                    path={`/posts/editar/${post.id}`}
+                                    show={true}
+                                >
+                                    <Button  btnTxt="Excluir" classN="delete" options={{
+                                        onClick: () => handleDelete(post.id)
+                                    }}/>
+
+                                </Post>
                             )
                         })
                     )}  

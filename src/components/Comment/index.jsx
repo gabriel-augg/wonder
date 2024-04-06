@@ -10,8 +10,8 @@ import Description from "../Description";
 export default function Comment({id, username, likesCount, description, createdAt, isAuthor}){
     return(
         <div className={styles.comment}>
-            <div>
-                <div className={styles.info_area} >
+            <div className={styles.comment_header}>
+                <div >
                     <User 
                         url={null} 
                         username={username} 

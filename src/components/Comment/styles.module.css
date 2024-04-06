@@ -5,13 +5,13 @@
     width: 100%;
 }
 
-.comment > div:first-child {
+.comment_header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.info_area {
+.comment_header > div:first-child {
     display: flex;
     align-items: center;
     gap: 1em;
