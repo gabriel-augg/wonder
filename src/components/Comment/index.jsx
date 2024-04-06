@@ -4,6 +4,7 @@ import Like from "../Like";
 import Time from "../Time";
 import User from "../User";
 import Author from "../Author";
+import Description from "../Description";
 
 
 export default function Comment({id, username, likesCount, description, createdAt, isAuthor}){
@@ -33,7 +34,7 @@ export default function Comment({id, username, likesCount, description, createdA
                     />
                 </div>
             </div>
-            <p>{description}</p>
+            <Description description={description} />
         </div>
     )
 }

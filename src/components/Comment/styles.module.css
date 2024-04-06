@@ -5,17 +5,10 @@
     width: 100%;
 }
 
-.comment > div {
+.comment > div:first-child {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.comment p {
-    padding: 1.2em;
-    color: var(--secundary);
-    width: 100%;
-    word-wrap: break-word;
 }
 
 .info_area {

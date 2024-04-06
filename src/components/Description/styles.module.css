@@ -1,0 +1,9 @@
+.description {
+    padding: 1.2em;
+    width: 100%;
+}
+
+.description p {
+    color: var(--secundary);
+    word-wrap: break-word;
+}
