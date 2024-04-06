@@ -58,7 +58,7 @@ export default function Home(){
     }
 
 
-    if(true){
+    if(loading){
         return(
             <section>
                 <Title title="Publicações">
@@ -113,6 +113,7 @@ export default function Home(){
                         <div className={styles.loading_more}>
                             <Button 
                                 btnTxt="Buscar mais"
+                                classN="button"
                                 isLoading={loadingMore}
                                 options={{
                                     onClick: handleBtnMore
