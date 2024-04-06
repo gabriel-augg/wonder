@@ -10,7 +10,7 @@ import { useParams } from "react-router-dom"
 
 import { BsChatQuote } from "react-icons/bs";
 import useAxios from "../../hooks/useAxios"
-import Loading from "../../components/Loading"
+import LoadingViewPost from "../../components/LoadingViewPost"
 import { UserContext } from "../../contexts/UserContext"
 import Button from "../../components/Button"
 
@@ -57,7 +57,7 @@ export default function ViewPost() {
         return (
             <section>
                 <Title title="Publicação" />
-                <Loading />
+                <LoadingViewPost />
             </section>
         )
     }
