@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form"
 import Button from "../Button";
 import User from "../User";
+import Textarea from "../Textarea";
 
 import styles from "./styles.module.css"
 import LetterCount from "../LetterCount";
@@ -24,11 +25,17 @@ export default function NewPost({username, handleOnSubmit, placeholder, btnTxt, 
             />
    
             <form onSubmit={handleSubmit(handleDescription)}>
-                <textarea 
+                <Textarea 
                     name="description" 
-                    {...register("description", {required: true, maxLength: 355})}
-                    onChange={(e) => setTextCount(e.target.value.length)}  
                     placeholder={placeholder}
+                    register={register(
+                        "description", 
+                        {   
+                            required: true, 
+                            maxLength: 355, 
+                            onChange: (e) => setTextCount(e.target.value.length)
+                        }
+                    )}
                 />
                 <div className={styles.newpost_footer}>
                     <LetterCount count={textCount} />

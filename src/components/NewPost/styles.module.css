@@ -20,17 +20,6 @@
     border: 1px solid var(--secundary);
 }
 
-.newpost_container form textarea {
-    resize: none;
-    margin: 1em;
-    padding: 0.5em 0;
-    overflow: hidden;
-    color: var(--secundary);
-    border: none;
-    outline: none;
-    background-color: transparent;
-}
-
 .newpost_footer {
     display: flex;
     align-items: center;
