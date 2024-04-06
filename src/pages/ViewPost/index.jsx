@@ -2,6 +2,7 @@ import { useEffect, useState, useContext } from "react"
 
 import Title from "../../components/Title"
 import NewPost from "../../components/NewPost"
+import Comment from "../../components/Comment"
 import Post from "../../components/Post"
 
 import styles from "./styles.module.css"
@@ -90,7 +91,7 @@ export default function ViewPost() {
                         />
                         {answers.length > 0 ? (answers.map((answer) => {
                             return (
-                                <Post
+                                <Comment
                                     key={answer.id}
                                     id={answer.id}
                                     username={answer.username}
@@ -98,7 +99,6 @@ export default function ViewPost() {
                                     likesCount={answer.liked}
                                     description={answer.description}
                                     isAuthor={(answer.username === post.User.username)}
-                                    type="answers"
                                 />
                             )
                         }

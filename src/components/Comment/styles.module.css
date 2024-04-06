@@ -1,0 +1,26 @@
+@import url(../../utils/color-var.css);
+
+.comment {
+    padding: 1.5em;
+    width: 100%;
+}
+
+.comment > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.comment p {
+    padding: 1.2em;
+    color: var(--secundary);
+    width: 100%;
+    word-wrap: break-word;
+}
+
+.info_area {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+}
+

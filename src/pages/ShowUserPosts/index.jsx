@@ -27,8 +27,11 @@ export default function ShowUserPosts(){
        
     },[])
 
-    async function handleDelete(id){
-        await deleteOne(`/posts/id/${id}`)
+    function handleDelete(id){
+        deleteOne(`/posts/id/${id}`)
+        .then(()=> {
+            setPosts(prevPosts => prevPosts.filter(post => post.id !== id))
+        })
     }
 
     return(
