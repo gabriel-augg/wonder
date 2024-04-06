@@ -29,7 +29,7 @@ export default function Header(){
                         </li>
                     ) : (
                         <li>
-                            <ButtonLink btnTxt="Nova publicação" path="/entrar" classN="cta"/>
+                            <ButtonLink btnTxt="Entrar" path="/entrar" classN="cta"/>
                         </li>
                     )}
 

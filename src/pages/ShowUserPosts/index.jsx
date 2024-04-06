@@ -12,7 +12,7 @@ import Post from "../../components/Post";
 export default function ShowUserPosts(){
     const [posts, setPosts] = useState([])
     const [offset, setOffSet] = useState(0)
-    const {get, loading} = useAxios()
+    const {get, deleteOne, loading} = useAxios()
 
     useEffect(()=>{
         get("/posts/my-posts")
@@ -26,6 +26,10 @@ export default function ShowUserPosts(){
         })
        
     },[])
+
+    async function handleDelete(id){
+        await deleteOne(`/posts/id/${id}`)
+    }
 
     return(
         <section>
@@ -47,6 +51,7 @@ export default function ShowUserPosts(){
                                     commentCount={post.answer_qty}
                                     type="posts" 
                                     userPost={true}
+                                    handleClick={handleDelete}
                                 />
                             )
                         })

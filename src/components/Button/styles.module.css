@@ -32,3 +32,14 @@
     stroke-width: 50px;
     animation: rotate .5s linear infinite;
 }
+
+.delete {
+    margin-right: 1em;
+    font-size: 1em;
+    background-color: transparent;
+    color: var(--danger);
+}
+
+.delete:hover {
+    text-decoration: underline;
+}

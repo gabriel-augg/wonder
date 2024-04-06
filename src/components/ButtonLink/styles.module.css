@@ -34,14 +34,3 @@
 .cta:hover {
     background-color: var(--primary-p);
 }
-
-.delete {
-    margin-right: 1em;
-    font-size: 1em;
-    background-color: transparent;
-    color: var(--danger);
-}
-
-.delete:hover {
-    text-decoration: underline;
-}

@@ -1,21 +1,15 @@
-import { Link } from "react-router-dom";
-
 import styles from "./styles.module.css"
 import Like from "../Like";
-import Comment from "../Comment";
+import CommentCounter from "../CommentCounter";
 import Time from "../Time";
 import User from "../User";
 import Author from "../Author";
+import Button from "../Button";
 import ButtonLink from "../ButtonLink";
-import useAxios from "../../hooks/useAxios";
 
-export default function Post({id, username, likesCount, description, commentCount, createdAt, show, type, isAuthor, userPost}){
+export default function Post({id, username, likesCount, description, commentCount, createdAt, show, type, isAuthor, userPost, handleClick}){
 
-    const { deleteOne } = useAxios()
 
-    async function handleDelete(){
-        await deleteOne(`/posts/id/${id}`)
-    }
 
 
     return(
@@ -38,7 +32,7 @@ export default function Post({id, username, likesCount, description, commentCoun
                 </div>
                 <div>
 
-                    <Comment 
+                    <CommentCounter 
                         show={show} 
                         count={commentCount} 
                     />
@@ -61,6 +55,9 @@ export default function Post({id, username, likesCount, description, commentCoun
             )}
             {userPost && (
                 <div className={styles.post_footer}>
+                    <Button btnTxt="Excluir" classN="delete" options={{
+                        onClick: () => handleClick(id)
+                    }}  />
                     <ButtonLink path={`/posts/editar/${id}`} btnTxt="Ver respostas" classN="simple" />
                     <ButtonLink path={`/posts/${id}`} btnTxt="Editar" classN="btn" />
                 </div>

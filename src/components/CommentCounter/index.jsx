@@ -2,7 +2,7 @@ import { BsChatQuote } from "react-icons/bs";
 
 import styles from "./styles.module.css"
 
-export default function Comment({show, count}){
+export default function CommentCounter({show, count}){
     return (
         <>
             { show && (
