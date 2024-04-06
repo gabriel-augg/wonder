@@ -7,6 +7,7 @@ import { FiSearch } from "react-icons/fi";
 import { SearchContext } from "../../contexts/SearchContext"
 
 import styles from "./styles.module.css"
+import Button from "../Button";
 
 export default function Search(){
     const { setSearch } = useContext(SearchContext)
@@ -20,7 +21,9 @@ export default function Search(){
                 id="search" name="search" 
                 placeholder="Buscar no Wonder" 
             />
-            <button type="button" onClick={() => navigate("/")}>Buscar</button>
+            <Button btnTxt={"Buscar"} classN="search" options={{
+                onClick: () => navigate("/")
+            }}  />
     </div>
     )
 }

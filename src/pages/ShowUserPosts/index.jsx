@@ -13,7 +13,7 @@ import Button from "../../components/Button";
 export default function ShowUserPosts(){
     const [posts, setPosts] = useState([])
     const [offset, setOffSet] = useState(0)
-    const {get, deleteOne, loading} = useAxios()
+    const {get, deleteOne, loadingDelete} = useAxios()
 
     useEffect(()=>{
         get("/posts/my-posts")
@@ -57,7 +57,7 @@ export default function ShowUserPosts(){
                                     path={`/posts/editar/${post.id}`}
                                     show={true}
                                 >
-                                    <Button  btnTxt="Excluir" classN="delete" options={{
+                                    <Button isLoading={loadingDelete}  btnTxt="Excluir" classN="delete" options={{
                                         onClick: () => handleDelete(post.id)
                                     }}/>
 

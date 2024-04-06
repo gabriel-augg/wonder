@@ -6,6 +6,7 @@ import error from '../utils/error';
 const useAxios = () => {
     const [loading, setLoading] = useState(true);
     const [loadingSubmit, setLoadingSubmit] = useState(false)
+    const [loadingDelete, setLoadingDelete] = useState(false)
     const { setFlashMessage } = useFlashMessage()
 
     const get = async (url, options = {}) => {
@@ -42,14 +43,17 @@ const useAxios = () => {
     }
 
     const deleteOne = async (url) => {
+        setLoadingDelete(true)
         try {
             await api.delete(url)
         } catch (error) {
             console.log(error)
+        } finally {
+            setLoadingDelete(false)
         }
     }
 
-    return { get, create, update, deleteOne, loading, setLoading, loadingSubmit };
+    return { get, create, update, deleteOne, loading, setLoading, loadingDelete, loadingSubmit };
 };
 
 export default useAxios;

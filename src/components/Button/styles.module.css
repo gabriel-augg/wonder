@@ -43,3 +43,21 @@
 .delete:hover {
     text-decoration: underline;
 }
+
+.delete svg {
+    stroke-width: 50px;
+    animation: rotate .5s linear infinite;
+    color: var(--danger);
+}
+
+.search {
+    background-color: var(--primary);
+    padding: 0.5rem;
+    border-radius: 1rem;
+    color: var(--white);
+    transition: .3s all;
+}
+
+.search:hover {
+    background-color: var(--primary-p);
+}

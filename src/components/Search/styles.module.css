@@ -5,9 +5,8 @@
     align-items: center;
     background-color: var(--white);
     border-radius: 1rem;
-    width: 350px;
+    width: 21em;
     justify-content: space-between;
-    padding-left: 0.3em;
 }
 
 .search input {
@@ -17,16 +16,4 @@
     padding: 0.5rem;
     width: 100%;
     color: var(--secundary-p);
-}
-
-.search button {
-    background-color: var(--primary);
-    padding: 0.5rem;
-    border-radius: 1rem;
-    color: var(--white);
-    transition: .3s all;
-}
-
-.search button:hover {
-    background-color: var(--primary-p);
 }
