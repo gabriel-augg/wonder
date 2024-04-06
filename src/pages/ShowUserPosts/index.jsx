@@ -9,11 +9,12 @@ import styles from "./styles.module.css"
 
 import Post from "../../components/Post";
 import Button from "../../components/Button";
+import LoadingPost from "../../components/LoadingPost";
 
 export default function ShowUserPosts(){
     const [posts, setPosts] = useState([])
     const [offset, setOffSet] = useState(0)
-    const {get, deleteOne, loadingDelete} = useAxios()
+    const {get, deleteOne, loading, loadingDelete} = useAxios()
 
     useEffect(()=>{
         get("/posts/my-posts")
@@ -33,6 +34,17 @@ export default function ShowUserPosts(){
         .then(()=> {
             setPosts(prevPosts => prevPosts.filter(post => post.id !== id))
         })
+    }
+
+    if(loading){
+        return(
+            <div>
+                <SpecialTitle title="Minhas publicações">
+                    <BsChatQuote size={25} />
+                </SpecialTitle>
+                <LoadingPost />
+            </div>
+        )
     }
 
     return(

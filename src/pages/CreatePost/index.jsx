@@ -33,11 +33,14 @@ export default function CreatePost(){
     },[])
 
     function handleSumit(post, reset){
-        create("/posts/create", post)
-        .then(() => {
-            navigate("/")
-            reset()
-        })
+        if(!loadingSubmit){
+            create("/posts/create", post)
+            .then(() => {
+                navigate("/")
+                reset()
+            })
+            return
+        }
     }
 
     return(
