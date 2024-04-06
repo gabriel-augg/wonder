@@ -1,4 +1,3 @@
-
 import { Link } from "react-router-dom";
 
 import styles from "./styles.module.css"
@@ -7,8 +6,16 @@ import Comment from "../Comment";
 import Time from "../Time";
 import User from "../User";
 import Author from "../Author";
+import ButtonLink from "../ButtonLink";
+import useAxios from "../../hooks/useAxios";
 
-export default function Post({id, username, likesCount, description, commentCount, createdAt, show, type, isAuthor}){
+export default function Post({id, username, likesCount, description, commentCount, createdAt, show, type, isAuthor, userPost}){
+
+    const { deleteOne } = useAxios()
+
+    async function handleDelete(){
+        await deleteOne(`/posts/id/${id}`)
+    }
 
 
     return(
@@ -48,10 +55,14 @@ export default function Post({id, username, likesCount, description, commentCoun
             <p>{description}</p>
             {show && (
                 <div className={styles.post_footer}>
-                    <div>
-                        <Link to={`/posts/${id}`}>Ver respostas</Link>
-                        <Link to={`/posts/${id}`}>Responder</Link>
-                    </div>
+                    <ButtonLink path={`/posts/${id}`} btnTxt="Ver respostas" classN="simple" />
+                    <ButtonLink path={`/posts/${id}`} btnTxt="Responder" classN="btn" />
+                </div>
+            )}
+            {userPost && (
+                <div className={styles.post_footer}>
+                    <ButtonLink path={`/posts/editar/${id}`} btnTxt="Ver respostas" classN="simple" />
+                    <ButtonLink path={`/posts/${id}`} btnTxt="Editar" classN="btn" />
                 </div>
             )}
 

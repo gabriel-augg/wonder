@@ -33,9 +33,12 @@ export default function NewPost({username, handleOnSubmit, placeholder, btnTxt, 
                 <div className={styles.newpost_footer}>
                     <LetterCount count={textCount} />
                     <Button 
-                        type="submit" 
                         btnTxt={btnTxt} 
-                        isLoading={isLoading} 
+                        isLoading={isLoading}
+                        classN="button"
+                        options={{
+                            type: "submit"
+                        }}
                     />
                     </div>
             </form>

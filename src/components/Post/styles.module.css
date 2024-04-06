@@ -15,8 +15,6 @@
     align-items: center ;
 }
 
-
-
 .tag_date {
     color: var(--secundary-m);
     font-size: 1em;
@@ -33,29 +31,7 @@
 .post_footer {
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+    gap: 1em;
 }
 
-
-
-.post_footer div:last-child a:first-child {
-    color: var(--primary);
-    transition: .3s all;
-}
-
-.post_footer div:last-child a:first-child:hover {
-    color: var(--primary-p);
-}
-
-.post_footer div:last-child a:last-child {
-    color: var(--primary);
-    margin-left: 1em;
-    padding: .4em 1em;
-    border-radius: 1.8em;
-    border: 1.4px solid var(--primary);
-    transition: .3s all;
-}
-
-.post_footer div:last-child a:last-child:hover {
-    color: var(--white);
-    background-color: var(--primary-m);
-}

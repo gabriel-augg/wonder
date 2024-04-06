@@ -41,7 +41,15 @@ const useAxios = () => {
         }
     }
 
-    return { get, create, update, loading, setLoading, loadingSubmit };
+    const deleteOne = async (url) => {
+        try {
+            await api.delete(url)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    return { get, create, update, deleteOne, loading, setLoading, loadingSubmit };
 };
 
 export default useAxios;

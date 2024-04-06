@@ -3,9 +3,9 @@ import { useEffect, useState, useContext } from "react";
 import { SearchContext } from "../../contexts/SearchContext.jsx";
 
 import Title from "../../components/Title";
-import ButtonCta from "../../components/ButtonCta"
 import Button from "../../components/Button";
 import Post from "../../components/Post";
+import { IoIosAddCircleOutline } from "react-icons/io";
 
 import styles from "./styles.module.css"
 
@@ -13,6 +13,7 @@ import image_no_posts from "../../assets/img/ilustration_no_posts.svg"
 
 import useAxios from "../../hooks/useAxios.jsx";
 import Loading from "../../components/Loading";
+import ButtonLink from "../../components/ButtonLink/index.jsx";
 
 
 export default function Home(){
@@ -61,7 +62,9 @@ export default function Home(){
         return(
             <section>
                 <Title title="Publicações">
-                    <ButtonCta title="Nova publicação" path="/novapostagem" home={true} />
+                    <ButtonLink btnTxt="Nova publicação" path="/novapostagem" classN="cta">
+                        <IoIosAddCircleOutline size={20}/>
+                    </ButtonLink>
                 </Title>
                 <Loading />
             </section>
@@ -71,7 +74,9 @@ export default function Home(){
     return (
         <section>
             <Title title="Publicações">
-                <ButtonCta title="Nova publicação" path="/novapostagem" home={true} />
+                <ButtonLink btnTxt="Nova publicação" path="/novapostagem" classN="cta">
+                    <IoIosAddCircleOutline size={20}/>
+                </ButtonLink>
             </Title>
             {/* <div className={styles.order_row}>
                 <span>Ordenar por: </span> 
@@ -108,8 +113,10 @@ export default function Home(){
                         <div className={styles.loading_more}>
                             <Button 
                                 btnTxt="Buscar mais"
-                                handleClick={handleBtnMore}
                                 isLoading={loadingMore}
+                                options={{
+                                    onClick: handleBtnMore
+                                }}
                             />
                         </div>
 

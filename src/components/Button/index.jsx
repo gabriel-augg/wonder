@@ -1,12 +1,11 @@
 import { AiOutlineLoading } from "react-icons/ai";
 import styles from "./styles.module.css"
 
-export default function Button({ btnTxt, handleClick, type, isLoading}){
+export default function Button({ btnTxt, isLoading, classN, options}){
     return(
         <button 
-            type={type ? type : undefined} 
-            className={styles.button} 
-            onClick={handleClick ? handleClick : undefined}
+            className={styles[classN]} 
+            {...options}
         >
             {isLoading ? <AiOutlineLoading size={19}/> : btnTxt  }
         </button>

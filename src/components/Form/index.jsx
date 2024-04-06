@@ -7,7 +7,9 @@ export default function Form({children, handleOnSubmit, btnTxt, bottomTxt, linkT
     return (
         <form className={styles.form_control} onSubmit={handleOnSubmit}>
             {children}
-            <Button btnTxt={btnTxt} type="submit" isLoading={isLoading} />
+            <Button btnTxt={btnTxt} isLoading={isLoading} options={{
+                type: "submit"
+            }} />
             <span className={styles.link}>{bottomTxt} <Link to={path}>{linkTxt}</Link></span>
         </form>
     )

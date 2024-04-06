@@ -2,7 +2,7 @@ import { useContext} from "react"
 import { Link } from "react-router-dom"
 import { UserContext } from "../../contexts/UserContext"
 
-import ButtonCta from "../ButtonCta"
+import ButtonLink from "../ButtonLink"
 import Search from "../Search"
 import Logo from "../Logo"
 
@@ -29,7 +29,7 @@ export default function Header(){
                         </li>
                     ) : (
                         <li>
-                            <ButtonCta title="Entrar" path="/entrar" />
+                            <ButtonLink btnTxt="Nova publicação" path="/entrar" classN="cta"/>
                         </li>
                     )}
 

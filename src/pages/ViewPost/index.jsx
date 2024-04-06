@@ -112,7 +112,9 @@ export default function ViewPost() {
                         <div className={styles.loading_more}>
                             <Button 
                                 btnTxt="Buscar mais" 
-                                handleClick={() => setOffset(prevOffSet => prevOffSet + 5)} 
+                                options={{
+                                    onClick: () => setOffset(prevOffSet => prevOffSet + 5)
+                                }}
                             />
                         </div>
                     )}

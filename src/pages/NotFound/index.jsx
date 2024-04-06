@@ -1,4 +1,4 @@
-import ButtonCta from "../../components/ButtonCta"
+import ButtonLink from "../../components/ButtonLink"
 import image from "../../assets/img/ilustration_not_found.svg"
 
 import styles from "./styles.module.css"
@@ -9,7 +9,7 @@ export default function NotFound(){
             <div>
                 <img src={image} alt="ilustration" />
                 <h1>Parece que você está tentando acessar uma página que não existe</h1>
-                <ButtonCta title="Voltar" path="/" />
+                <ButtonLink btnTxt="Voltar" path="/" classN="cta"/>
             </div>
         </section>
     )
