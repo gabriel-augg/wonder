@@ -7,7 +7,7 @@ import Author from "../Author";
 import Description from "../Description";
 
 
-export default function Comment({id, username, likesCount, description, createdAt, isAuthor}){
+export default function Comment({id, username, likesCount, description, createdAt, author}){
     return(
         <div className={styles.comment}>
             <div className={styles.comment_header}>
@@ -17,13 +17,9 @@ export default function Comment({id, username, likesCount, description, createdA
                         username={username} 
                     />
 
-                    <Time 
-                        date={createdAt} 
-                    />
+                    <Time date={createdAt}/>
 
-                    <Author 
-                        show={(isAuthor)} 
-                    />
+                    <Author author={(author)}/>
 
                 </div>
                 <div>

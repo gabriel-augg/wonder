@@ -25,7 +25,7 @@ export default function Header(){
                     </li>
                     {authenticated ? (
                         <li>
-                            <User username={user.username} header={true} />
+                            <User username={user.username} path="/" />
                         </li>
                     ) : (
                         <li>

@@ -76,7 +76,6 @@ export default function ViewPost() {
                             likesCount={post.liked}
                             description={post.description}
                             commentCount={post.answer_qty} 
-                            type="posts"
                         />
 
                         <div className={styles.answer_line}>
@@ -99,7 +98,7 @@ export default function ViewPost() {
                                     createdAt={answer.createdAt}
                                     likesCount={answer.liked}
                                     description={answer.description}
-                                    isAuthor={(answer.username === post.User.username)}
+                                    author={(answer.username === post.User.username)}
                                 />
                             )
                         }

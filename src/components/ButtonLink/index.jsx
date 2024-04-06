@@ -4,7 +4,7 @@ import styles from "./styles.module.css"
 export default function ButtonLink({path, btnTxt, children, classN}){
     return(
         <Link className={`${styles[classN]}`} to={path}>
-            {children && children}
+            {children}
             {btnTxt}
         </Link>
     )

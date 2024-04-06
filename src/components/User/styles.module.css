@@ -11,29 +11,23 @@
     color: var(--secundary);
 }
 
-.user_header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.user_header div {
+.user_header > div {
     display: flex;
     flex-direction: column;
 }
 
-.user_header div span {
+.user_header span {
     color: var(--white);
     font-weight: bold;
 }
 
-.user_header div a {
+.user_header a {
     color: var(--white);
     font-size: 0.9em;
     font-weight: 400;
     transition: 0.3s all;
 }
 
-.user_header div a:hover {
+.user_header a:hover {
     color: var(--primary-m);
 }

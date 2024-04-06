@@ -18,12 +18,12 @@
     gap: 1.1rem;
 }
 
-nav ul li:first-child a {
+nav li > a {
     color: var(--white);
     transition: .3s all;
 }
 
-nav ul li:first-child a:hover {
+nav li > a:hover {
     color: var(--primary);
 }
 
