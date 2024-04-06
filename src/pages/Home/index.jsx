@@ -12,7 +12,7 @@ import styles from "./styles.module.css"
 import image_no_posts from "../../assets/img/ilustration_no_posts.svg"
 
 import useAxios from "../../hooks/useAxios.jsx";
-import Loading from "../../components/LoadingPost/index.jsx";
+import Loading from "../../components/Loading/index.jsx";
 import ButtonLink from "../../components/ButtonLink/index.jsx";
 
 
@@ -58,7 +58,7 @@ export default function Home(){
     }
 
 
-    if(loading){
+    if(true){
         return(
             <section>
                 <Title title="Publicações">

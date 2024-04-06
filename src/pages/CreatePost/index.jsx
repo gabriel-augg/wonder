@@ -6,7 +6,7 @@ import { UserContext } from "../../contexts/UserContext.jsx"
 import Title from "../../components/Title";
 import NewPost from "../../components/NewPost";
 import Post from "../../components/Post/index.jsx";
-import LoadingPost from "../../components/LoadingPost/index.jsx";
+import Loading from "../../components/Loading/index.jsx";
 
 import styles from "./styles.module.css"
 import useAxios from "../../hooks/useAxios.jsx";
@@ -53,7 +53,7 @@ export default function CreatePost(){
                 />
             </div>
             <Title title="O que estão publicando"/>
-            {loading && <LoadingPost/>}
+            {loading && <Loading/>}
 
             <div className={styles.post_area}>
                 {posts.length > 0 && (

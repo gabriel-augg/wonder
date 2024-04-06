@@ -9,6 +9,10 @@
     justify-content: space-between;
 }
 
+.search svg {
+   margin-left: 0.3em;
+}
+
 .search input {
     background-color: transparent;
     border: none;
