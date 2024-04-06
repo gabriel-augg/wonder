@@ -66,7 +66,7 @@ export default function ShowUserPosts(){
                                     description={post.description}
                                     commentCount={post.answer_qty}
                                     btnTxt="Editar"
-                                    path={`/posts/editar/${post.id}`}
+                                    path={`/publicacoes/editar/${post.id}`}
                                     show={true}
                                 >
                                     <Button isLoading={loadingDelete}  btnTxt="Excluir" classN="delete" options={{

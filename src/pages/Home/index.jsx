@@ -62,7 +62,7 @@ export default function Home(){
         return(
             <section>
                 <Title title="Publicações">
-                    <ButtonLink btnTxt="Nova publicação" path="/novapostagem" classN="cta">
+                    <ButtonLink btnTxt="Nova publicação" path="/nova-publicacao" classN="cta">
                         <IoIosAddCircleOutline size={20}/>
                     </ButtonLink>
                 </Title>
@@ -74,7 +74,7 @@ export default function Home(){
     return (
         <section>
             <Title title="Publicações">
-                <ButtonLink btnTxt="Nova publicação" path="/novapostagem" classN="cta">
+                <ButtonLink btnTxt="Nova publicação" path="/nova-publicacao" classN="cta">
                     <IoIosAddCircleOutline size={20}/>
                 </ButtonLink>
             </Title>

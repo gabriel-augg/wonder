@@ -53,7 +53,17 @@ const useAxios = () => {
         }
     }
 
-    return { get, create, update, deleteOne, loading, setLoading, loadingDelete, loadingSubmit };
+    const put = async (url, obj) => {
+        try {
+            const {post} = await api.put(url, obj)
+        } catch (error) {
+            console.log(error)
+        } finally {
+
+        }
+    }
+
+    return { get, create, update, put, deleteOne, loading, setLoading, loadingDelete, loadingSubmit };
 };
 
 export default useAxios;

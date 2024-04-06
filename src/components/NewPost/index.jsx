@@ -7,7 +7,7 @@ import Textarea from "../Textarea";
 import styles from "./styles.module.css"
 import LetterCount from "../LetterCount";
 
-export default function NewPost({username, handleOnSubmit, placeholder, btnTxt, isLoading}){
+export default function NewPost({username, handleOnSubmit, placeholder, btnTxt, isLoading, value}){
     const {register, handleSubmit, reset} = useForm()
     const [textCount, setTextCount] = useState(0)
 
@@ -33,7 +33,8 @@ export default function NewPost({username, handleOnSubmit, placeholder, btnTxt, 
                         {   
                             required: true, 
                             maxLength: 355, 
-                            onChange: (e) => setTextCount(e.target.value.length)
+                            onChange: (e) => setTextCount(e.target.value.length),
+                            value
                         }
                     )}
                 />

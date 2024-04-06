@@ -39,8 +39,8 @@ export default function Post({id, username, likesCount, description, commentCoun
             {show && (
                 <div className={styles.post_footer}>
                     {children}
-                    <ButtonLink path={`/posts/${id}`} btnTxt="Ver respostas" classN="simple" />
-                    <ButtonLink path={ path ? path : `/posts/${id}`} btnTxt={btnTxt} classN="btn" />
+                    <ButtonLink path={`/publicacoes/${id}`} btnTxt="Ver respostas" classN="simple" />
+                    <ButtonLink path={ path ? path : `/publicacoes/${id}`} btnTxt={btnTxt} classN="btn" />
                 </div>
             )}
 
