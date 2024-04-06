@@ -1,7 +1,7 @@
 import Skeleton from "../Skeleton"
 import styles from "./styles.module.css"
 
-export default function Loading(){
+export default function LoadingPost(){
     return(
         <div className={styles.loading}>
             <Skeleton />

@@ -12,8 +12,8 @@ import styles from "./styles.module.css"
 import image_no_posts from "../../assets/img/ilustration_no_posts.svg"
 
 import useAxios from "../../hooks/useAxios.jsx";
-import Loading from "../../components/Loading/index.jsx";
-import ButtonLink from "../../components/ButtonLink/index.jsx";
+import LoadingPost from "../../components/LoadingPost";
+import ButtonLink from "../../components/ButtonLink";
 
 
 export default function Home(){
@@ -66,7 +66,7 @@ export default function Home(){
                         <IoIosAddCircleOutline size={20}/>
                     </ButtonLink>
                 </Title>
-                <Loading />
+                <LoadingPost />
             </section>
         )
     }
