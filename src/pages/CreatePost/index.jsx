@@ -52,10 +52,7 @@ export default function CreatePost(){
                 />
             </div>
             <Title title="O que estão publicando"/>
-            {loading && (
-                <div className={styles.loading_posts}>
-                </div>
-            )}
+            {loading && <div className={styles.loading_posts}></div>}
 
             <div className={styles.post_area}>
                 {posts.length !== 0 && (
@@ -68,8 +65,8 @@ export default function CreatePost(){
                                 createdAt={post.createdAt} 
                                 likesCount={post.liked} 
                                 description={post.description} 
-                                commentCount={post.answer_qty} 
-                                type="posts" 
+                                commentCount={post.answer_qty}
+                                btnTxt="Responder"
                                 show={true}
                             />                    
                         )

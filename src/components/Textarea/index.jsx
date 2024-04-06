@@ -1,6 +1,6 @@
 import styles from "./styles.module.css"
 
-export default function Textarea({name, register, placeholder, register}){
+export default function Textarea({name, placeholder, register}){
     return(
         <textarea 
             className={styles.textarea}
