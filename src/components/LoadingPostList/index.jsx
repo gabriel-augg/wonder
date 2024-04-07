@@ -1,12 +1,13 @@
-import MainAreaSkeleton from "../MainAreaSkeleton"
+
 import PostSkeleton from "../PostSkeleton"
+import styles from "./styles.module.css"
 
 export default function LoadingPost(){
     return(
-        <MainAreaSkeleton>
+        <div className={styles.loading_postlist}>
             <PostSkeleton />
             <PostSkeleton />
             <PostSkeleton />
-        </MainAreaSkeleton>
+        </div>
     )
 }

@@ -5,11 +5,13 @@ import { UserContext } from "../../contexts/UserContext.jsx"
 
 import Title from "../../components/Title";
 import NewPost from "../../components/NewPost";
-import Post from "../../components/Post/index.jsx";
-import LoadingPost from "../../components/LoadingPost";
+
+import LoadingPost from "../../components/LoadingPostList/index.jsx";
+
 
 import styles from "./styles.module.css"
 import useAxios from "../../hooks/useAxios.jsx";
+import PostList from "../../components/PostsList/index.jsx";
 
 export default function CreatePost(){
     const { create, get, loading, loadingSubmit } = useAxios()
@@ -58,25 +60,7 @@ export default function CreatePost(){
             <Title title="O que estão publicando"/>
             {loading && <LoadingPost/>}
 
-            <div className={styles.post_area}>
-                {posts.length > 0 && (
-                    posts.map((post) => {
-                        return(
-                            <Post 
-                                id={post.id} 
-                                key={post.id}
-                                username={post["User.username"]} 
-                                createdAt={post.createdAt} 
-                                likesCount={post.liked} 
-                                description={post.description} 
-                                commentCount={post.answer_qty}
-                                btnTxt="Responder"
-                                show={true}
-                            />                    
-                        )
-                    })
-                )}
-            </div>
+            <PostList posts={posts} />
         </section>
     )
 }

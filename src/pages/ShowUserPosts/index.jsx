@@ -9,7 +9,7 @@ import styles from "./styles.module.css"
 
 import Post from "../../components/Post";
 import Button from "../../components/Button";
-import LoadingPost from "../../components/LoadingPost";
+import LoadingPostList from "../../components/LoadingPostList";
 
 export default function ShowUserPosts(){
     const [posts, setPosts] = useState([])
@@ -42,7 +42,7 @@ export default function ShowUserPosts(){
                 <SpecialTitle title="Minhas publicações">
                     <BsChatQuote size={25} />
                 </SpecialTitle>
-                <LoadingPost />
+                <LoadingPostList />
             </div>
         )
     }

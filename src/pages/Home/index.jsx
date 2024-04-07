@@ -4,46 +4,45 @@ import { SearchContext } from "../../contexts/SearchContext.jsx";
 
 import Title from "../../components/Title";
 import Button from "../../components/Button";
-import Post from "../../components/Post";
 import { IoIosAddCircleOutline } from "react-icons/io";
 
 import styles from "./styles.module.css"
 
-import image_no_posts from "../../assets/img/ilustration_no_posts.svg"
 
 import useAxios from "../../hooks/useAxios.jsx";
-import LoadingPost from "../../components/LoadingPost";
+import LoadingPostList from "../../components/LoadingPostList";
 import ButtonLink from "../../components/ButtonLink";
-import MainArea from "../../components/MainArea/index.jsx";
+import PostList from "../../components/PostsList/index.jsx";
+import NoPosts from "../../components/NoPosts/index.jsx";
 
 
-export default function Home(){
+export default function Home() {
     const { get, loading } = useAxios("/posts")
 
     const [posts, setPosts] = useState([])
-    const {search} = useContext(SearchContext)
+    const { search } = useContext(SearchContext)
     const [offset, setOffSet] = useState(0)
     const [loadingMore, setLoadingMore] = useState(false)
     const [isPostsEmpty, setIsPostsEmpty] = useState(false)
 
-    useEffect(()=>{
+    useEffect(() => {
 
-            document.title = "Wonder"
+        document.title = "Wonder"
 
-            get("/posts", {
-                params: {
-                    offset,
-                    ...(search && {search})
-                }
-            })
-            .then(({posts}) => {
+        get("/posts", {
+            params: {
+                offset,
+                ...(search && { search })
+            }
+        })
+            .then(({ posts }) => {
                 if (offset === 0) {
                     setPosts(posts)
                 } else {
                     setPosts(prevPosts => [...prevPosts, ...posts])
                     setLoadingMore(false)
                 }
-                if(posts.length === 0){
+                if (posts.length === 0) {
                     setIsPostsEmpty(true)
                 }
             })
@@ -51,86 +50,38 @@ export default function Home(){
                 console.log(error)
             })
 
-    },[offset, search])
+    }, [offset, search])
 
-    function handleBtnMore(){
+    function handleBtnMore() {
         setOffSet(prevOffSet => prevOffSet + 5)
         setLoadingMore(true)
-    }
-
-
-    if(loading){
-        return(
-            <section>
-                <Title title="Publicações">
-                    <ButtonLink btnTxt="Nova publicação" path="/nova-publicacao" classN="cta">
-                        <IoIosAddCircleOutline size={20}/>
-                    </ButtonLink>
-                </Title>
-                <LoadingPost />
-            </section>
-        )
     }
 
     return (
         <section>
             <Title title="Publicações">
                 <ButtonLink btnTxt="Nova publicação" path="/nova-publicacao" classN="cta">
-                    <IoIosAddCircleOutline size={20}/>
+                    <IoIosAddCircleOutline size={20} />
                 </ButtonLink>
             </Title>
-            {/* <div className={styles.order_row}>
-                <span>Ordenar por: </span> 
-                <select>
-                    <option>Mais recente</option>
-                    <option>Mais antigo</option>
-                </select>
-                <select>
-                    <option>Mais curtido</option>
-                    <option>Menos curtido</option>
-                </select>
-            </div> */}
-            <MainArea>
-                {posts.length > 0 ? (
-                    <>
-                        <div className={styles.post_area}>
-                            {posts.map(post => {
-                                return (
-                                    <Post 
-                                        key={post.id} 
-                                        id={post.id} 
-                                        username={post["User.username"]} 
-                                        createdAt={post.createdAt} 
-                                        likesCount={post.liked} 
-                                        description={post.description} 
-                                        commentCount={post.answer_qty}
-                                        btnTxt="Responder"
-                                        show={true}
-                                    />
-                                )
-                            })}
-                        </div>
-                        { (posts.length >= 5 && !isPostsEmpty) && (
-                        <div className={styles.loading_more}>
-                            <Button 
-                                btnTxt="Buscar mais"
-                                classN="button"
-                                isLoading={loadingMore}
-                                options={{
-                                    onClick: handleBtnMore
-                                }}
-                            />
-                        </div>
 
-                        )}
-                    </>
-                ) : (
-                    <div className={styles.no_post_container}>
-                        <h1>Nenhuma publicação foi encontrada.</h1>
-                        <img src={image_no_posts} alt="ilustration" />
-                    </div>
-                )}
-            </MainArea>
+            {loading ? <LoadingPostList /> : <PostList posts={posts} />}
+
+            <NoPosts show={(!loading && posts.length === 0)} />
+
+            {(posts.length >= 5 && !isPostsEmpty) && (
+                <div className={styles.loading_more}>
+                    <Button
+                        btnTxt="Buscar mais"
+                        classN="button"
+                        isLoading={loadingMore}
+                        options={{
+                            onClick: handleBtnMore,
+                        }}
+                    />
+                </div>
+            )}
+
         </section>
     )
 }

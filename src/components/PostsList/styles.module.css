@@ -1,0 +1,13 @@
+@import url(../../utils/color-var.css);
+
+.postlist {
+    margin-top: 1.4em;
+    border: 1px solid var(--secundary);
+    border-radius: 1.2em;
+}
+
+.postlist > div:not(:last-child) {
+    border-bottom: 1px solid var(--secundary);
+}
+
+
