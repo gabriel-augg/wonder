@@ -3,18 +3,18 @@ import { useEffect, useState } from "react";
 import SpecialTitle from "../../components/SpecialTitle";
 import { BsChatQuote } from "react-icons/bs";
 
+import withLoadingAndNoPosts from "../../hoc/withLoadingAndNoPosts";
+import PostList from "../../components/PostsList";
+
 import useAxios from "../../hooks/useAxios";
 
-import styles from "./styles.module.css"
-
-import Post from "../../components/Post";
-import Button from "../../components/Button";
-import LoadingPostList from "../../components/LoadingPostList";
-
 export default function ShowUserPosts(){
+    
     const [posts, setPosts] = useState([])
     const [offset, setOffSet] = useState(0)
-    const {get, deleteOne, loading, loadingDelete} = useAxios()
+    const {get, deleteOne, loading} = useAxios()
+    
+    const PostListWithLoadingAndNoPost = withLoadingAndNoPosts(PostList)
 
     useEffect(()=>{
         get("/posts/my-posts")
@@ -36,50 +36,14 @@ export default function ShowUserPosts(){
         })
     }
 
-    if(loading){
-        return(
-            <div>
-                <SpecialTitle title="Minhas publicações">
-                    <BsChatQuote size={25} />
-                </SpecialTitle>
-                <LoadingPostList />
-            </div>
-        )
-    }
 
     return(
         <section>
             <SpecialTitle title="Minhas publicações">
                 <BsChatQuote size={25} />
             </SpecialTitle>
-            <div>
-                <div className={styles.post_area}>
-                    { posts.length > 0 && (
-                        posts.map((post) => {
-                            return(
-                                <Post 
-                                    key={post.id}
-                                    id={post.id}
-                                    username={post["User.username"]} 
-                                    createdAt={post.createdAt}
-                                    likesCount={post.liked}
-                                    description={post.description}
-                                    commentCount={post.answer_qty}
-                                    btnTxt="Editar"
-                                    path={`/publicacoes/editar/${post.id}`}
-                                    show={true}
-                                >
-                                    <Button isLoading={loadingDelete}  btnTxt="Excluir" classN="delete" options={{
-                                        onClick: () => handleDelete(post.id)
-                                    }}/>
+            <PostListWithLoadingAndNoPost posts={posts} handleDelete={handleDelete} loading={loading} />
 
-                                </Post>
-                            )
-                        })
-                    )}  
-
-                </div>
-            </div>
         </section>
     )
 }

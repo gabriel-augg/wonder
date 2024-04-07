@@ -1,7 +1,7 @@
 import styles from "./styles.module.css"
 import Post from "../Post"
 
-export default function PostList({posts}){
+export default function PostList({posts, handleDelete}){
     return (
         <>  
             { posts.length > 0 && (
@@ -16,6 +16,7 @@ export default function PostList({posts}){
                                 likesCount={post.liked}
                                 description={post.description}
                                 commentCount={post.answer_qty}
+                                handleDelete={handleDelete}
                                 btnTxt="Responder"
                                 show={true}
                             />

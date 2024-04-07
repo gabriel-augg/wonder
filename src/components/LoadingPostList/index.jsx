@@ -2,7 +2,7 @@
 import PostSkeleton from "../PostSkeleton"
 import styles from "./styles.module.css"
 
-export default function LoadingPost(){
+export default function LoadingPostList(){
     return(
         <div className={styles.loading_postlist}>
             <PostSkeleton />

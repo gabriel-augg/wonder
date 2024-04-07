@@ -5,8 +5,9 @@ import Time from "../Time";
 import User from "../User";
 import Description from "../Description";
 import ButtonLink from "../ButtonLink";
+import Button from "../Button";
 
-export default function Post({id, username, likesCount, description, commentCount, createdAt, show, children, btnTxt, path}){
+export default function Post({id, username, likesCount, description, commentCount, createdAt, show, handleDelete, btnTxt, path}){
 
     return(
         <div className={styles.post}>
@@ -38,7 +39,11 @@ export default function Post({id, username, likesCount, description, commentCoun
             <Description description={description} />
             {show && (
                 <div className={styles.post_footer}>
-                    {children}
+                    { handleDelete && (
+                        <Button  btnTxt="Excluir" classN="delete" options={{
+                            onClick: () => handleDelete(id)
+                        }}/>
+                    )}
                     <ButtonLink path={`/publicacoes/${id}`} btnTxt="Ver respostas" classN="simple" />
                     <ButtonLink path={ path ? path : `/publicacoes/${id}`} btnTxt={btnTxt} classN="btn" />
                 </div>

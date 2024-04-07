@@ -8,22 +8,21 @@ import { IoIosAddCircleOutline } from "react-icons/io";
 
 import styles from "./styles.module.css"
 
+import withLoadingAndNoPosts from "../../hoc/withLoadingAndNoPosts.jsx";
 
 import useAxios from "../../hooks/useAxios.jsx";
-import LoadingPostList from "../../components/LoadingPostList";
 import ButtonLink from "../../components/ButtonLink";
 import PostList from "../../components/PostsList/index.jsx";
-import NoPosts from "../../components/NoPosts/index.jsx";
 
 
 export default function Home() {
     const { get, loading } = useAxios("/posts")
-
     const [posts, setPosts] = useState([])
     const { search } = useContext(SearchContext)
     const [offset, setOffSet] = useState(0)
     const [loadingMore, setLoadingMore] = useState(false)
     const [isPostsEmpty, setIsPostsEmpty] = useState(false)
+    const PostListWithLoadingAndNoPost = withLoadingAndNoPosts(PostList)
 
     useEffect(() => {
 
@@ -65,9 +64,7 @@ export default function Home() {
                 </ButtonLink>
             </Title>
 
-            {loading ? <LoadingPostList /> : <PostList posts={posts} />}
-
-            <NoPosts show={(!loading && posts.length === 0)} />
+            <PostListWithLoadingAndNoPost posts={posts} loading={loading} />
 
             {(posts.length >= 5 && !isPostsEmpty) && (
                 <div className={styles.loading_more}>
