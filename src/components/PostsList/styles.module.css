@@ -1,9 +1,9 @@
 @import url(../../utils/color-var.css);
 
 .postlist {
-    margin-top: 1.4em;
+    margin-top: 1em;
     border: 1px solid var(--secundary);
-    border-radius: 1.2em;
+    border-radius: 1em;
 }
 
 .postlist > div:not(:last-child) {

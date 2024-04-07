@@ -45,7 +45,7 @@ export default function Post({id, username, likesCount, description, commentCoun
                         }}/>
                     )}
                     <ButtonLink path={`/publicacoes/${id}`} btnTxt="Ver respostas" classN="simple" />
-                    <ButtonLink path={ path ? path : `/publicacoes/${id}`} btnTxt={btnTxt} classN="btn" />
+                    <ButtonLink path={ path ? `${path}/${id}` : `/publicacoes/${id}`} btnTxt={btnTxt} classN="btn" />
                 </div>
             )}
 

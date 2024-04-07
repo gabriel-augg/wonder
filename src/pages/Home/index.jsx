@@ -3,16 +3,14 @@ import { useEffect, useState, useContext } from "react";
 import { SearchContext } from "../../contexts/SearchContext.jsx";
 
 import Title from "../../components/Title";
-import Button from "../../components/Button";
 import { IoIosAddCircleOutline } from "react-icons/io";
-
-import styles from "./styles.module.css"
 
 import withLoadingAndNoPosts from "../../hoc/withLoadingAndNoPosts.jsx";
 
 import useAxios from "../../hooks/useAxios.jsx";
 import ButtonLink from "../../components/ButtonLink";
 import PostList from "../../components/PostsList/index.jsx";
+import FindMoreArea from "../../components/FindMoreArea/index.jsx";
 
 
 export default function Home() {
@@ -51,7 +49,7 @@ export default function Home() {
 
     }, [offset, search])
 
-    function handleBtnMore() {
+    function handleFindMore() {
         setOffSet(prevOffSet => prevOffSet + 5)
         setLoadingMore(true)
     }
@@ -64,20 +62,17 @@ export default function Home() {
                 </ButtonLink>
             </Title>
 
-            <PostListWithLoadingAndNoPost posts={posts} loading={loading} />
+            <PostListWithLoadingAndNoPost 
+                posts={posts} 
+                loading={loading} 
+                btnTxt="Responder"
+            />
 
-            {(posts.length >= 5 && !isPostsEmpty) && (
-                <div className={styles.loading_more}>
-                    <Button
-                        btnTxt="Buscar mais"
-                        classN="button"
-                        isLoading={loadingMore}
-                        options={{
-                            onClick: handleBtnMore,
-                        }}
-                    />
-                </div>
-            )}
+            <FindMoreArea 
+                show={(posts.length >= 5 && !isPostsEmpty)} 
+                loading={loadingMore}
+                handleFindMore={handleFindMore}
+            />
 
         </section>
     )

@@ -42,7 +42,14 @@ export default function ShowUserPosts(){
             <SpecialTitle title="Minhas publicações">
                 <BsChatQuote size={25} />
             </SpecialTitle>
-            <PostListWithLoadingAndNoPost posts={posts} handleDelete={handleDelete} loading={loading} />
+
+            <PostListWithLoadingAndNoPost 
+                posts={posts} 
+                path="/publicacoes/editar" 
+                btnTxt="Editar"
+                handleDelete={handleDelete} 
+                loading={loading} 
+            />
 
         </section>
     )
