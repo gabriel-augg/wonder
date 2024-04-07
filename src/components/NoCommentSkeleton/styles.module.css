@@ -1,0 +1,30 @@
+@import url(../../utils/color-var.css);
+
+@keyframes change {
+    0%,
+    100% {
+        background-color: transparent;
+    }
+
+    50% {
+        background-color: var(--white-p);
+    }
+}
+
+
+.no_comment {
+    padding: 2em;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1em;
+}
+
+.no_comment > div {
+    width: 250px;
+    height: 20px;
+    border-radius: 1em;
+    background-color: var(--white-p);
+    animation: change 1s linear infinite;
+}

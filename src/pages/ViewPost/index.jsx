@@ -8,11 +8,13 @@ import Post from "../../components/Post"
 import styles from "./styles.module.css"
 import { useParams } from "react-router-dom"
 
-import { BsChatQuote } from "react-icons/bs";
+;
 import useAxios from "../../hooks/useAxios"
 import LoadingViewPost from "../../components/LoadingViewPost"
 import { UserContext } from "../../contexts/UserContext"
 import Button from "../../components/Button"
+import Divisor from "../../components/Divisor"
+import NoComment from "../../components/NoComment"
 
 export default function ViewPost() {
     const { get, create, loading, loadingSubmit } = useAxios()
@@ -78,9 +80,7 @@ export default function ViewPost() {
                             commentCount={post.answer_qty} 
                         />
 
-                        <div className={styles.answer_line}>
-                            <span>COMENTÁRIOS</span>
-                        </div>
+                        <Divisor />
 
                         <NewPost
                             username={user.username}
@@ -103,9 +103,7 @@ export default function ViewPost() {
                             )
                         }
                         )) : (
-                            <div className={styles.no_answer}>
-                                <span>Seja o primeiro a responder!</span><BsChatQuote size={30} color="#299AD1" />
-                            </div>
+                            <NoComment txt="Seja o primeiro a responder!" />
                         )}
                     </div>
                     { ( answers.length >= 5 && !isAnswersEmpty ) && (

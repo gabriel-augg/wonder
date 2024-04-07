@@ -8,6 +8,7 @@ import SpecialTitle from "../../components/SpecialTitle"
 import { RiUserFollowFill } from "react-icons/ri";
 
 import styles from "./styles.module.css"
+import Divisor from "../../components/Divisor";
 
 export default function UpdatePost(){
     const { id } = useParams()
@@ -41,7 +42,7 @@ export default function UpdatePost(){
                             handleOnSubmit={handleUpdate}
                             value={post.description} 
                         />
-                        <div className={styles.divisor}><span>COMENTÁRIOS</span></div>
+                        <Divisor/>
                         {comments.length > 0 && (
                             comments.map((comment) => {
                                 return(

@@ -1,0 +1,13 @@
+.no_comment {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+    gap: 1em;
+}
+
+.no_comment span {
+    font-size: 1.2em;
+    font-weight: 500;
+    color: var(--secundary-m);
+}

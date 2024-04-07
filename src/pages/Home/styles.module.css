@@ -1,23 +1,5 @@
 @import url(../../utils/color-var.css);
 
-.post_area {
-    border: 1px solid var(--secundary);
-    border-radius: 1.4em;
-    margin-top: 1em;
-}
-
-.post_area > div:not(:last-child){
-    border-bottom: 1px solid var(--secundary);
-}
-
-.no_post_container {
-    text-align: center;
-}
-
-.no_post_container h1 {
-    color: var(--secundary-m);
-    padding-top: 1em;
-}
 
 .loading_more {
     display: flex;

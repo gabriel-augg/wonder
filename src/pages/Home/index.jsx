@@ -14,6 +14,7 @@ import image_no_posts from "../../assets/img/ilustration_no_posts.svg"
 import useAxios from "../../hooks/useAxios.jsx";
 import LoadingPost from "../../components/LoadingPost";
 import ButtonLink from "../../components/ButtonLink";
+import MainArea from "../../components/MainArea/index.jsx";
 
 
 export default function Home(){
@@ -89,7 +90,7 @@ export default function Home(){
                     <option>Menos curtido</option>
                 </select>
             </div> */}
-            <div>
+            <MainArea>
                 {posts.length > 0 ? (
                     <>
                         <div className={styles.post_area}>
@@ -129,7 +130,7 @@ export default function Home(){
                         <img src={image_no_posts} alt="ilustration" />
                     </div>
                 )}
-            </div>
+            </MainArea>
         </section>
     )
 }

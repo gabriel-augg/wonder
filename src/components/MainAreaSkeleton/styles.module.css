@@ -1,0 +1,32 @@
+@import url(../../utils/color-var.css);
+
+@keyframes change {
+    0%,
+    100% {
+        border-color: transparent;
+    }
+
+    50% {
+        border-color: var(--white-p);
+    }
+}
+
+.main_area {
+    margin-top: 2em;
+}
+
+.main_area > div {
+    border: 1px solid var(--white-p);
+    animation: change 1s linear infinite;
+    
+}
+
+.main_area > div:first-child {
+    border-top-right-radius: 1em;
+    border-top-left-radius: 1em;
+}
+
+.main_area > div:last-child {
+    border-bottom-right-radius: 1em;
+    border-bottom-left-radius: 1em;
+}

@@ -1,0 +1,8 @@
+@import url(../../utils/color-var.css);
+
+.divisor {
+    background-color: var(--secundary-m);
+    color: var(--white);
+    padding: 0.2em 0.4em;
+    font-size: 0.8em;
+}
