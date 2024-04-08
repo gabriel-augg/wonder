@@ -6,7 +6,7 @@ import Home from "../pages/Home"
 import CreatePost from "../pages/CreatePost"
 import ViewPost from "../pages/ViewPost"
 import ShowUserPosts from "../pages/ShowUserPosts"
-import UpdatePost from "../pages/UpdatePost"
+import PostEdit from "../pages/PostEdit"
 
 import NotFound from "../pages/NotFound"
 import Private from "./Private"
@@ -20,7 +20,7 @@ export default function AppRoutes(){
             <Route path="/nova-publicacao" element={ <Private><CreatePost/></Private> } />
             <Route path="/publicacoes/:id" element={<Private><ViewPost/></Private>} />
             <Route path="/minhas-publicacoes" element={<Private><ShowUserPosts/></Private>} />
-            <Route path="/publicacoes/editar/:id" element={<Private><UpdatePost/></Private>} />
+            <Route path="/publicacoes/editar/:id" element={<Private><PostEdit/></Private>} />
             <Route path="/" element={ <Home /> } />
 
             <Route path="*" element={<NotFound/>} />

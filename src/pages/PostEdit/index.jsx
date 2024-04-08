@@ -9,8 +9,10 @@ import { RiUserFollowFill } from "react-icons/ri";
 
 import styles from "./styles.module.css"
 import Divisor from "../../components/Divisor";
+import NoAnswer from "../../components/NoAnswer";
+import LoadingPostEdit from "../../components/LoadingPostEdit";
 
-export default function UpdatePost(){
+export default function PostEdit(){
     const { id } = useParams()
     const [post, setPost] = useState(null)
     const [answers, setAnswers] = useState([])
@@ -28,6 +30,18 @@ export default function UpdatePost(){
         put(`/posts/id/${id}`, description)
     }
 
+    if(loading){
+        return(
+            <section>
+                <SpecialTitle title="Minha publicação">
+                    <RiUserFollowFill size={30} />
+                </SpecialTitle>
+                <LoadingPostEdit />
+                
+            </section>
+        )
+    }
+
     return(
         <section>
                 <SpecialTitle title="Minha publicação">
@@ -42,8 +56,8 @@ export default function UpdatePost(){
                             handleOnSubmit={handleUpdate}
                             value={post.description} 
                         />
-                        <Divisor/>
-                        {answers.length > 0 && (
+                    <Divisor txt="RESPOSTAS"/>
+                        {answers.length > 0 ? (
                             answers.map((answer) => {
                                 return(
                                     <Answer 
@@ -57,6 +71,8 @@ export default function UpdatePost(){
                                     />
                                 )
                             })
+                        ) : (
+                            <NoAnswer txt="Parece que não há respostas" />
                         )}
                         
                     </div>

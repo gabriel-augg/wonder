@@ -10,6 +10,7 @@ export default function LoadingViewPost() {
             <DivisorSkeleton />
             <NewPostSkeleton/>
             <AnswerSkeleton/>
+            <AnswerSkeleton/>
         </ContentArea>
     )
 }
