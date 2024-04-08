@@ -1,6 +1,6 @@
 import styles from "./styles.module.css"
 
-export default function CommentSkeleton(){
+export default function AnswerSkeleton(){
     return(
         <div class={styles.skeleton}>
             <div class={styles.header}>
@@ -10,7 +10,7 @@ export default function CommentSkeleton(){
                     <span class={styles.date}></span>
                 </div>
                 <div>
-                    <span className={styles.comment}></span>
+                    <span className={styles.answer}></span>
                     <span className={styles.like}></span>
                 </div>
             </div>

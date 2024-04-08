@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from "react"
 
 import Title from "../../components/Title"
 import NewPost from "../../components/NewPost"
-import Comment from "../../components/Comment"
+import Answer from "../../components/Answer"
 import Post from "../../components/Post"
 
 
@@ -12,7 +12,7 @@ import LoadingViewPost from "../../components/LoadingViewPost"
 import { UserContext } from "../../contexts/UserContext"
 import Button from "../../components/Button"
 import Divisor from "../../components/Divisor"
-import NoComment from "../../components/NoComment"
+import NoAnswer from "../../components/NoAnswer"
 import ContentArea from "../../components/ContentArea"
 import FindMoreArea from "../../components/FindMoreArea";
 
@@ -24,6 +24,7 @@ export default function ViewPost() {
     const [offset, setOffSet] = useState(0)
     const [post, setPost] = useState(null)
     const [isAnswersEmpty, setIsAnswersEmpty] = useState(false)
+    const [loadingMore, setLoadingMore] = useState(false)
     const [answers, setAnswers] = useState([])
 
     useEffect(() => {
@@ -33,21 +34,27 @@ export default function ViewPost() {
                 offset
             }
         })
-            .then(({ post }) => {
-                setPost(post)
-                document.title = `Publicação de ${post.User.username}`
-                setAnswers([...answers, ...post.Answers])
-                setIsAnswersEmpty(post.Answers.length === 0)
-            })
+        .then(({ post }) => {
+            document.title = `Publicação de ${post.User.username}`
+            setPost(post)
+            offset === 0 
+            ? setAnswers(post.Answers)
+            : (
+                setLoadingMore(false),
+                setAnswers(prevAnswers => [...prevAnswers, ...post.Answers])
+            )
+            setAnswers([...answers, ...post.Answers])
+            setIsAnswersEmpty(post.Answers.length === 0)
+        })
 
     }, [id, offset])
 
     function handleFindMore() {
         setOffSet(prevOffSet => prevOffSet + 5)
-        // setLoadingMore(true)
+        setLoadingMore(true)
     }
 
-    function handleComment({ description }, reset, set) {
+    function handleAnswer({ description }, reset, set) {
         const answer = {
             description,
             postId: post.id
@@ -82,21 +89,21 @@ export default function ViewPost() {
                             createdAt={post.createdAt}
                             likesCount={post.liked}
                             description={post.description}
-                            commentCount={post.answer_qty}
+                            AnswerCount={post.answer_qty}
                         />
 
-                        <Divisor />
+                        <Divisor txt="RESPOSTAS" />
 
                         <NewPost
                             username={user.username}
-                            handleOnSubmit={handleComment}
+                            handleOnSubmit={handleAnswer}
                             placeholder="Digite qualquer coisa"
                             btnTxt="Responder"
                             isLoading={loadingSubmit}
                         />
                         {answers.length > 0 ? (answers.map((answer) => {
                             return (
-                                <Comment
+                                <Answer
                                     key={answer.id}
                                     id={answer.id}
                                     username={answer.username}
@@ -108,13 +115,13 @@ export default function ViewPost() {
                             )
                         }
                         )) : (
-                            <NoComment txt="Seja o primeiro a responder!" />
+                            <NoAnswer txt="Seja o primeiro a responder!" />
                         )}
                     </ContentArea>
 
                     <FindMoreArea 
                         show={(answers.length >= 5 && !isAnswersEmpty)} 
-                        // loading={loadingMore}
+                        loading={loadingMore}
                         handleFindMore={handleFindMore}
                     />
                 </>

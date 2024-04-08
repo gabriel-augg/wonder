@@ -1,17 +1,17 @@
 @import url(../../utils/color-var.css);
 
-.comment {
+.answer {
     padding: 1.5em;
     width: 100%;
 }
 
-.comment_header {
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.comment_header > div:first-child {
+.header > div:first-child {
     display: flex;
     align-items: center;
     gap: 1em;

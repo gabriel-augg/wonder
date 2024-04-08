@@ -32,20 +32,19 @@ export default function Home() {
                 ...(search && { search })
             }
         })
-            .then(({ posts }) => {
-                if (offset === 0) {
-                    setPosts(posts)
-                } else {
-                    setPosts(prevPosts => [...prevPosts, ...posts])
-                    setLoadingMore(false)
-                }
-                if (posts.length === 0) {
-                    setIsPostsEmpty(true)
-                }
-            })
-            .catch((error) => {
-                console.log(error)
-            })
+        .then(({ posts }) => {
+            offset === 0 
+            ? setPosts(posts) 
+            : (
+                setPosts(prevPosts => [...prevPosts, ...posts]),
+                setLoadingMore(false)
+            );
+            setIsPostsEmpty(posts.length === 0)
+            
+        })
+        .catch((error) => {
+            console.log(error)
+        })
 
     }, [offset, search])
 

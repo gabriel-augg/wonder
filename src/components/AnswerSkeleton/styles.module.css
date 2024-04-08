@@ -20,7 +20,7 @@
     justify-content: space-between;
 }
 
-.header>div {
+.header > div {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -51,7 +51,7 @@
     margin-right: 10px;
 }
 
-.comment {
+.answer {
     width: 20px;
     height: 20px;
     border-radius: 1em;
@@ -82,7 +82,7 @@
 .username,
 .date,
 .like,
-.comment,
+.answer,
 .message_paragraph {
     animation: change 1s linear infinite;
 }

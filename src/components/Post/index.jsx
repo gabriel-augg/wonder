@@ -1,13 +1,13 @@
 import styles from "./styles.module.css"
 import Like from "../Like";
-import CommentCounter from "../CommentCounter";
+import AnswerCounter from "../AnswerCounter";
 import Time from "../Time";
 import User from "../User";
 import Description from "../Description";
 import ButtonLink from "../ButtonLink";
 import Button from "../Button";
 
-export default function Post({id, username, likesCount, description, commentCount, createdAt, show, handleDelete, btnTxt, path}){
+export default function Post({id, username, likesCount, description, answerCount, createdAt, show, handleDelete, btnTxt, path}){
 
     return(
         <div className={styles.post}>
@@ -24,8 +24,8 @@ export default function Post({id, username, likesCount, description, commentCoun
                 </div>
                 <div>
 
-                    <CommentCounter 
-                        count={commentCount} 
+                    <AnswerCounter 
+                        count={answerCount} 
                     />
 
                     <Like 

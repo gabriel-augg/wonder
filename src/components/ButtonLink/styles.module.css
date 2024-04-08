@@ -1,14 +1,15 @@
 .btn {
-    color: var(--primary);
+    color: var(--white);
+    background-color: var(--primary-m);
     padding: .4em 1em;
     border-radius: 1.8em;
-    border: 1.4px solid var(--primary);
     transition: .3s all;
 }
 
 .btn:hover {
     color: var(--white);
-    background-color: var(--primary-m);
+    background-color: var(--primary);
+    border: none;
 }
 
 .simple {
@@ -17,7 +18,7 @@
 }
 
 .simple:hover {
-    color: var(--primary-p);
+    text-decoration: underline;
 }
 
 .cta {

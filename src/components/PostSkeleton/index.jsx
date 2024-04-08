@@ -10,7 +10,7 @@ export default function PostSkeleton(){
                     <span class={styles.date}></span>
                 </div>
                 <div>
-                    <span className={styles.comment}></span>
+                    <span className={styles.answer}></span>
                     <span className={styles.like}></span>
                 </div>
             </div>

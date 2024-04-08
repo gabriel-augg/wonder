@@ -7,7 +7,15 @@ export default function withLoadingAndNoPosts(WrappedComponent) {
       return loading 
       ? <LoadingPostList/> 
       : (posts.length > 0) 
-      ? <WrappedComponent posts={posts} handleDelete={handleDelete} btnTxt={btnTxt} path={path} {...props} /> 
+      ? (
+        <WrappedComponent 
+          posts={posts} 
+          handleDelete={handleDelete} 
+          btnTxt={btnTxt} 
+          path={path} 
+          {...props} 
+        />
+      ) 
       : <NoPosts />;
     };
   }

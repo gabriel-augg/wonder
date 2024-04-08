@@ -1,7 +1,7 @@
 @import url(../../utils/color-var.css);
 
 .autor {
-    background-color: var(--primary-p);
+    background-color: var(--primary-m);
     border-radius: 1em;
     font-size: 0.8em;
     padding: 0.2em 0.4em;

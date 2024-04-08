@@ -23,12 +23,12 @@
 }
 
 .user_header a {
-    color: var(--white);
+    color: var(--white-p);
     font-size: 0.9em;
     font-weight: 400;
     transition: 0.3s all;
 }
 
 .user_header a:hover {
-    color: var(--primary-m);
+    text-decoration: underline;
 }

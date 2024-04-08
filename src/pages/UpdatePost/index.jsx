@@ -3,7 +3,7 @@ import {useParams} from "react-router-dom"
 
 import useAxios from "../../hooks/useAxios";
 import NewPost from "../../components/NewPost"
-import Comment from "../../components/Comment"
+import Answer from "../../components/Answer"
 import SpecialTitle from "../../components/SpecialTitle"
 import { RiUserFollowFill } from "react-icons/ri";
 
@@ -13,14 +13,14 @@ import Divisor from "../../components/Divisor";
 export default function UpdatePost(){
     const { id } = useParams()
     const [post, setPost] = useState(null)
-    const [comments, setComments] = useState([])
+    const [answers, setAnswers] = useState([])
     const {get, put, loading} = useAxios()
 
     useEffect(()=>{
         get(`posts/id/${id}`)
         .then(({post}) => {
             setPost(post)
-            setComments(post.Answers)
+            setAnswers(post.Answers)
         })
     },[id])
 
@@ -43,17 +43,17 @@ export default function UpdatePost(){
                             value={post.description} 
                         />
                         <Divisor/>
-                        {comments.length > 0 && (
-                            comments.map((comment) => {
+                        {answers.length > 0 && (
+                            answers.map((answer) => {
                                 return(
-                                    <Comment 
-                                        key={comment.id} 
-                                        id={comment.id} 
-                                        username={comment.username} 
-                                        likesCount={comment.liked} 
-                                        description={comment.description} 
-                                        createdAt={comment.createdAt} 
-                                        author={comment.username === post.User.username}
+                                    <Answer 
+                                        key={answer.id} 
+                                        id={answer.id} 
+                                        username={answer.username} 
+                                        likesCount={answer.liked} 
+                                        description={answer.description} 
+                                        createdAt={answer.createdAt} 
+                                        author={answer.username === post.User.username}
                                     />
                                 )
                             })

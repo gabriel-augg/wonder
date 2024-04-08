@@ -7,10 +7,10 @@ import Author from "../Author";
 import Description from "../Description";
 
 
-export default function Comment({id, username, likesCount, description, createdAt, author}){
+export default function Answer({id, username, likesCount, description, createdAt, author}){
     return(
-        <div className={styles.comment}>
-            <div className={styles.comment_header}>
+        <div className={styles.answer}>
+            <div className={styles.header}>
                 <div >
                     <User 
                         url={null} 

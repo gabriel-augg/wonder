@@ -1,7 +1,8 @@
-import { formatDistanceToNow } from "date-fns";
+import { formatDistanceToNowStrict } from "date-fns";
 import { ptBR } from "date-fns/locale"
 
 export default function timeAgo(data){
-    const date = formatDistanceToNow(new Date(data), { addSuffix: true, locale: ptBR })
+    const date = formatDistanceToNowStrict(new Date(data), { locale: ptBR })
     return date
 }
+

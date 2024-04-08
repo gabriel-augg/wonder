@@ -14,7 +14,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--primary);
+    background-color: var(--primary-m);
     font-size: 1em;
     color: var(--white);
     border-radius: 1em;
@@ -24,7 +24,7 @@
 }
 
 .button:hover {
-    background-color: var(--primary-p);
+    background-color: var(--primary);
 }
 
 

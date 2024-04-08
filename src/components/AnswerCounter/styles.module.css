@@ -1,6 +1,6 @@
 @import url(../../utils/color-var.css);
 
-.comment span:first-child {
+.answer span:first-child {
     color: var(--secundary-m);
     margin-right: 0.2em;
     font-size: 1em;
