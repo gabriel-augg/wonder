@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 import SpecialTitle from "../../components/SpecialTitle";
-import { BsChatQuote } from "react-icons/bs";
+import { BsWechat } from "react-icons/bs";
 
 import withLoadingAndNoPosts from "../../hoc/withLoadingAndNoPosts";
 import PostList from "../../components/PostsList";
@@ -40,7 +40,7 @@ export default function ShowUserPosts(){
     return(
         <section>
             <SpecialTitle title="Minhas publicações">
-                <BsChatQuote size={25} />
+                <BsWechat size={30} />
             </SpecialTitle>
 
             <PostListWithLoadingAndNoPost 

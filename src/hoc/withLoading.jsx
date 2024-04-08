@@ -1,9 +1,8 @@
-import LoadingViewPost from "../components/LoadingViewPost"
 
-export default function withLoading(WrappedComponent){
+export default function withLoading(WrappedComponent, Loading){
     return ({loading, ...props}) => {
         return loading
-        ? <LoadingViewPost/>
+        ? <Loading/>
         : <WrappedComponent {...props} />
     }
 }

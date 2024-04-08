@@ -8,6 +8,7 @@ import Logo from "../Logo"
 
 import styles from "./styles.module.css"
 import User from "../User"
+import Dropdown from "../Dropdown"
 
 
 export default function Header(){
@@ -18,6 +19,7 @@ export default function Header(){
         <header className={styles.header}>
             <Logo />
             <Search />
+            
             <nav className={styles.navbar}>
                 <ul>
                     <li>

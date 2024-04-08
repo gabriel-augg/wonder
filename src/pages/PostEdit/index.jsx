@@ -1,22 +1,20 @@
 import { useEffect, useState } from "react"
-import {useParams} from "react-router-dom"
+import {useParams, useNavigate} from "react-router-dom"
 
 import useAxios from "../../hooks/useAxios";
-import NewPost from "../../components/NewPost"
-import Answer from "../../components/Answer"
 import SpecialTitle from "../../components/SpecialTitle"
 import { RiUserFollowFill } from "react-icons/ri";
-
-import styles from "./styles.module.css"
-import Divisor from "../../components/Divisor";
-import NoAnswer from "../../components/NoAnswer";
 import LoadingPostEdit from "../../components/LoadingPostEdit";
+import withLoading from "../../hoc/withLoading";
+import PostEditContent from "../../components/PostEditContent";
 
 export default function PostEdit(){
     const { id } = useParams()
+    const navigate = useNavigate()
     const [post, setPost] = useState(null)
     const [answers, setAnswers] = useState([])
-    const {get, put, loading} = useAxios()
+    const {get, put, loading, loadingSubmit} = useAxios()
+    const PostEditContentWithLoading = withLoading(PostEditContent, LoadingPostEdit)
 
     useEffect(()=>{
         get(`posts/id/${id}`)
@@ -28,55 +26,25 @@ export default function PostEdit(){
 
     function handleUpdate(description){
         put(`/posts/id/${id}`, description)
-    }
-
-    if(loading){
-        return(
-            <section>
-                <SpecialTitle title="Minha publicação">
-                    <RiUserFollowFill size={30} />
-                </SpecialTitle>
-                <LoadingPostEdit />
-                
-            </section>
-        )
+        .then(()=> {
+            navigate("/minhas-publicacoes")
+        })
     }
 
     return(
         <section>
-                <SpecialTitle title="Minha publicação">
+                <SpecialTitle title="Editar minha publicação">
                     <RiUserFollowFill size={30} />
                 </SpecialTitle>
-                { post && (
-                    <div className={styles.post_container}>
-                        <NewPost 
-                            username={post.User.username} 
-                            placeholder="Digite qualquer coisa" 
-                            btnTxt="Salvar" 
-                            handleOnSubmit={handleUpdate}
-                            value={post.description} 
-                        />
-                    <Divisor txt="RESPOSTAS"/>
-                        {answers.length > 0 ? (
-                            answers.map((answer) => {
-                                return(
-                                    <Answer 
-                                        key={answer.id} 
-                                        id={answer.id} 
-                                        username={answer.username} 
-                                        likesCount={answer.liked} 
-                                        description={answer.description} 
-                                        createdAt={answer.createdAt} 
-                                        author={answer.username === post.User.username}
-                                    />
-                                )
-                            })
-                        ) : (
-                            <NoAnswer txt="Parece que não há respostas" />
-                        )}
-                        
-                    </div>
-                ) }
+
+                <PostEditContentWithLoading
+                    loading={loading} 
+                    post={post} 
+                    handleUpdate={handleUpdate} 
+                    loadingSubmit={loadingSubmit}
+                    answers={answers} 
+                    txt="Parece que não há respostas" 
+                />
 
         </section>
     )

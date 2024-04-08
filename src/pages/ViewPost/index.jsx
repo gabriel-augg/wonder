@@ -1,23 +1,16 @@
 import { useEffect, useState, useContext } from "react"
 
 import Title from "../../components/Title"
-import NewPost from "../../components/NewPost"
-import Answer from "../../components/Answer"
-import Post from "../../components/Post"
 
 
 import { useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios"
-import LoadingViewPost from "../../components/LoadingViewPost"
 import { UserContext } from "../../contexts/UserContext"
-import Button from "../../components/Button"
-import Divisor from "../../components/Divisor"
-import NoAnswer from "../../components/NoAnswer"
-import ContentArea from "../../components/ContentArea"
 import FindMoreArea from "../../components/FindMoreArea";
-import AnswerList from "../../components/AnswerList"
 import ViewPostContent from "../../components/ViewPostContent"
 import withLoading from "../../hoc/withLoading"
+
+import LoadingViewPost from "../../components/LoadingViewPost"
 
 
 export default function ViewPost() {
@@ -29,7 +22,7 @@ export default function ViewPost() {
     const [isAnswersEmpty, setIsAnswersEmpty] = useState(false)
     const [loadingMore, setLoadingMore] = useState(false)
     const [answers, setAnswers] = useState([])
-    const ViewContentWithLoading = withLoading(ViewPostContent)
+    const ViewContentWithLoading = withLoading(ViewPostContent, LoadingViewPost)
 
     useEffect(() => {
 
@@ -77,6 +70,7 @@ export default function ViewPost() {
         return (
             <section>
                 <Title title="Publicação" />
+
                 <ViewContentWithLoading
                     loading={loading}
                     post={post}

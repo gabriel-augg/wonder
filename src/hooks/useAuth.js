@@ -66,5 +66,11 @@ export default function useAuth(){
         })
     }
 
-    return {authenticated, loading, loadingAuth, user, signIn, signUp}
+    function signOut(){
+        setAuthenticated(false)
+        localStorage.removeItem('token')
+        api.defaults.headers.Authorization = undefined
+    }
+
+    return {authenticated, loading, loadingAuth, user, signIn, signUp, signOut}
 }

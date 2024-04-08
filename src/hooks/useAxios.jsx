@@ -34,11 +34,14 @@ const useAxios = () => {
     }
 
     const update = async (url) => {
+
         try {
             const { data } = await api.patch(url)
             return data
         } catch (error) {
             console.log(error)
+        } finally {
+            setLoadingSubmit(false)
         }
     }
 
@@ -54,12 +57,13 @@ const useAxios = () => {
     }
 
     const put = async (url, obj) => {
+        setLoadingSubmit(true)
         try {
-            const {post} = await api.put(url, obj)
+            const { post } = await api.put(url, obj)
         } catch (error) {
             console.log(error)
         } finally {
-
+            setLoadingSubmit(false)
         }
     }
 

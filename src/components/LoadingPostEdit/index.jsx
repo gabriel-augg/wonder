@@ -10,8 +10,6 @@ export default function LoadingPostEdit(){
             <DivisorSkeleton />
             <AnswerSkeleton />
             <AnswerSkeleton />
-            <AnswerSkeleton />
-            <AnswerSkeleton />
         </ContentArea>
     )
 }
