@@ -11,14 +11,24 @@
     }
 }
 
-.loading_postlist {
-    margin-top: 1em;
+.content_area {
+    border: 1px solid var(--secundary);
+    border-radius: 1em;
+    margin: 2em 0;
+}
+
+.content_area > div:not(:last-child) {
+    border-bottom: 1px solid var(--secundary);
+}
+
+.content_area_loading {
+    margin: 2em 0;
     border: 1px solid var(--white-p);
     border-radius: 1em;
     animation: change 1s linear infinite;
 }
 
-.loading_postlist > div:not(:last-child) {
+.content_area_loading > div:not(:last-child) {
     border-bottom: 1px solid var(--white-p);
     animation: change 1s linear infinite;
 }

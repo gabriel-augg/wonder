@@ -1,7 +1,7 @@
 @import url(../../utils/color-var.css);
 
 .postlist {
-    margin-top: 1em;
+    margin: 2em 0;
     border: 1px solid var(--secundary);
     border-radius: 1em;
 }

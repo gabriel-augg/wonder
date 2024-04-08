@@ -9,9 +9,9 @@ import NewPost from "../../components/NewPost";
 import LoadingPost from "../../components/LoadingPostList/index.jsx";
 
 
-import styles from "./styles.module.css"
 import useAxios from "../../hooks/useAxios.jsx";
 import PostList from "../../components/PostsList/index.jsx";
+import ContentArea from "../../components/ContentArea/index.jsx";
 
 export default function CreatePost(){
     const { create, get, loading, loadingSubmit } = useAxios()
@@ -46,9 +46,9 @@ export default function CreatePost(){
     }
 
     return(
-        <section className={styles.createpost_container}>
+        <section>
             <Title title="Publicar"/>
-            <div className={styles.createpost_area}>
+            <ContentArea>
                 <NewPost 
                     username={user.username} 
                     handleOnSubmit={handleSumit} 
@@ -56,11 +56,10 @@ export default function CreatePost(){
                     btnTxt="Publicar" 
                     isLoading={loadingSubmit}
                 />
-            </div>
+            </ContentArea>
             <Title title="O que estão publicando"/>
             {loading && <LoadingPost/>}
-
-            <PostList posts={posts} />
+            <PostList posts={posts} btnTxt="Responder" />
         </section>
     )
 }

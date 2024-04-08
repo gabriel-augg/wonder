@@ -5,22 +5,23 @@ import NewPost from "../../components/NewPost"
 import Comment from "../../components/Comment"
 import Post from "../../components/Post"
 
-import styles from "./styles.module.css"
-import { useParams } from "react-router-dom"
 
-;
+import { useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios"
 import LoadingViewPost from "../../components/LoadingViewPost"
 import { UserContext } from "../../contexts/UserContext"
 import Button from "../../components/Button"
 import Divisor from "../../components/Divisor"
 import NoComment from "../../components/NoComment"
+import ContentArea from "../../components/ContentArea"
+import FindMoreArea from "../../components/FindMoreArea";
+
 
 export default function ViewPost() {
     const { get, create, loading, loadingSubmit } = useAxios()
     const { user } = useContext(UserContext)
     const { id } = useParams()
-    const [offset, setOffset] = useState(0)
+    const [offset, setOffSet] = useState(0)
     const [post, setPost] = useState(null)
     const [isAnswersEmpty, setIsAnswersEmpty] = useState(false)
     const [answers, setAnswers] = useState([])
@@ -32,28 +33,33 @@ export default function ViewPost() {
                 offset
             }
         })
-        .then(({ post }) => {
-            setPost(post)
-            document.title = `Publicação de ${post.User.username}`
-            setAnswers([...answers, ...post.Answers])
-            setIsAnswersEmpty(post.Answers.length === 0)
-        })
-        
+            .then(({ post }) => {
+                setPost(post)
+                document.title = `Publicação de ${post.User.username}`
+                setAnswers([...answers, ...post.Answers])
+                setIsAnswersEmpty(post.Answers.length === 0)
+            })
+
     }, [id, offset])
 
-    function handleComment({description}, reset, set) {
+    function handleFindMore() {
+        setOffSet(prevOffSet => prevOffSet + 5)
+        // setLoadingMore(true)
+    }
+
+    function handleComment({ description }, reset, set) {
         const answer = {
             description,
             postId: post.id
         }
 
         create("/answers/create", answer)
-            .then(({ answer }) => {
-                setAnswers([...answers, answer])
-                reset()
-                set(0)
-            })
-    }
+        .then(({ answer }) => {
+            setAnswers([...answers, answer])
+            reset()
+            set(0)
+        })
+}
 
     if (loading) {
         return (
@@ -69,15 +75,14 @@ export default function ViewPost() {
             <Title title="Publicação" />
             {post && (
                 <>
-                    <div className={styles.viewpost_container}>
-
+                    <ContentArea>
                         <Post
                             id={post.id}
                             username={post.User.username}
                             createdAt={post.createdAt}
                             likesCount={post.liked}
                             description={post.description}
-                            commentCount={post.answer_qty} 
+                            commentCount={post.answer_qty}
                         />
 
                         <Divisor />
@@ -105,19 +110,13 @@ export default function ViewPost() {
                         )) : (
                             <NoComment txt="Seja o primeiro a responder!" />
                         )}
-                    </div>
-                    { ( answers.length >= 5 && !isAnswersEmpty ) && (
-                        <div className={styles.loading_more}>
-                            <Button 
-                                btnTxt="Buscar mais" 
-                                classN="button"
-                                options={{
-                                    onClick: () => setOffset(prevOffSet => prevOffSet + 5)
-                                }}
-                            />
-                        </div>
-                    )}
+                    </ContentArea>
 
+                    <FindMoreArea 
+                        show={(answers.length >= 5 && !isAnswersEmpty)} 
+                        // loading={loadingMore}
+                        handleFindMore={handleFindMore}
+                    />
                 </>
 
             )}
