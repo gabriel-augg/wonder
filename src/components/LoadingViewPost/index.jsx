@@ -11,6 +11,8 @@ export default function LoadingViewPost() {
             <NewPostSkeleton/>
             <AnswerSkeleton/>
             <AnswerSkeleton/>
+            <AnswerSkeleton/>
+            <AnswerSkeleton/>
         </ContentArea>
     )
 }
