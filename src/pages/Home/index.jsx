@@ -1,16 +1,15 @@
 import { useEffect, useState, useContext } from "react";
-
+import useAxios from "../../hooks/useAxios.jsx";
 import { SearchContext } from "../../contexts/SearchContext.jsx";
 
-import Title from "../../components/Title";
 import { IoIosAddCircleOutline } from "react-icons/io";
 
-import withLoadingAndNoPosts from "../../hoc/withLoadingAndNoPosts.jsx";
-
-import useAxios from "../../hooks/useAxios.jsx";
 import ButtonLink from "../../components/ButtonLink";
 import PostList from "../../components/PostsList/index.jsx";
 import FindMoreArea from "../../components/FindMoreArea/index.jsx";
+import Title from "../../components/Title";
+import withLoadingAndNoPosts from "../../hoc/withLoadingAndNoPosts.jsx";
+import NoPosts from "../../components/NoPosts/index.jsx";
 
 
 export default function Home() {
@@ -20,7 +19,7 @@ export default function Home() {
     const [offset, setOffSet] = useState(0)
     const [loadingMore, setLoadingMore] = useState(false)
     const [isPostsEmpty, setIsPostsEmpty] = useState(false)
-    const PostListWithLoadingAndNoPost = withLoadingAndNoPosts(PostList)
+    const PostListWithLoadingAndNoPost = withLoadingAndNoPosts(PostList, NoPosts)
 
     useEffect(() => {
 

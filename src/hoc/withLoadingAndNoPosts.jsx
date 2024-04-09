@@ -1,7 +1,6 @@
 import LoadingPostList from "../components/LoadingPostList";
-import NoPosts from "../components/NoPosts";
 
-export default function withLoadingAndNoPosts(WrappedComponent) {
+export default function withLoadingAndNoPosts(WrappedComponent, NoPosts) {
     return ({ loading, posts, ...props }) => {
 
       return loading 

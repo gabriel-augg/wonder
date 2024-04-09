@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
+import useAxios from "../../hooks/useAxios";
+
+
+import { IoIosChatbubbles } from "react-icons/io";
 
 import SpecialTitle from "../../components/SpecialTitle";
-import { BsWechat } from "react-icons/bs";
-
 import withLoadingAndNoPosts from "../../hoc/withLoadingAndNoPosts";
 import PostList from "../../components/PostsList";
+import NoUserPosts from "../../components/NoUserPosts"
 
-import useAxios from "../../hooks/useAxios";
+
 
 export default function ShowUserPosts(){
     
@@ -14,7 +17,7 @@ export default function ShowUserPosts(){
     const [offset, setOffSet] = useState(0)
     const {get, deleteOne, loading} = useAxios()
     
-    const PostListWithLoadingAndNoPost = withLoadingAndNoPosts(PostList)
+    const PostListWithLoadingAndNoPost = withLoadingAndNoPosts(PostList, NoUserPosts)
 
     useEffect(()=>{
         get("/posts/my-posts")
@@ -40,7 +43,7 @@ export default function ShowUserPosts(){
     return(
         <section>
             <SpecialTitle title="Minhas publicações">
-                <BsWechat size={30} />
+                <IoIosChatbubbles size={30} />
             </SpecialTitle>
 
             <PostListWithLoadingAndNoPost 

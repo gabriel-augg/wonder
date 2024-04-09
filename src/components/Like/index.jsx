@@ -1,11 +1,11 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/UserContext";
+import useAxios from "../../hooks/useAxios";
 
 import { IoIosHeartEmpty } from "react-icons/io";
 import { IoIosHeart } from "react-icons/io";
 import { AiOutlineLoading } from "react-icons/ai";
-import useAxios from "../../hooks/useAxios";
 
 import styles from "./styles.module.css"
 

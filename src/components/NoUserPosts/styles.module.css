@@ -1,0 +1,12 @@
+.no_user_posts {
+    margin-top: 3em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+
+}
+
+.no_user_posts h1 {
+    color: var(--secundary-m);
+}
