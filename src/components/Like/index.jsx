@@ -23,6 +23,7 @@ export default function Like({id, type, likesQty}){
                 setIsLiked(status)
             })
         } else {
+            setIsLiked(false)
             setLoading(false)
         }
 

@@ -69,7 +69,7 @@ export default function SignUp(){
                     />
 
                     <Input
-                        text="Senha"
+                        text="Repetir senha"
                         type="password"
                         name="confirmpassword"
                         placeholder="Confirme sua senha"
