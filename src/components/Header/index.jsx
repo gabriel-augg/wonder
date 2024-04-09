@@ -7,8 +7,7 @@ import Search from "../Search"
 import Logo from "../Logo"
 
 import styles from "./styles.module.css"
-import User from "../User"
-import Dropdown from "../Dropdown"
+import UserHeader from "../UserHeader"
 
 
 export default function Header(){
@@ -27,7 +26,7 @@ export default function Header(){
                     </li>
                     {authenticated ? (
                         <li>
-                            <User username={user.username} path="/" />
+                            <UserHeader username={user.username} url={null}/>
                         </li>
                     ) : (
                         <li>

@@ -58,8 +58,13 @@ export default function CreatePost(){
                 />
             </ContentArea>
             <Title title="O que estão publicando"/>
-            {loading && <LoadingPost/>}
-            <PostList posts={posts} btnTxt="Responder" />
+            
+            {loading ? (
+                <LoadingPost/>
+            ) : (
+                <PostList posts={posts} btnTxt="Responder" />
+            )}
+            
         </section>
     )
 }

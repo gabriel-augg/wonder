@@ -17,6 +17,5 @@
 }
 
 .form_control span a:hover {
-    color: var(--primary-p);
     text-decoration: underline;
 }

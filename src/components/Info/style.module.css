@@ -1,0 +1,10 @@
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.info > span:first-child {
+    color: var(--secundary-m);
+}

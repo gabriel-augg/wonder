@@ -1,0 +1,11 @@
+.user_profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+}
+
+.user_area h1 {
+    font-size: 1.5em;
+    color: var(--secundary-p);
+}

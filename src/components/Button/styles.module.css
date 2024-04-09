@@ -25,6 +25,7 @@
 
 .button:hover {
     background-color: var(--primary);
+    color: var(--white-p);
 }
 
 
@@ -60,4 +61,19 @@
 
 .search:hover {
     background-color: var(--primary-p);
+}
+
+.btn_follow {
+    background: var(--primary-m);
+    font-size: 1em;
+    padding: 0.4em 0;
+    width: 9em;
+    border-radius: 0.7em;
+    color: white;
+    transition: all .3s;
+}
+
+.btn_follow:hover {
+    background-color: var(--primary);
+    color: var(--white-m);
 }

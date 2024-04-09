@@ -1,0 +1,24 @@
+.profile_area {
+    display: flex;
+    padding: 2em;
+    gap: 2em;
+}
+
+.profile_area > div {
+    flex: 1;
+}
+
+.profile_content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1em;
+    justify-content: center;
+}
+
+.profile_content > div {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    justify-content: center;
+}

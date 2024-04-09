@@ -4,15 +4,12 @@ import user_image from "../../assets/img/user.svg"
 import styles from "./styles.module.css"
 
 
-export default function User({url, username, path}){
+export default function User({url, username}){
 
     return(
-        <div className={`${styles.user} ${path && styles.user_header}`}>
+        <div className={styles.user}>
             <img src={url ? url : user_image } />
-            <div>
-                <span>{username}</span>
-                {path && <Dropdown /> }
-            </div>
+            <Link to="/perfil">{username}</Link>
         </div>
     )
 }

@@ -8,29 +8,43 @@ import SpecialTitle from "../../components/SpecialTitle";
 import withLoadingAndNoPosts from "../../hoc/withLoadingAndNoPosts";
 import PostList from "../../components/PostsList";
 import NoUserPosts from "../../components/NoUserPosts"
+import FindMoreArea from "../../components/FindMoreArea"
 
 
 
 export default function ShowUserPosts(){
-    
+
+    const {get, deleteOne, loading} = useAxios()
     const [posts, setPosts] = useState([])
     const [offset, setOffSet] = useState(0)
-    const {get, deleteOne, loading} = useAxios()
+    const [loadingMore, setLoadingMore] = useState(false)
+    const [isPostsEmpty, setIsPostsEmpty] = useState(false)
+
     
     const PostListWithLoadingAndNoPost = withLoadingAndNoPosts(PostList, NoUserPosts)
 
     useEffect(()=>{
-        get("/posts/my-posts")
-        .then(({posts}) => {
-            console.log(posts)
-            if (offset === 0) {
-                setPosts(posts)
-            } else {
-                setPosts(prevPosts => [...prevPosts, ...posts])
+        get("/posts/my-posts", {
+            params: {
+                offset
             }
         })
+        .then(({posts}) => {
+            offset === 0 
+            ? setPosts(posts) 
+            : (
+                setPosts(prevPosts => [...prevPosts, ...posts]),
+                setLoadingMore(false)
+            );
+            setIsPostsEmpty(posts.length === 0)
+        })
        
-    },[])
+    },[offset])
+
+    function handleFindMore() {
+        setOffSet(prevOffSet => prevOffSet + 5)
+        setLoadingMore(true)
+    }
 
     function handleDelete(id){
         deleteOne(`/posts/id/${id}`)
@@ -52,6 +66,12 @@ export default function ShowUserPosts(){
                 btnTxt="Editar"
                 handleDelete={handleDelete} 
                 loading={loading} 
+            />
+
+            <FindMoreArea 
+                show={(posts.length >= 5 && !isPostsEmpty)} 
+                loading={loadingMore}
+                handleFindMore={handleFindMore}
             />
 
         </section>

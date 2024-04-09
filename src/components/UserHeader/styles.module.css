@@ -1,0 +1,26 @@
+.user_header {
+    display: flex;
+    gap: .3em;
+}
+
+.user_header > div {
+    display: flex;
+    flex-direction: column;
+}
+
+.user_header span {
+    color: var(--white);
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.user_header a {
+    color: var(--white-p);
+    font-size: 0.9em;
+    font-weight: 400;
+    transition: 0.3s all;
+}
+
+.user_header a:hover {
+    text-decoration: underline;
+}
