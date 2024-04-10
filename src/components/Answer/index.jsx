@@ -26,7 +26,7 @@ export default function Answer({id, username, likesCount, description, createdAt
                     <Like 
                         id={id} 
                         type="answers"
-                        likesQty={likesCount} 
+                        likesCount={likesCount} 
                     />
                 </div>
             </div>

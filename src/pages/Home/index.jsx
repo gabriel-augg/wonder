@@ -13,7 +13,7 @@ import NoPosts from "../../components/NoPosts/index.jsx";
 
 
 export default function Home() {
-    const { get, loading } = useAxios("/posts")
+    const { request, loading, setLoading } = useAxios()
     const [posts, setPosts] = useState([])
     const { search } = useContext(SearchContext)
     const [offset, setOffSet] = useState(0)
@@ -24,25 +24,26 @@ export default function Home() {
     useEffect(() => {
 
         document.title = "Wonder"
+        setLoading(true)
 
-        get("/posts", {
+        request("/posts", {
+            method: "get",
             params: {
                 offset,
                 ...(search && { search })
             }
         })
-        .then(({ posts }) => {
+        .then(({data}) => {
+
             offset === 0 
-            ? setPosts(posts) 
+            ? setPosts(data.posts) 
             : (
-                setPosts(prevPosts => [...prevPosts, ...posts]),
+                setPosts(prevPosts => [...prevPosts, ...data.posts]),
                 setLoadingMore(false)
             );
-            setIsPostsEmpty(posts.length === 0)
+            setIsPostsEmpty(data.posts.length === 0)
+            setLoading(false)
             
-        })
-        .catch((error) => {
-            console.log(error)
         })
 
     }, [offset, search])

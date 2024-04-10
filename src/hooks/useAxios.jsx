@@ -9,6 +9,19 @@ const useAxios = () => {
     const [loadingDelete, setLoadingDelete] = useState(false)
     const { setFlashMessage } = useFlashMessage()
 
+    const request = async (url, options) => {
+        try {
+            const data = await api.request({
+                url,
+                ...options
+            })
+
+            return data
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     const get = async (url, options = {}) => {
         setLoading(true)
         try {
@@ -22,14 +35,14 @@ const useAxios = () => {
     }
 
     const post = async (url, obj) => {
-        setLoadingSubmit(true)
+        // setLoadingSubmit(true)
         try {
             const { data } = await api.post(url, obj)
             return data
         } catch (res) {
             setFlashMessage(error(res.response.data.message))
         } finally {
-            setLoadingSubmit(false)
+            // setLoadingSubmit(false)
         }
     }
 
@@ -66,7 +79,7 @@ const useAxios = () => {
 
 
 
-    return { get, post, put, patch, deleteOne, loading, setLoading, loadingDelete, loadingSubmit };
+    return { get, request, post, put, patch, deleteOne, loading, setLoading, loadingDelete, loadingSubmit, setLoadingSubmit };
 };
 
 export default useAxios;

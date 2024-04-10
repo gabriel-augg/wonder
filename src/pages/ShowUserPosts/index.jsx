@@ -14,7 +14,7 @@ import FindMoreArea from "../../components/FindMoreArea"
 
 export default function ShowUserPosts(){
 
-    const {get, deleteOne, loading} = useAxios()
+    const {request, loading, setLoading} = useAxios()
     const [posts, setPosts] = useState([])
     const [offset, setOffSet] = useState(0)
     const [loadingMore, setLoadingMore] = useState(false)
@@ -24,19 +24,22 @@ export default function ShowUserPosts(){
     const PostListWithLoadingAndNoPost = withLoadingAndNoPosts(PostList, NoUserPosts)
 
     useEffect(()=>{
-        get("/posts/my-posts", {
+        setLoading(true)
+        request("/posts/my-posts", {
+            method: "get",
             params: {
                 offset
             }
         })
-        .then(({posts}) => {
+        .then(({data}) => {
             offset === 0 
-            ? setPosts(posts) 
+            ? setPosts(data.posts) 
             : (
-                setPosts(prevPosts => [...prevPosts, ...posts]),
+                setPosts(prevPosts => [...prevPosts, ...data.posts]),
                 setLoadingMore(false)
             );
-            setIsPostsEmpty(posts.length === 0)
+            setIsPostsEmpty(data.posts.length === 0)
+            setLoading(false)
         })
        
     },[offset])
@@ -46,11 +49,11 @@ export default function ShowUserPosts(){
         setLoadingMore(true)
     }
 
-    function handleDelete(id){
-        deleteOne(`/posts/id/${id}`)
-        .then(()=> {
-            setPosts(prevPosts => prevPosts.filter(post => post.id !== id))
+    async function handleDelete(id){
+        await request(`/posts/${id}/remove-post`, {
+            method: "delete"
         })
+        setPosts(prevPosts => prevPosts.filter(post => post.id !== id))
     }
 
 

@@ -11,9 +11,9 @@ export default function ViewPostContent({ post, user, answers, loadingSubmit, ha
                 id={post.id}
                 username={post.User.username}
                 createdAt={post.createdAt}
-                likesCount={post.liked}
+                likesCount={post.likesCount}
+                answersCount={post.answersCount}
                 description={post.description}
-                AnswerCount={post.answer_qty}
             />
 
             <Divisor txt="RESPOSTAS" />
@@ -28,7 +28,7 @@ export default function ViewPostContent({ post, user, answers, loadingSubmit, ha
 
             <AnswerList 
                 answers={answers} 
-                postUser={post.User}
+                postUserId={post.UserId}
                 txt={txt}
             />
 

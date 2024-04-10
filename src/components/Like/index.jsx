@@ -9,18 +9,22 @@ import { AiOutlineLoading } from "react-icons/ai";
 
 import styles from "./styles.module.css"
 
-export default function Like({id, type, likesQty}){
-    const { get, patch, post, deleteOne, loading, setLoading } = useAxios()
+export default function Like({id, type, likesCount}){
+    const { request, loading, setLoading } = useAxios()
     const {authenticated} = useContext(UserContext)
     const [isLiked, setIsLiked] = useState(false)
-    const [count, setCount] = useState(likesQty)
+    const [count, setCount] = useState(likesCount)
     const navigate = useNavigate()
 
     useEffect(()=>{
+        setLoading(true)
         if(authenticated){
-            get(`/likes/${id}/${type}`)
-            .then(({status}) => {
-                setIsLiked(status)
+            request(`/likes/${id}/${type}`, {
+                method: "get"
+            })
+            .then(({data}) => {
+                setIsLiked(data.status)
+                setLoading(false)
             })
         } else {
             setIsLiked(false)
@@ -36,19 +40,27 @@ export default function Like({id, type, likesQty}){
             return
         }
         
+        setLoading(true)
         setIsLiked(!isLiked);
         if(isLiked){
-            setLoading(true)
-            await deleteOne(`/likes/${type}/${id}/dislike`)
-            await patch(`/${type}/${id}/remove-likes-count`)
-            setLoading(false)
+            await request(`/likes/${type}/${id}/dislike`, {
+                method: "delete"
+            })
+            await request(`/${type}/${id}/remove-likes-count`, {
+                method: "patch"
+            })
             setCount(count - 1)
-        } else {
-            setLoading(true)
-            await post(`/likes/${type}/${id}/like`)
-            await patch(`/${type}/${id}/add-likes-count`)
             setLoading(false)
+            
+        } else {
+            await request(`/likes/${type}/${id}/like`, {
+                method: "post"
+            })
+            await request(`/${type}/${id}/add-likes-count`, {
+                method: "patch"
+            })
             setCount(count + 1)
+            setLoading(false)
         }
         
     }

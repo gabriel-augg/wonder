@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom"
 import useFlashMessage from "./useFlashMessage.jsx"
 
 export default function useAuth(){
-    const { get, post, loading, setLoading } = useAxios()
+    const { request, loading, setLoading } = useAxios()
     const [authenticated, setAuthenticated] = useState(false)
     const [loadingAuth, setLoadingAuth] = useState(false)
     const [user, setUser] = useState(null)
@@ -17,9 +17,11 @@ export default function useAuth(){
         const token = localStorage.getItem("token")
         if(token){
             api.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`
-            get("/users/check-user")
-            .then(({user})=>{
-                setUser(user)
+            request("/users/check-user", {
+                method: "get"
+            })
+            .then(({data})=>{
+                setUser(data.user)
                 setAuthenticated(true)
             })
         } else {
@@ -30,9 +32,11 @@ export default function useAuth(){
     async function authUser(token){
         localStorage.setItem("token", JSON.stringify(token))
         api.defaults.headers.Authorization = `Bearer ${token}`
-        get("/users/check-user")
-        .then(({user})=>{
-            setUser(user)
+        request("/users/check-user", {
+            method: "get"
+        })
+        .then(({data})=>{
+            setUser(data.user)
             setAuthenticated(true)
             setLoadingAuth(false)
             navigate("/")
@@ -44,10 +48,13 @@ export default function useAuth(){
 
     async function signUp(user){
         setLoadingAuth(true)
-        post("/auth/signup", user)
-        .then( async (res) => {
-            if(res){
-                await authUser(res.token)
+        request("/auth/signup", {
+            method: "post",
+            data: user
+        })
+        .then( async ({data}) => {
+            if(data){
+                await authUser(data.token)
             } else {
                 setLoadingAuth(false)
             }
@@ -56,10 +63,13 @@ export default function useAuth(){
 
     async function signIn(user){
         setLoadingAuth(true)
-        post("/auth/signin", user)
-        .then( async (res) => {
-            if(res){
-                await authUser(res.token)
+        request("/auth/signin", {
+            method: "post",
+            data: user
+        })
+        .then( async ({data}) => {
+            if(data){
+                await authUser(data.token)
             } else {
                 setLoadingAuth(false)
             }

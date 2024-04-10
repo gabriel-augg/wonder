@@ -7,7 +7,7 @@ import Description from "../Description";
 import ButtonLink from "../ButtonLink";
 import Button from "../Button";
 
-export default function Post({id, username, likesCount, description, answerCount, createdAt, show, handleDelete, btnTxt, path}){
+export default function Post({id, username, likesCount, description, answersCount, createdAt, show, handleDelete, btnTxt, path}){
 
     return(
         <div className={styles.post}>
@@ -25,13 +25,13 @@ export default function Post({id, username, likesCount, description, answerCount
                 <div>
 
                     <AnswerCounter 
-                        count={answerCount} 
+                        answersCount={answersCount} 
                     />
 
                     <Like 
                         id={id} 
                         type="posts"
-                        likesQty={likesCount} 
+                        likesCount={likesCount} 
                     />
                 </div>
                 

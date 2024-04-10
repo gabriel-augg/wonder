@@ -15,7 +15,7 @@ export default function PostList({posts, handleDelete, btnTxt, path}){
                                 createdAt={post.createdAt}
                                 likesCount={post.likesCount}
                                 description={post.description}
-                                answerCount={post.answersCount}
+                                answersCount={post.answersCount}
                                 handleDelete={handleDelete}
                                 path={path}
                                 btnTxt={btnTxt}

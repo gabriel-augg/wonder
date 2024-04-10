@@ -14,7 +14,7 @@ import PostList from "../../components/PostsList/index.jsx";
 import ContentArea from "../../components/ContentArea/index.jsx";
 
 export default function CreatePost(){
-    const { post, get, patch, loading, loadingSubmit } = useAxios()
+    const { request, loading, setLoading, loadingSubmit, setLoadingSubmit } = useAxios()
     const { user } = useContext(UserContext)
 
     const [limit] = useState(3)
@@ -24,23 +24,31 @@ export default function CreatePost(){
 
     useEffect(()=>{
         document.title = `Nova publicação`
-        get("/posts", {
+        request("/posts", {
+            method: "get",
             params: {
                 limit,
             }
         })
-        .then(({posts}) => {
-            setPosts(posts)
+        .then(({data}) => {
+            setPosts(data.posts)
         })
+        setLoading(false)
     },[])
 
     async function handleSumit(postData, reset){
         if(!loadingSubmit){
-            await post("/posts/create", postData)
-            await patch("/users/add-posts-count")
+            setLoadingSubmit(true)
+            await request("/posts/create", {
+                method: "post",
+                data: postData
+            })
+            await request("/users/add-posts-count", {
+                method: "patch"
+            })
+            setLoadingSubmit(false)
             navigate("/")
             reset()
-            return
         }
     }
 

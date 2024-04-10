@@ -14,7 +14,7 @@ import LoadingViewPost from "../../components/LoadingViewPost"
 
 
 export default function ViewPost() {
-    const { get, create, loading, loadingSubmit } = useAxios()
+    const { request, loading, setLoading, loadingSubmit, setLoadingSubmit } = useAxios()
     const { user } = useContext(UserContext)
     const { id } = useParams()
     const [offset, setOffSet] = useState(0)
@@ -25,24 +25,25 @@ export default function ViewPost() {
     const ViewContentWithLoading = withLoading(ViewPostContent, LoadingViewPost)
 
     useEffect(() => {
-
-        get(`/posts/id/${id}`, {
+        setLoading(true)
+        request(`/posts/${id}/get-post`, {
+            method: "get",
             params: {
                 offset
             }
         })
-        .then(({ post }) => {
-            document.title = `Publicação de ${post.User.username}`
-            setPost(post)
+        .then(({ data }) => {
+            document.title = `Publicação de ${data.post.User.username}`
+            setPost(data.post)
             offset === 0
-                ? setAnswers(post.Answers)
+                ? setAnswers(data.post.Answers)
                 : (
                     setLoadingMore(false),
-                    setAnswers(prevAnswers => [...prevAnswers, ...post.Answers])
+                    setAnswers(prevAnswers => [...prevAnswers, ...data.post.Answers])
                 )
-            setAnswers([...answers, ...post.Answers])
-            setIsAnswersEmpty(post.Answers.length === 0)
-        })
+            setIsAnswersEmpty(data.post.Answers.length === 0)
+            setLoading(false)
+        }) 
 
     }, [id, offset])
 
@@ -51,19 +52,30 @@ export default function ViewPost() {
         setLoadingMore(true)
     }
 
-    function handleAnswer({ description }, reset, set) {
+    async function handleAnswer({ description }, reset, set) {
+        setLoadingSubmit(true)
         const answer = {
             description,
             postId: post.id
         }
 
-        create("/answers/create", answer)
-            .then(({ answer }) => {
-                setAnswers([...answers, answer])
-                reset()
-                set(0)
-            })
-        }
+        const { data } = await request("/answers/create", {
+            method: "post",
+            data: answer
+        })
+        
+        await request(`/posts/${post.id}/add-answers-count`, {
+            method: "patch"
+        })
+        
+
+        setAnswers(prevAnswers => [...prevAnswers, data.answer])
+        setLoadingSubmit(false)
+        reset()
+        set(0)
+        
+
+    }
 
 
 

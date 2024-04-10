@@ -1,7 +1,7 @@
 import Answer from "../Answer"
 import NoAnswer from "../NoAnswer"
 
-export default function AnswerList({answers, postUser, txt}){
+export default function AnswerList({answers, postUserId, txt}){
     return (
         <>
             {answers.length > 0 ? (
@@ -10,11 +10,11 @@ export default function AnswerList({answers, postUser, txt}){
                         <Answer
                             key={answer.id}
                             id={answer.id}
-                            username={answer.username}
+                            username={answer.User.username}
                             createdAt={answer.createdAt}
-                            likesCount={answer.liked}
+                            likesCount={answer.likesCount}
                             description={answer.description}
-                            author={(answer.username === postUser.username)}
+                            author={(answer.UserId === postUserId)}
                         />
                     )
                 })
