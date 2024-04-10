@@ -11,11 +11,11 @@ export default function PostList({posts, handleDelete, btnTxt, path}){
                             <Post
                                 key={post.id}
                                 id={post.id}
-                                username={post["User.username"]}
+                                username={post.User.username}
                                 createdAt={post.createdAt}
-                                likesCount={post.liked}
+                                likesCount={post.likesCount}
                                 description={post.description}
-                                answerCount={post.answer_qty}
+                                answerCount={post.answersCount}
                                 handleDelete={handleDelete}
                                 path={path}
                                 btnTxt={btnTxt}

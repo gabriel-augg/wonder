@@ -21,7 +21,7 @@ const useAxios = () => {
         }
     }
 
-    const create = async (url, obj) => {
+    const post = async (url, obj) => {
         setLoadingSubmit(true)
         try {
             const { data } = await api.post(url, obj)
@@ -30,29 +30,6 @@ const useAxios = () => {
             setFlashMessage(error(res.response.data.message))
         } finally {
             setLoadingSubmit(false)
-        }
-    }
-
-    const update = async (url) => {
-
-        try {
-            const { data } = await api.patch(url)
-            return data
-        } catch (error) {
-            console.log(error)
-        } finally {
-            setLoadingSubmit(false)
-        }
-    }
-
-    const deleteOne = async (url) => {
-        setLoadingDelete(true)
-        try {
-            await api.delete(url)
-        } catch (error) {
-            console.log(error)
-        } finally {
-            setLoadingDelete(false)
         }
     }
 
@@ -67,7 +44,29 @@ const useAxios = () => {
         }
     }
 
-    return { get, create, update, put, deleteOne, loading, setLoading, loadingDelete, loadingSubmit };
+    const patch = async (url) => {
+
+        try {
+            await api.patch(url)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const deleteOne = async (url) => {
+        setLoadingDelete(true)
+        try {
+            await api.delete(url)
+        } catch (error) {
+            console.log(error)
+        } finally {
+            setLoadingDelete(false)
+        }
+    }
+
+
+
+    return { get, post, put, patch, deleteOne, loading, setLoading, loadingDelete, loadingSubmit };
 };
 
 export default useAxios;

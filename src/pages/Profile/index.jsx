@@ -15,7 +15,6 @@ export default function Profile(){
                     description="Aqui é uma descrição" 
                     followCount={13} 
                     postsCount={0} 
-                    likesCount={0} 
                 />
                 <Divisor txt="PUBLICAÇÕES"/>
                 {/* <PostsList /> */}

@@ -46,9 +46,9 @@ export default function SignIn(){
                     
                 <>
                     <Input
-                        text="Usuário"
+                        text="Email"
                         type="text"
-                        name="username"
+                        name="email"
                         placeholder="Digite seu usuário"
                         register={register}
                         error={errors.username}

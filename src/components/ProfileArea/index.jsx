@@ -5,7 +5,7 @@ import ButtonLink from "../ButtonLink"
 
 import styles from "./styles.module.css"
 
-export default function ProfileArea({id, username, url, description, followCount, postsCount, likesCount}){
+export default function ProfileArea({id, username, url, description, followCount, postsCount}){
     return(
         <div className={styles.profile_area}>
             <UserProfile 
@@ -22,10 +22,6 @@ export default function ProfileArea({id, username, url, description, followCount
                     <Info
                         count={postsCount}
                         txt="Publicações"
-                    />
-                    <Info
-                        count={likesCount}
-                        txt="Curtidas"
                     />
                 </div>
                 <div>

@@ -23,9 +23,9 @@ const signUpSchema = z.object({
 })
 
 const signInSchema = z.object({
-    username: 
+    email: 
         z.string()
-        .nonempty("O nome de usuário é obrigatório."),
+        .nonempty("O email é obrigatório."),
 
     password: 
         z.string()

@@ -14,7 +14,7 @@ import PostList from "../../components/PostsList/index.jsx";
 import ContentArea from "../../components/ContentArea/index.jsx";
 
 export default function CreatePost(){
-    const { create, get, loading, loadingSubmit } = useAxios()
+    const { post, get, patch, loading, loadingSubmit } = useAxios()
     const { user } = useContext(UserContext)
 
     const [limit] = useState(3)
@@ -34,13 +34,12 @@ export default function CreatePost(){
         })
     },[])
 
-    function handleSumit(post, reset){
+    async function handleSumit(postData, reset){
         if(!loadingSubmit){
-            create("/posts/create", post)
-            .then(() => {
-                navigate("/")
-                reset()
-            })
+            await post("/posts/create", postData)
+            await patch("/users/add-posts-count")
+            navigate("/")
+            reset()
             return
         }
     }

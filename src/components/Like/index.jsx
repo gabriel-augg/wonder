@@ -10,7 +10,7 @@ import { AiOutlineLoading } from "react-icons/ai";
 import styles from "./styles.module.css"
 
 export default function Like({id, type, likesQty}){
-    const { get, update, loading, setLoading } = useAxios()
+    const { get, patch, post, deleteOne, loading, setLoading } = useAxios()
     const {authenticated} = useContext(UserContext)
     const [isLiked, setIsLiked] = useState(false)
     const [count, setCount] = useState(likesQty)
@@ -18,7 +18,7 @@ export default function Like({id, type, likesQty}){
 
     useEffect(()=>{
         if(authenticated){
-            get(`/like-dislike/${type}/${id}`)
+            get(`/likes/${id}/${type}`)
             .then(({status}) => {
                 setIsLiked(status)
             })
@@ -35,10 +35,22 @@ export default function Like({id, type, likesQty}){
             navigate("/entrar")
             return
         }
-
+        
         setIsLiked(!isLiked);
-        setCount(isLiked ? count - 1 : count + 1)
-        update(`/like-dislike/${type}/${ isLiked ? "dislike" : "like" }/${id}`)
+        if(isLiked){
+            setLoading(true)
+            await deleteOne(`/likes/${type}/${id}/dislike`)
+            await patch(`/${type}/${id}/remove-likes-count`)
+            setLoading(false)
+            setCount(count - 1)
+        } else {
+            setLoading(true)
+            await post(`/likes/${type}/${id}/like`)
+            await patch(`/${type}/${id}/add-likes-count`)
+            setLoading(false)
+            setCount(count + 1)
+        }
+        
     }
 
     return(
