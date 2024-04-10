@@ -32,8 +32,9 @@ export default function CreatePost(){
         })
         .then(({data}) => {
             setPosts(data.posts)
+            setLoading(false)
         })
-        setLoading(false)
+
     },[])
 
     async function handleSumit(postData, reset){

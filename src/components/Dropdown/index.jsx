@@ -6,6 +6,10 @@ import styles from "./styles.module.css"
 import { FaUser } from "react-icons/fa";
 import { IoExitOutline } from "react-icons/io5";
 import { IoIosChatbubbles } from "react-icons/io";
+import { IoIosAddCircle } from "react-icons/io";
+import { IoHeart } from "react-icons/io5";
+import { BsChatQuoteFill } from "react-icons/bs";
+
 
 export default function Dropdown(){
     const [isActive, setIsActive] = useState(false)
@@ -18,6 +22,11 @@ export default function Dropdown(){
         setIsActive(!isActive)
     }
 
+    function handlePost(){
+        navigate("/nova-publicacao")
+        setIsActive(!isActive)
+    }
+
     function handleSignOut(){
         signOut()
         navigate("/")
@@ -25,12 +34,17 @@ export default function Dropdown(){
     }
 
 
+
+
     return(
             <nav className={`${styles.dropdown} ${isActive ? styles.active : undefined}`}>
                 <button onClick={onClick} className={styles.dropdown_button}>Minha conta</button>
                 <ul className={styles.dropdown_list}>
                     <li><FaUser size={15}/><span>Meu perfil</span></li>
-                    <li onClick={handleShowMyPosts}><IoIosChatbubbles/><span>Minhas publicações</span></li>
+                    <li onClick={handlePost}><IoIosAddCircle/><span>Publicar</span></li>
+                    <li onClick={handleShowMyPosts}><BsChatQuoteFill/><span>Minhas publicações</span></li>
+                    <li ><IoHeart/><span>Minhas curtidas</span></li>
+                    <li><IoIosChatbubbles/><span>Mensagens</span></li>
                     <li onClick={handleSignOut}> <IoExitOutline/><span>Sair</span></li>
                 </ul>
             </nav>

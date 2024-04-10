@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import useAxios from "../../hooks/useAxios";
 
 
-import { IoIosChatbubbles } from "react-icons/io";
+import { BsChatQuoteFill } from "react-icons/bs";
 
 import SpecialTitle from "../../components/SpecialTitle";
 import withLoadingAndNoPosts from "../../hoc/withLoadingAndNoPosts";
@@ -60,7 +60,7 @@ export default function ShowUserPosts(){
     return(
         <section>
             <SpecialTitle title="Minhas publicações">
-                <IoIosChatbubbles size={30} />
+                <BsChatQuoteFill size={30} />
             </SpecialTitle>
 
             <PostListWithLoadingAndNoPost 
