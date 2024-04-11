@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react"
 import {useParams, useNavigate} from "react-router-dom"
 
+import ContentArea from "../../components/ContentArea";
+import NewPost from "../../components/NewPost";
+import Divisor from "../../components/Divisor";
+import AnswerList from "../../components/AnswerList";
+
 import useAxios from "../../hooks/useAxios";
 import SpecialTitle from "../../components/SpecialTitle"
 import { RiUserFollowFill } from "react-icons/ri";
 import LoadingPostEdit from "../../components/LoadingPostEdit";
 import withLoading from "../../hoc/withLoading";
-import PostEditContent from "../../components/PostEditContent";
 
 export default function PostEdit(){
     const { id } = useParams()
@@ -14,7 +18,6 @@ export default function PostEdit(){
     const [post, setPost] = useState(null)
     const [answers, setAnswers] = useState([])
     const { request, loading, setLoading, loadingSubmit, setLoadingSubmit} = useAxios()
-    const PostEditContentWithLoading = withLoading(PostEditContent, LoadingPostEdit)
 
     useEffect(()=>{
         setLoading(true)
@@ -38,13 +41,36 @@ export default function PostEdit(){
         navigate("/minhas-publicacoes")
     }
 
+    const Content = () => {
+        return (
+            <ContentArea>
+                <NewPost 
+                    username={post.User.username} 
+                    placeholder="Digite qualquer coisa" 
+                    btnTxt="Salvar" 
+                    handleOnSubmit={handleUpdate}
+                    isLoading={loadingSubmit}
+                    value={post.description} 
+                />
+                <Divisor txt="RESPOSTAS"/>
+                <AnswerList 
+                    answers={answers} 
+                    postUser={post.User}
+                    txt="Salvar"
+                />
+            </ContentArea>  
+        )
+    }
+
+    const ContentWithLoading = withLoading(Content, LoadingPostEdit)
+
     return(
         <section>
                 <SpecialTitle title="Editar minha publicação">
                     <RiUserFollowFill size={30} />
                 </SpecialTitle>
 
-                <PostEditContentWithLoading
+                <ContentWithLoading
                     loading={loading} 
                     post={post} 
                     handleUpdate={handleUpdate} 

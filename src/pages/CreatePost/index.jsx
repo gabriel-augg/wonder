@@ -18,8 +18,6 @@ export default function CreatePost(){
     const [limit] = useState(3)
     const [posts, setPosts] = useState([])
 
-    const PostWithLoadingAndNoPost = withLoadingAndNoPosts(PostList, <></>)
-
     const navigate = useNavigate()
 
     useEffect(()=>{
@@ -52,6 +50,8 @@ export default function CreatePost(){
             reset()
         }
     }
+
+    const PostWithLoadingAndNoPost = withLoadingAndNoPosts(PostList, <></>)
 
     return(
         <section>

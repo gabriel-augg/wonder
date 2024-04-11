@@ -20,9 +20,6 @@ export default function ShowUserPosts(){
     const [loadingMore, setLoadingMore] = useState(false)
     const [isPostsEmpty, setIsPostsEmpty] = useState(false)
 
-    
-    const PostListWithLoadingAndNoPost = withLoadingAndNoPosts(PostList, NoUserPosts)
-
     useEffect(()=>{
         setLoading(true)
         request("/posts/my-posts", {
@@ -56,6 +53,7 @@ export default function ShowUserPosts(){
         setPosts(prevPosts => prevPosts.filter(post => post.id !== id))
     }
 
+    const PostListWithLoadingAndNoPost = withLoadingAndNoPosts(PostList, NoUserPosts)
 
     return(
         <section>

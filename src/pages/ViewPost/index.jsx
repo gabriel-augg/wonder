@@ -1,13 +1,17 @@
 import { useEffect, useState, useContext } from "react"
 
 import Title from "../../components/Title"
+import ContentArea from "../../components/ContentArea"
+import Post from "../../components/Post"
+import Divisor from "../../components/Divisor"
+import NewPost from "../../components/NewPost"
+import AnswerList from "../../components/AnswerList"
 
 
 import { useParams } from "react-router-dom";
 import useAxios from "../../hooks/useAxios"
 import { UserContext } from "../../contexts/UserContext"
 import FindMoreArea from "../../components/FindMoreArea";
-import ViewPostContent from "../../components/ViewPostContent"
 import withLoading from "../../hoc/withLoading"
 
 import LoadingViewPost from "../../components/LoadingViewPost"
@@ -22,7 +26,7 @@ export default function ViewPost() {
     const [isAnswersEmpty, setIsAnswersEmpty] = useState(false)
     const [loadingMore, setLoadingMore] = useState(false)
     const [answers, setAnswers] = useState([])
-    const ViewContentWithLoading = withLoading(ViewPostContent, LoadingViewPost)
+    
 
     useEffect(() => {
         setLoading(true)
@@ -68,43 +72,64 @@ export default function ViewPost() {
             })
             setAnswers(prevAnswers => [...prevAnswers, data.answer])
             setLoadingSubmit(false)
-            // reset()
-            // set(0)
-        })
-        
+        })       
 
-        // const { data } = await request("/answers/create", {
-        //     method: "post",
-        //     data: answer
-        // })
-        
-        
-        
-
-        }
-
-
-
+    }
+    
+    const Content = () => {
         return (
-            <section>
-                <Title title="Publicação" />
-
-                <ViewContentWithLoading
-                    loading={loading}
-                    post={post}
-                    user={user}
-                    answers={answers}
-                    loadingSubmit={loadingSubmit}
-                    handleAnswer={handleAnswer}
-                    txt="Seja o primeiro a responder!"
+            <ContentArea>
+                <Post
+                    id={post.id}
+                    username={post.User.username}
+                    createdAt={post.createdAt}
+                    likesCount={post.likesCount}
+                    answersCount={post.answersCount}
+                    description={post.description}
                 />
 
-                <FindMoreArea
-                    show={(answers.length >= 5 && !isAnswersEmpty)}
-                    loading={loadingMore}
-                    handleFindMore={handleFindMore}
+                <Divisor txt="RESPOSTAS" />
+
+                <NewPost
+                    username={user.username}
+                    handleOnSubmit={handleAnswer}
+                    placeholder="Digite qualquer coisa"
+                    btnTxt="Responder"
+                    isLoading={loadingSubmit}
                 />
 
-            </section>
+                <AnswerList 
+                    answers={answers} 
+                    postUserId={post.UserId}
+                    txt="Responder"
+                />
+
+            </ContentArea>
         )
+    }
+
+    const ContentWithLoading = withLoading(Content, LoadingViewPost)
+
+    return (
+        <section>
+            <Title title="Publicação" />
+
+            <ContentWithLoading
+                loading={loading}
+                post={post}
+                user={user}
+                answers={answers}
+                loadingSubmit={loadingSubmit}
+                handleAnswer={handleAnswer}
+                txt="Seja o primeiro a responder!"
+            />
+
+            <FindMoreArea
+                show={(answers.length >= 5 && !isAnswersEmpty)}
+                loading={loadingMore}
+                handleFindMore={handleFindMore}
+            />
+
+        </section>
+    )
 }

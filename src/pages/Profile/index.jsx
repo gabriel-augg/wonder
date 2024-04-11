@@ -8,6 +8,7 @@ import Divisor from "../../components/Divisor"
 import Title from "../../components/Title"
 import ProfileArea from "../../components/ProfileArea"
 import PostsList from "../../components/PostsList"
+import withLoading from "../../hoc/withLoading"
 
 import FindMoreArea from "../../components/FindMoreArea"
 
@@ -49,32 +50,39 @@ export default function Profile(){
         setLoadingMore(true)
     }
 
+    const Content = () => {
+        return(
+            <ContentArea>
+                <ProfileArea 
+                    id={user.id}
+                    url={null} 
+                    username={user.username} 
+                    description={user.description}
+                    followCount={user.followsCount} 
+                    postsCount={user.postsCount} 
+                />
+                <Divisor txt="PUBLICAÇÕES"/>
+                <PostsList 
+                    posts={posts} 
+                    btnTxt="Responder" 
+                    unshow={true}
+                />
+            
+            </ContentArea>
+        )
+    }
 
+    const ContentWithLoading = withLoading(Content, LoadingProfile)
 
     return(
 
         
         <section>
             <Title title="Perfil" />
-            {loading ? <LoadingProfile /> : (
-                <ContentArea>
-                    <ProfileArea 
-                        id={user.id}
-                        url={null} 
-                        username={user.username} 
-                        description={user.description}
-                        followCount={user.followsCount} 
-                        postsCount={user.postsCount} 
-                    />
-                    <Divisor txt="PUBLICAÇÕES"/>
-                    <PostsList 
-                        posts={posts} 
-                        btnTxt="Responder" 
-                        unshow={true}
-                    />
-                
-                </ContentArea>
-            )}
+            
+            <ContentWithLoading 
+                loading={loading}
+            />
 
             <FindMoreArea 
                 show={(posts.length >= 5 && !isPostsEmpty)} 
