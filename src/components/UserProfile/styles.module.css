@@ -1,11 +1,25 @@
 .user_profile {
     display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 1em;
 }
 
-.user_area h1 {
-    font-size: 1.5em;
-    color: var(--secundary-p);
+.user_profile img {
+    min-width: 120px;
 }
+
+.user_area {
+    display: flex;
+    flex-direction: column;
+}
+
+.user_area h1 {
+    font-size: 1.6em;
+    padding-top: 1em;
+    color: var(--secundary-p);
+    height: 100%;
+}
+.user_area p {
+    font-size: 1.1em;
+    height: 100%;
+}
+

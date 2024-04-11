@@ -1,4 +1,5 @@
 import LoadingPostList from "../components/LoadingPostList";
+import ContentArea from "../components/ContentArea";
 
 export default function withLoadingAndNoPosts(WrappedComponent, NoPosts) {
     return ({ loading, posts, ...props }) => {
@@ -7,10 +8,12 @@ export default function withLoadingAndNoPosts(WrappedComponent, NoPosts) {
       ? <LoadingPostList/> 
       : (posts.length > 0) 
       ? (
-        <WrappedComponent 
-          posts={posts} 
-          {...props} 
-        />
+          <ContentArea>
+            <WrappedComponent 
+              posts={posts} 
+              {...props} 
+            />
+          </ContentArea>
       ) 
       : <NoPosts />;
     };

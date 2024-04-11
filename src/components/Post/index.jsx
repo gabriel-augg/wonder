@@ -7,15 +7,16 @@ import Description from "../Description";
 import ButtonLink from "../ButtonLink";
 import Button from "../Button";
 
-export default function Post({id, username, likesCount, description, answersCount, createdAt, show, handleDelete, btnTxt, path}){
+export default function Post({id, userId, username, likesCount, description, answersCount, createdAt, show, handleDelete, btnTxt, path}){
 
     return(
         <div className={styles.post}>
             <div className={styles.post_header}>
                 <div>
                     <User 
+                        id={userId}
+                        username={username}
                         url={null} 
-                        username={username} 
                     />
 
                     <Time 

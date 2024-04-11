@@ -6,12 +6,10 @@ import { UserContext } from "../../contexts/UserContext.jsx"
 import Title from "../../components/Title";
 import NewPost from "../../components/NewPost";
 
-import LoadingPost from "../../components/LoadingPostList/index.jsx";
-
-
 import useAxios from "../../hooks/useAxios.jsx";
 import PostList from "../../components/PostsList/index.jsx";
 import ContentArea from "../../components/ContentArea/index.jsx";
+import withLoadingAndNoPosts from "../../hoc/withLoadingAndNoPosts.jsx";
 
 export default function CreatePost(){
     const { request, loading, setLoading, loadingSubmit, setLoadingSubmit } = useAxios()
@@ -19,6 +17,8 @@ export default function CreatePost(){
 
     const [limit] = useState(3)
     const [posts, setPosts] = useState([])
+
+    const PostWithLoadingAndNoPost = withLoadingAndNoPosts(PostList, <></>)
 
     const navigate = useNavigate()
 
@@ -65,13 +65,14 @@ export default function CreatePost(){
                     isLoading={loadingSubmit}
                 />
             </ContentArea>
+
             <Title title="O que estão publicando"/>
-            
-            {loading ? (
-                <LoadingPost/>
-            ) : (
-                <PostList posts={posts} btnTxt="Responder" />
-            )}
+
+            <PostWithLoadingAndNoPost
+                posts={posts} 
+                loading={loading}
+                btnTxt="Responder"
+            />
             
         </section>
     )

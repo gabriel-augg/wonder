@@ -4,10 +4,10 @@ import user_image from "../../assets/img/user.svg"
 export default function UserProfile({username, url, description}){
     return(
         <div className={styles.user_profile}>
-            <img src={url ? url : user_image} width={120}  />
-            <div>
+            <img src={url ? url : user_image}  />
+            <div className={styles.user_area}>
                 <h1>{username}</h1>
-                <span>{description}</span>
+                <p>{description === null ? "O usuário ainda não colocou uma descrição." : description}</p>
             </div>
         </div>
     )   

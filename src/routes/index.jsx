@@ -22,7 +22,7 @@ export default function AppRoutes(){
             <Route path="/publicacoes/:id" element={<Private><ViewPost/></Private>} />
             <Route path="/minhas-publicacoes" element={<Private><ShowUserPosts/></Private>} />
             <Route path="/publicacoes/editar/:id" element={<Private><PostEdit/></Private>} />
-            <Route path="/perfil" element={<Profile />} />
+            <Route path="/perfil/:id" element={<Profile />} />
             <Route path="/" element={ <Home /> } />
 
             <Route path="*" element={<NotFound/>} />

@@ -7,14 +7,15 @@ import Author from "../Author";
 import Description from "../Description";
 
 
-export default function Answer({id, username, likesCount, description, createdAt, author}){
+export default function Answer({id, username, userId, likesCount, description, createdAt, author}){
     return(
         <div className={styles.answer}>
             <div className={styles.header}>
                 <div >
                     <User 
-                        url={null} 
+                        id={userId}
                         username={username} 
+                        url={null} 
                     />
 
                     <Time date={createdAt}/>

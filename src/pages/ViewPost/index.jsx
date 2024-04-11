@@ -52,30 +52,36 @@ export default function ViewPost() {
         setLoadingMore(true)
     }
 
-    async function handleAnswer({ description }, reset, set) {
+    async function handleAnswer({ description }) {
         setLoadingSubmit(true)
         const answer = {
             description,
             postId: post.id
         }
 
-        const { data } = await request("/answers/create", {
+        request("/answers/create", {
             method: "post",
             data: answer
-        })
-        
-        await request(`/posts/${post.id}/add-answers-count`, {
-            method: "patch"
+        }).then( async ({data}) => {
+            await request(`/posts/${post.id}/add-answers-count`, {
+                method: "patch"
+            })
+            setAnswers(prevAnswers => [...prevAnswers, data.answer])
+            setLoadingSubmit(false)
+            // reset()
+            // set(0)
         })
         
 
-        setAnswers(prevAnswers => [...prevAnswers, data.answer])
-        setLoadingSubmit(false)
-        reset()
-        set(0)
+        // const { data } = await request("/answers/create", {
+        //     method: "post",
+        //     data: answer
+        // })
+        
+        
         
 
-    }
+        }
 
 
 
