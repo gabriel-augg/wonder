@@ -59,6 +59,7 @@ export default function Profile(){
             {loading ? <LoadingProfile /> : (
                 <ContentArea>
                     <ProfileArea 
+                        id={user.id}
                         url={null} 
                         username={user.username} 
                         description={user.description}

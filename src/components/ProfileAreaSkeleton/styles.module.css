@@ -91,8 +91,8 @@
 
 .button {
   height: 30px;
-  width: 120px;
-  border-radius: 1em;
+  width: 140px;
+  border-radius: 0.7em;
   background-color: var(--white-p);
 }
 

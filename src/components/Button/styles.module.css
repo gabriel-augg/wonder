@@ -75,3 +75,18 @@
 .btn_follow:hover {
     background-color: var(--primary);
 }
+
+.btn_unfollow {
+    background: var(--primary);
+    font-size: 1em;
+    padding: 0.4em 0;
+    width: 8.9em;
+    border-radius: 0.7em;
+    color: var(--white);
+    transition: all .3s;
+}
+
+.btn_unfollow:hover {
+    background-color: var(--primary-p);
+    color: var(--white);
+}

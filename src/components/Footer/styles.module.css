@@ -6,3 +6,11 @@
     text-align: center;
     color: var(--white-p);
 }
+
+.footer a {
+    color: var(--primary);
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
