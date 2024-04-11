@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import useAxios from "../../hooks/useAxios.jsx";
+import useRequest from "../../hooks/useRequest.jsx";
 import { SearchContext } from "../../contexts/SearchContext.jsx";
 
 import { IoIosAddCircleOutline } from "react-icons/io";
@@ -13,7 +13,7 @@ import NoPosts from "../../components/NoPosts/index.jsx";
 
 
 export default function Home() {
-    const { request, loading, setLoading } = useAxios()
+    const { request, loading, setLoading } = useRequest()
     const [posts, setPosts] = useState([])
     const { search } = useContext(SearchContext)
     const [offSet, setOffSet] = useState(0)

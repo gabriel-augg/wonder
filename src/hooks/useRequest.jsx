@@ -3,7 +3,7 @@ import useFlashMessage from './useFlashMessage';
 import api from '../utils/api';
 import error from '../utils/error';
 
-const useAxios = () => {
+const useRequest = () => {
     const [loading, setLoading] = useState(true);
     const [loadingSubmit, setLoadingSubmit] = useState(false)
     const [loadingDelete, setLoadingDelete] = useState(false)
@@ -82,4 +82,4 @@ const useAxios = () => {
     return { get, request, post, put, patch, deleteOne, loading, setLoading, loadingDelete, loadingSubmit, setLoadingSubmit };
 };
 
-export default useAxios;
+export default useRequest;

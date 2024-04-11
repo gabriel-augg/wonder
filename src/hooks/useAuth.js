@@ -1,5 +1,5 @@
 import api from "../utils/api.js"
-import useAxios from "./useAxios.jsx"
+import useAxios from "./useRequest.jsx"
 
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"

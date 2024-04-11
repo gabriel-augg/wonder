@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/UserContext";
-import useAxios from "../../hooks/useAxios";
+import useRequest from "../../hooks/useRequest";
 
 import { IoIosHeartEmpty } from "react-icons/io";
 import { IoIosHeart } from "react-icons/io";
@@ -10,7 +10,7 @@ import { AiOutlineLoading } from "react-icons/ai";
 import styles from "./styles.module.css"
 
 export default function Like({id, type, likesCount}){
-    const { request, loading, setLoading } = useAxios()
+    const { request, loading, setLoading } = useRequest()
     const {authenticated} = useContext(UserContext)
     const [isLiked, setIsLiked] = useState(false)
     const [count, setCount] = useState(likesCount)

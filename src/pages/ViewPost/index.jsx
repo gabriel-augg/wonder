@@ -9,7 +9,7 @@ import AnswerList from "../../components/AnswerList"
 
 
 import { useParams } from "react-router-dom";
-import useAxios from "../../hooks/useAxios"
+import useRequest from "../../hooks/useRequest"
 import { UserContext } from "../../contexts/UserContext"
 import FindMoreArea from "../../components/FindMoreArea";
 import withLoading from "../../hoc/withLoading"
@@ -18,7 +18,7 @@ import LoadingViewPost from "../../components/LoadingViewPost"
 
 
 export default function ViewPost() {
-    const { request, loading, setLoading, loadingSubmit, setLoadingSubmit } = useAxios()
+    const { request, loading, setLoading, loadingSubmit, setLoadingSubmit } = useRequest()
     const { user } = useContext(UserContext)
     const { id } = useParams()
     const [offset, setOffSet] = useState(0)
@@ -81,6 +81,7 @@ export default function ViewPost() {
             <ContentArea>
                 <Post
                     id={post.id}
+                    userId={post.UserId}
                     username={post.User.username}
                     createdAt={post.createdAt}
                     likesCount={post.likesCount}

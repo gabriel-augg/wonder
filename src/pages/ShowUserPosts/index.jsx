@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useAxios from "../../hooks/useAxios";
+import useRequest from "../../hooks/useRequest";
 
 
 import { BsChatQuoteFill } from "react-icons/bs";
@@ -14,7 +14,7 @@ import FindMoreArea from "../../components/FindMoreArea"
 
 export default function ShowUserPosts(){
 
-    const {request, loading, setLoading} = useAxios()
+    const {request, loading, setLoading} = useRequest()
     const [posts, setPosts] = useState([])
     const [offset, setOffSet] = useState(0)
     const [loadingMore, setLoadingMore] = useState(false)

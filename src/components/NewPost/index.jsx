@@ -22,6 +22,7 @@ export default function NewPost({username, handleOnSubmit, placeholder, btnTxt, 
             <User 
                 url={null} 
                 username={username} 
+                unshow={true}
             />
    
             <form onSubmit={handleSubmit(handleDescription)}>

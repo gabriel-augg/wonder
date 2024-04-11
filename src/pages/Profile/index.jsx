@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { useParams } from "react-router-dom"
 
-import useAxios from "../../hooks/useAxios"
+import useRequest from "../../hooks/useRequest"
 
 import ContentArea from "../../components/ContentArea"
 import Divisor from "../../components/Divisor"
@@ -21,7 +21,7 @@ export default function Profile(){
     const [loadingMore, setLoadingMore] = useState(false)
     const [isPostsEmpty, setIsPostsEmpty] = useState(false)
     const {id} = useParams()
-    const { request, loading, setLoading } = useAxios()
+    const { request, loading, setLoading } = useRequest()
 
     useEffect(()=>{
         setLoading(true)

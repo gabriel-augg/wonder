@@ -3,14 +3,14 @@ import {useNavigate} from "react-router-dom"
 import { UserContext } from "../../contexts/UserContext";
 
 import Button from "../Button"
-import useAxios from "../../hooks/useAxios"
+import useRequest from "../../hooks/useRequest"
 
 import { AiOutlineLoading } from "react-icons/ai";
 
 import styles from "./styles.module.css"
 
 export default function FollowButton({ id, setFollowCount }) {
-    const { request, loading, setLoading } = useAxios()
+    const { request, loading, setLoading } = useRequest()
     const { user, authenticated } = useContext(UserContext)
     const navigate = useNavigate()
     const [isFollowed, setIsFollwed] = useState(false)

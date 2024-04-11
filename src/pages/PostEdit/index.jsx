@@ -6,7 +6,7 @@ import NewPost from "../../components/NewPost";
 import Divisor from "../../components/Divisor";
 import AnswerList from "../../components/AnswerList";
 
-import useAxios from "../../hooks/useAxios";
+import useRequest from "../../hooks/useRequest";
 import SpecialTitle from "../../components/SpecialTitle"
 import { RiUserFollowFill } from "react-icons/ri";
 import LoadingPostEdit from "../../components/LoadingPostEdit";
@@ -17,7 +17,7 @@ export default function PostEdit(){
     const navigate = useNavigate()
     const [post, setPost] = useState(null)
     const [answers, setAnswers] = useState([])
-    const { request, loading, setLoading, loadingSubmit, setLoadingSubmit} = useAxios()
+    const { request, loading, setLoading, loadingSubmit, setLoadingSubmit} = useRequest()
 
     useEffect(()=>{
         setLoading(true)
