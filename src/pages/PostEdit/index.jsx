@@ -13,22 +13,29 @@ export default function PostEdit(){
     const navigate = useNavigate()
     const [post, setPost] = useState(null)
     const [answers, setAnswers] = useState([])
-    const {get, put, loading, loadingSubmit} = useAxios()
+    const { request, loading, setLoading, loadingSubmit, setLoadingSubmit} = useAxios()
     const PostEditContentWithLoading = withLoading(PostEditContent, LoadingPostEdit)
 
     useEffect(()=>{
-        get(`posts/id/${id}`)
-        .then(({post}) => {
-            setPost(post)
-            setAnswers(post.Answers)
+        setLoading(true)
+        request(`/posts/${id}/get-post`, {
+            method: "get"
+        })
+        .then(({data}) => {
+            setPost(data.post)
+            setAnswers(data.post.Answers)
+            setLoading(false)
         })
     },[id])
 
-    function handleUpdate(description){
-        put(`/posts/id/${id}`, description)
-        .then(()=> {
-            navigate("/minhas-publicacoes")
+    async function handleUpdate(description){
+        setLoadingSubmit(true)
+        await request(`/posts/${id}/update-post`, {
+            method: "put",
+            data: description
         })
+        setLoadingSubmit(false)
+        navigate("/minhas-publicacoes")
     }
 
     return(
