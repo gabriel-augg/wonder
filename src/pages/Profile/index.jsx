@@ -9,23 +9,45 @@ import Title from "../../components/Title"
 import ProfileArea from "../../components/ProfileArea"
 import PostsList from "../../components/PostsList"
 
+import FindMoreArea from "../../components/FindMoreArea"
+
+import LoadingProfile from "../../components/LoadingProfile"
+
 export default function Profile(){
     const [user, setUser] = useState(null)
     const [posts, setPosts] = useState([])
+    const [offSet, setOffSet] = useState(0)
+    const [loadingMore, setLoadingMore] = useState(false)
+    const [isPostsEmpty, setIsPostsEmpty] = useState(false)
     const {id} = useParams()
     const { request, loading, setLoading } = useAxios()
 
     useEffect(()=>{
+        setLoading(true)
         request(`/users/${id}/get-user`, {
-            method: "get"
+            method: "get",
+            params: {
+                offset: offSet
+            }
         })
         .then(({data}) => {
-            console.log(data)
             setUser(data.user)
-            setPosts(data.user.Posts)
+            offSet === 0 
+            ? setPosts(data.user.Posts) 
+            : (
+                setPosts( prevPosts => [...prevPosts, ...data.user.Posts]),
+                setLoadingMore(false)
+            );
+            
+            setIsPostsEmpty(data.user.Posts.length === 0)
             setLoading(false)
         })
-    },[id])
+    },[id, offSet])
+
+    function handleFindMore() {
+        setOffSet(prevOffSet => prevOffSet + 5)
+        setLoadingMore(true)
+    }
 
 
 
@@ -34,8 +56,8 @@ export default function Profile(){
         
         <section>
             <Title title="Perfil" />
-                {loading ? undefined : (
-                    <ContentArea>
+            {loading ? <LoadingProfile /> : (
+                <ContentArea>
                     <ProfileArea 
                         url={null} 
                         username={user.username} 
@@ -49,9 +71,15 @@ export default function Profile(){
                         btnTxt="Responder" 
                         unshow={true}
                     />
-                    
+                
                 </ContentArea>
             )}
+
+            <FindMoreArea 
+                show={(posts.length >= 5 && !isPostsEmpty)} 
+                loading={loadingMore}
+                handleFindMore={handleFindMore}
+            />
 
             
         </section>

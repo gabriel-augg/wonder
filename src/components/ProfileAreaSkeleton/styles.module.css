@@ -1,0 +1,105 @@
+@import url(../../utils/color-var.css);
+
+@keyframes change {
+  0%,
+  100% {
+    background-color: transparent;
+  }
+
+  50% {
+    background-color: var(--white-p);
+  }
+}
+
+.skeleton {
+  display: flex;
+  padding: 2em;
+  gap: 2em;
+}
+
+.skeleton > div {
+  flex: 1;
+}
+
+.profile_info {
+  display: flex;
+  gap: 1em;
+}
+
+.user_area {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background-color: var(--white-p);
+}
+
+.username {
+  height: 25px;
+  width: 100px;
+  border-radius: 1em;
+  background-color: var(--white-p);
+  margin-bottom: 0.8em;
+}
+
+.description {
+  height: 18px;
+  width: 150px;
+  border-radius: 1em;
+  background-color: var(--white-p);
+  margin-bottom: 0.2em;
+}
+
+.info_area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.info_content {
+  display: flex;
+  gap: 1em;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2em;
+}
+
+.info div:first-child {
+  height: 17px;
+  width: 17px;
+  border-radius: 50%;
+  background-color: var(--white-p);
+}
+
+.info div:last-child {
+  height: 15px;
+  width: 100px;
+  border-radius: 1em;
+  background-color: var(--white-p);
+}
+
+.button {
+  height: 30px;
+  width: 120px;
+  border-radius: 1em;
+  background-color: var(--white-p);
+}
+
+.avatar,
+.username,
+.description,
+.info > div,
+.button {
+  animation: change 1s linear infinite;
+}

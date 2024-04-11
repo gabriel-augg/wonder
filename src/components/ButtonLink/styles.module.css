@@ -34,18 +34,3 @@
 .cta:hover {
     background-color: var(--primary-p);
 }
-
-.btn_message {
-    background: var(--primary);
-    cursor: not-allowed;
-    font-size: 1em;
-    padding: 0.4em 2em;
-    border-radius: 0.7em;
-    color: white;
-    transition: all .3s;
-}
-
-/* .btn_message:hover {
-    background-color: var(--primary);
-    color: var(--white-m);
-} */

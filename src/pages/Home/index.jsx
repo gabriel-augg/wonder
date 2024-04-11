@@ -16,7 +16,7 @@ export default function Home() {
     const { request, loading, setLoading } = useAxios()
     const [posts, setPosts] = useState([])
     const { search } = useContext(SearchContext)
-    const [offset, setOffSet] = useState(0)
+    const [offSet, setOffSet] = useState(0)
     const [loadingMore, setLoadingMore] = useState(false)
     const [isPostsEmpty, setIsPostsEmpty] = useState(false)
     const PostListWithLoadingAndNoPost = withLoadingAndNoPosts(PostList, NoPosts)
@@ -29,13 +29,13 @@ export default function Home() {
         request("/posts", {
             method: "get",
             params: {
-                offset,
+                offset: offSet,
                 ...(search && { search })
             }
         })
         .then(({data}) => {
 
-            offset === 0 
+            offSet === 0 
             ? setPosts(data.posts) 
             : (
                 setPosts(prevPosts => [...prevPosts, ...data.posts]),
@@ -46,7 +46,7 @@ export default function Home() {
             
         })
 
-    }, [offset, search])
+    }, [offSet, search])
 
     function handleFindMore() {
         setOffSet(prevOffSet => prevOffSet + 5)

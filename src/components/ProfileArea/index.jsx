@@ -1,7 +1,6 @@
 import UserProfile from "../UserProfile"
 import Info from "../Info"
 import Button from "../Button"
-import ButtonLink from "../ButtonLink"
 
 import styles from "./styles.module.css"
 
@@ -24,10 +23,9 @@ export default function ProfileArea({id, username, url, description, followCount
                         txt="Publicações"
                     />
                 </div>
-                <div>
-                    <Button btnTxt="Seguir" classN="btn_follow"/>
-                    <ButtonLink btnTxt="Mensagem" classN="btn_message" />
-                </div>                  
+
+                <Button btnTxt="Seguir" classN="btn_follow"/>
+             
             </div>
         </div>
     )
