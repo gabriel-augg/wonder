@@ -7,7 +7,7 @@ export function SearchProvider({children}){
 
     return(
     <SearchContext.Provider value={{search, setSearch}}>
-        {children}
+       {children} 
     </SearchContext.Provider>
     )
 }

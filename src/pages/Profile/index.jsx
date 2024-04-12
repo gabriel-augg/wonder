@@ -62,6 +62,7 @@ export default function Profile(){
                     postsCount={user.postsCount} 
                 />
                 <Divisor txt="PUBLICAÇÕES"/>
+                
                 <PostsList 
                     posts={posts} 
                     btnTxt="Responder" 

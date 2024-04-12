@@ -8,7 +8,6 @@ import styles from "./styles.module.css"
 
 import { FaUser } from "react-icons/fa";
 import { IoExitOutline } from "react-icons/io5";
-import { IoIosChatbubbles } from "react-icons/io";
 import { IoIosAddCircle } from "react-icons/io";
 import { IoHeart } from "react-icons/io5";
 import { BsChatQuoteFill } from "react-icons/bs";
@@ -52,7 +51,6 @@ export default function Dropdown(){
                     <li onClick={handlePost}><IoIosAddCircle/><span>Publicar</span></li>
                     <li onClick={handleShowMyPosts}><BsChatQuoteFill/><span>Minhas publicações</span></li>
                     <li ><IoHeart/><span>Minhas curtidas</span></li>
-                    <li><IoIosChatbubbles/><span>Mensagens</span></li>
                     <li onClick={handleSignOut}> <IoExitOutline/><span>Sair</span></li>
                 </ul>
             </nav>

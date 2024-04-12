@@ -7,7 +7,7 @@ import Description from "../Description";
 import ButtonLink from "../ButtonLink";
 import Button from "../Button";
 
-export default function Post({id, userId, username, likesCount, description, answersCount, createdAt, show, handleDelete, btnTxt, path}){
+export default function Post({id, userId, username, likesCount, description, answersCount, createdAt, show, handleDelete, btnTxt, path, unshow}){
 
     return(
         <div className={styles.post}>
@@ -16,7 +16,8 @@ export default function Post({id, userId, username, likesCount, description, ans
                     <User 
                         id={userId}
                         username={username}
-                        url={null} 
+                        url={null}
+                        unshow={unshow}
                     />
 
                     <Time 

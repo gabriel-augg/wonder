@@ -65,6 +65,7 @@ export default function Home() {
                 posts={posts} 
                 loading={loading} 
                 btnTxt="Responder"
+                unshow={false}
             />
 
             <FindMoreArea 

@@ -1,6 +1,6 @@
 import Post from "../Post"
 
-export default function PostList({posts, handleDelete, btnTxt, path}){
+export default function PostList({posts, handleDelete, btnTxt, path, unshow}){
     return posts.map((post) => {
                 return (
                     <Post
@@ -16,6 +16,7 @@ export default function PostList({posts, handleDelete, btnTxt, path}){
                         path={path}
                         btnTxt={btnTxt}
                         show={true}
+                        unshow={unshow}
                     />
                 )
             })
