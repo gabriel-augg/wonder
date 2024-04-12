@@ -29,6 +29,11 @@ export default function Dropdown(){
         setIsActive(!isActive)
     }
 
+    function handleLikedPosts(){
+        navigate("/minhas-curtidas")
+        setIsActive(!isActive)
+    }
+
     function handlePost(){
         navigate("/nova-publicacao")
         setIsActive(!isActive)
@@ -50,7 +55,7 @@ export default function Dropdown(){
                     <li onClick={handleProfile}><FaUser size={15}/><span>Meu perfil</span></li>
                     <li onClick={handlePost}><IoIosAddCircle/><span>Publicar</span></li>
                     <li onClick={handleShowMyPosts}><BsChatQuoteFill/><span>Minhas publicações</span></li>
-                    <li ><IoHeart/><span>Minhas curtidas</span></li>
+                    <li onClick={handleLikedPosts}><IoHeart/><span>Minhas curtidas</span></li>
                     <li onClick={handleSignOut}> <IoExitOutline/><span>Sair</span></li>
                 </ul>
             </nav>

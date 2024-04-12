@@ -43,7 +43,6 @@ export default function Home() {
             );
             setIsPostsEmpty(data.posts.length === 0)
             setLoading(false)
-            
         })
 
     }, [offSet, search])

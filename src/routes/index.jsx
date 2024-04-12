@@ -8,6 +8,7 @@ import ViewPost from "../pages/ViewPost"
 import ShowUserPosts from "../pages/ShowUserPosts"
 import PostEdit from "../pages/PostEdit"
 import Profile from "../pages/Profile"
+import ViewLikedPosts from "../pages/ViewLikedPosts"
 
 import NotFound from "../pages/NotFound"
 import Private from "./Private"
@@ -21,6 +22,7 @@ export default function AppRoutes(){
             <Route path="/nova-publicacao" element={ <Private><CreatePost/></Private> } />
             <Route path="/publicacoes/:id" element={<Private><ViewPost/></Private>} />
             <Route path="/minhas-publicacoes" element={<Private><ShowUserPosts/></Private>} />
+            <Route path="/minhas-curtidas" element={<Private><ViewLikedPosts/></Private>} />
             <Route path="/publicacoes/editar/:id" element={<Private><PostEdit/></Private>} />
             <Route path="/perfil/:id" element={<Profile />} />
             <Route path="/" element={ <Home /> } />
