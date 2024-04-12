@@ -16,7 +16,7 @@ const useRequest = () => {
 
             return data
         } catch (error) {
-            console.log(error)
+            setFlashMessage(error.response.data.message)
         }
     }
 

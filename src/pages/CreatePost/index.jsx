@@ -5,6 +5,7 @@ import { UserContext } from "../../contexts/UserContext.jsx"
 
 import Title from "../../components/Title";
 import NewPost from "../../components/NewPost";
+import NoPost from "../../components/NoPost/index.jsx";
 
 import useRequest from "../../hooks/useRequest.jsx";
 import PostList from "../../components/PostsList/index.jsx";
@@ -51,7 +52,9 @@ export default function CreatePost(){
         }
     }
 
-    const PostWithLoadingAndNoPost = withLoadingAndNoPosts(PostList, <></>)
+    
+
+    const PostWithLoadingAndNoPost = withLoadingAndNoPosts(PostList, NoPost)
 
     return(
         <section>

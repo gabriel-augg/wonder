@@ -50,6 +50,9 @@ export default function ShowUserPosts(){
         await request(`/posts/${id}/remove-post`, {
             method: "delete"
         })
+        await request(`/users/remove-posts-count`, {
+            method: "patch"
+        })
         setPosts(prevPosts => prevPosts.filter(post => post.id !== id))
     }
 

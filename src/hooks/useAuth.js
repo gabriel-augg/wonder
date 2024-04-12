@@ -41,9 +41,6 @@ export default function useAuth(){
             setLoadingAuth(false)
             navigate("/")
         })
-        .catch((error)=>{
-            console.log(error)
-        })
     }
 
     async function signUp(user){
@@ -58,6 +55,8 @@ export default function useAuth(){
             } else {
                 setLoadingAuth(false)
             }
+        }).catch((res) => {
+            setLoadingAuth(false)
         })
     }
 
@@ -73,6 +72,8 @@ export default function useAuth(){
             } else {
                 setLoadingAuth(false)
             }
+        }).catch((error) => {
+            setLoadingAuth(false)
         })
     }
 

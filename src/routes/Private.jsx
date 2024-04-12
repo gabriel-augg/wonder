@@ -18,8 +18,8 @@ export default function Private({children}){
 
 
     return (
-        !authenticated 
-        ? <></>            
-        : children
+        authenticated 
+        ? children          
+        : <></>
     )
 }
