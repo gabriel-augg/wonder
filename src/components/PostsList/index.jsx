@@ -22,6 +22,7 @@ export default function PostList({posts, handleDelete, btnTxt, path, unshow}){
                         path={path}
                         btnTxt={btnTxt}
                         unshow={unshow}
+                        show={true}
                     />
                 )
             })
