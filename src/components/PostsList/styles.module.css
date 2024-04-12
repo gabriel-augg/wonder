@@ -1,0 +1,10 @@
+.no {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+}
+
+.no h1 {
+    font-size: 1.1em;
+}
