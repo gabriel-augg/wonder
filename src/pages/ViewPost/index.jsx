@@ -71,6 +71,8 @@ export default function ViewPost() {
                 method: "patch"
             })
             setAnswers(prevAnswers => [...prevAnswers, data.answer])
+            const count = post.answersCount + 1
+            setPost({...post, answersCount: count })
             setLoadingSubmit(false)
         })       
 
