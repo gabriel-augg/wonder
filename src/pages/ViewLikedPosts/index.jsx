@@ -30,7 +30,7 @@ export default function ViewLikedPosts(){
                 offset
             }
         })
-        .then(({data}) => {
+        .then(({data}) => { 
             offset === 0 
             ? setPosts(data.posts) 
             : (
