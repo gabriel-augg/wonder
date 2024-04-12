@@ -1,12 +1,11 @@
 import api from "../utils/api.js"
-import useAxios from "./useRequest.jsx"
+import useRequest from "./useRequest.jsx"
 
 import { useState, useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import useFlashMessage from "./useFlashMessage.jsx"
 
 export default function useAuth(){
-    const { request, loading, setLoading } = useAxios()
+    const { request, loading, setLoading } = useRequest()
     const [authenticated, setAuthenticated] = useState(false)
     const [loadingAuth, setLoadingAuth] = useState(false)
     const [user, setUser] = useState(null)
@@ -83,5 +82,5 @@ export default function useAuth(){
         api.defaults.headers.Authorization = undefined
     }
 
-    return {authenticated, loading, loadingAuth, user, signIn, signUp, signOut}
+    return {authenticated, loading, setLoading, loadingAuth, user, signIn, signUp, signOut}
 }
