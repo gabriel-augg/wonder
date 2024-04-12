@@ -33,6 +33,7 @@ export default function Profile(){
         })
         .then(({data}) => {
             setUser(data.user)
+            document.title = `Perfil de ${data.user.username}`
             offSet === 0 
             ? setPosts(data.user.Posts) 
             : (

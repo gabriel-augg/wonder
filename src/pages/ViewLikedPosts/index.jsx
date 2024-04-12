@@ -21,6 +21,8 @@ export default function ViewLikedPosts(){
     const [isPostsEmpty, setIsPostsEmpty] = useState(false)
 
     useEffect(()=>{
+        document.title = "Minhas curtidas"
+
         setLoading(true)
         request("/posts/my-likes", {
             method: "get",

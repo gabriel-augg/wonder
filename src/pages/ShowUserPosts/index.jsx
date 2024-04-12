@@ -21,6 +21,8 @@ export default function ShowUserPosts(){
     const [isPostsEmpty, setIsPostsEmpty] = useState(false)
 
     useEffect(()=>{
+        document.title = "Minhas publicações"
+
         setLoading(true)
         request("/posts/my-posts", {
             method: "get",

@@ -20,6 +20,7 @@ export default function PostEdit(){
     const { request, loading, setLoading, loadingSubmit, setLoadingSubmit} = useRequest()
 
     useEffect(()=>{
+        document.title = "Editando minha publicação"
         setLoading(true)
         request(`/posts/${id}/get-post`, {
             method: "get"
@@ -56,7 +57,7 @@ export default function PostEdit(){
                 <AnswerList 
                     answers={answers} 
                     postUser={post.User}
-                    txt="Salvar"
+                    txt="Parece que não há respostas"
                 />
             </ContentArea>  
         )
