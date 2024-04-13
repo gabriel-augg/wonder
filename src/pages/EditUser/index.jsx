@@ -40,15 +40,8 @@ export default function EditUser(){
                     setUser(res.data.user)
                     navigate(`/perfil/${user.id}`)
                 }
-            })
-
-            setLoadingSubmit(false)
-
-
-         
-            
-
-
+                setLoadingSubmit(false)
+            })    
         }
     }
 
