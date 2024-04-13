@@ -65,7 +65,7 @@ export default function FollowButton({ id, setFollowCount }) {
     return loading
         ? (
             <span className={styles.loading}>
-                <AiOutlineLoading size={25} />
+                <AiOutlineLoading size={26} />
             </span>
         )
         : id === user?.id
