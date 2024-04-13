@@ -7,7 +7,7 @@ export default function UserProfile({username, url, description}){
             <img src={url ? url : user_image}  />
             <div className={styles.user_area}>
                 <h1>{username}</h1>
-                <p>{description === null ? "O usuário ainda não colocou uma descrição." : description}</p>
+                <p>{ !description ? "Não há descrição." : description}</p>
             </div>
         </div>
     )   

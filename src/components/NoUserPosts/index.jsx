@@ -7,7 +7,7 @@ export default function NoUserPosts(){
     return (
         <div className={styles.no_user_posts}>
             <img src={image_no_user_posts} alt="ilustration" />
-            <h1>Faça sua primeira publicação!</h1>
+            <h1>Faça sua a primeira publicação!</h1>
             <ButtonLink path="/nova-publicacao" btnTxt="Publicar" classN="btn" />
         </div>
     )
