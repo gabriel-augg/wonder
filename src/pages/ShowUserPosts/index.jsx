@@ -49,13 +49,13 @@ export default function ShowUserPosts(){
     }
 
     async function handleDelete(id){
+        setPosts(prevPosts => prevPosts.filter(post => post.id !== id))
         await request(`/posts/${id}/remove-post`, {
             method: "delete"
         })
         await request(`/users/remove-posts-count`, {
             method: "patch"
         })
-        setPosts(prevPosts => prevPosts.filter(post => post.id !== id))
     }
 
     const PostListWithLoadingAndNoPost = withLoadingAndNoPosts(PostList, NoUserPosts)
