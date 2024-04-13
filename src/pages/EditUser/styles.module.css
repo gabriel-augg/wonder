@@ -1,0 +1,12 @@
+@import url(../../utils/color-var.css);
+
+.container_edit_user {
+    width: 550px;
+    max-width: 100%;
+    margin: 30px auto;
+}
+
+.container_edit_user h1 {
+    color: var(--primary-p);
+    text-align: center;
+}

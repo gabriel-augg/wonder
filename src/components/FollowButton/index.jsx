@@ -69,7 +69,7 @@ export default function FollowButton({ id, setFollowCount }) {
             </span>
         )
         : id === user?.id
-        ? <Button btnTxt="Editar" classN="btn_follow" />
+        ? <Button options={{onClick: () => navigate("/perfil/editar/meu-perfil")}} btnTxt="Editar" classN="btn_follow" />
         : isFollowed
         ? <Button options={{onClick: handleClick}} btnTxt="Não seguir" classN="btn_unfollow" />
         : <Button options={{onClick: handleClick}} btnTxt="Seguir" classN="btn_follow"/>

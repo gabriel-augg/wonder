@@ -82,5 +82,5 @@ export default function useAuth(){
         api.defaults.headers.Authorization = undefined
     }
 
-    return {authenticated, loading, setLoading, loadingAuth, user, signIn, signUp, signOut}
+    return {authenticated, loading, setLoading, loadingAuth, user, setUser, signIn, signUp, signOut}
 }
