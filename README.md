@@ -1,5 +1,5 @@
 # <img src="./public/icon.svg" width="25" alt="icon">  Wonder 
-Wonder é uma rede social que nasceu com o objetivo de enfatizar a liberdade de expressão individual. Sua interface é bastante intuitiva, permitindo que os usuários aprendam facilmente a fazer uma publicação. O projeto é focado em permitir que os usuários publiquem mensagens de texto, proporcionando uma plataforma aberta para expressão. Qualquer usuário pode criar uma publicação, além de curtir e responder às mensagens de outros. Sua abordagem e interface são semelhantes ao X, antigo Twitter, proporcionando uma experiência familiar aos usuários.
+Wonder é uma rede social que nasceu com o objetivo de enfatizar a liberdade de expressão individual. Sua interface é bastante intuitiva, permitindo que os usuários aprendam facilmente a fazer uma publicação. O projeto é focado em permitir que os usuários publiquem mensagens de texto, proporcionando uma plataforma aberta para expressão. Qualquer usuário pode criar uma publicação, além de curtir e responder às publicações de outros. Sua abordagem e interface são semelhantes ao X, antigo Twitter, proporcionando uma experiência familiar aos usuários.
 
 Quer fazer a sua primeira publicação? Basta acessar o [Wonder](https://wonderr.me).
 ##### **IMPORTANTE!**
