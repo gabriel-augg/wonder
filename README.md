@@ -22,6 +22,7 @@ Para saber mais informações sobre a api do projeto, basta clicar [aqui](https:
 
 ## 💻 Tecnologias
 
+- JavaScript
 - React
 - ContextAPI
 - Axios
