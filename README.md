@@ -4,7 +4,7 @@ Wonder é uma rede social que nasceu com o objetivo de enfatizar a liberdade de 
 Quer fazer a sua primeira publicação? Basta acessar o [Wonder](https://wonderr.me).
 ##### **IMPORTANTE!**
 
-> Talvez ao tentar acessar o Wonder, possa demorar alguns minutos para que a página carregue e mostre as publicações. Isso acontece devido a API do projeto está hospedada no [Render](https://render.com), mas não se preocupe que dentro de um minuto a página carregará normalmente e as publicações serão mostradas.
+> Talvez ao tentar acessar o Wonder, possa demorar um pouco para que a página carregue e mostre as publicações. Isso acontece devido a API do projeto está hospedada no [Render](https://render.com), mas não se preocupe que dentro de um minuto a página carregará normalmente e as publicações serão mostradas.
 
 ## 🎨 Layout
 
