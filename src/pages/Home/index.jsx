@@ -30,7 +30,8 @@ export default function Home() {
             method: "get",
             params: {
                 offset: offSet,
-                ...(search && { search })
+                ...(search && { search }),
+                order: "likesCount"
             }
         })
         .then(({data}) => {

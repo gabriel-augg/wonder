@@ -27,6 +27,7 @@ export default function CreatePost(){
             method: "get",
             params: {
                 limit,
+                order: "createdAt"
             }
         })
         .then(({data}) => {
