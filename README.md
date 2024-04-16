@@ -8,11 +8,11 @@ Quer fazer a sua primeira publicação? Basta acessar o [Wonder](https://wonderr
 
 ## 🎨 Layout
 
-| Home | Criação de publicação |
+|  |  |
 |----------|----------|
 | ![Screenshot 1](./public/screenshot1.png) | ![Screenshot 2](./public/screenshot2.png) |
 
-| Perfil do usuário | Viasualização da publicação |
+| | |
 |----------|----------|
 | ![Screenshot 3](./public/screenshot3.png) | ![Screenshot 4](./public/screenshot4.png) |
 
