@@ -18,7 +18,7 @@ No FrontEnd, foi utilizado o React como biblioteca principal, o que facilitou o 
 
 O projeto está completamente funcional, com todas as suas páginas e funcionalidades desenvolvidas. 
 
-Para saber mais informações sobre a api do projeto, basta clicar [aqui](https://github.com/gabriel-augg/api-wonder).
+Cique [aqui](https://github.com/gabriel-augg/api-wonder) para saber mais informações sobre a API do projeto.
 
 ## 💻 Tecnologias
 
