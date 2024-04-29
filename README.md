@@ -39,5 +39,3 @@ Cique [aqui](https://github.com/gabriel-augg/api-wonder) para saber mais informa
 - React-router-dom
 - React-hook-form
 - Zod
-- HTML
-- CSS
